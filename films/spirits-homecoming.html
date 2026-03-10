@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit's Homecoming (2016) | Korean History through Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #283593;
+            --accent-light: #3949ab;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0d1240 0%, #283593 40%, #3949ab 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-meta .tag {
+            background: rgba(255,255,255,0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* MAIN GRID */
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 860px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MAIN CONTENT */
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .main-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .main-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .main-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .main-content a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* DOC CARDS */
+        .doc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 3px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .doc-card.gold { border-left-color: var(--gold); }
+        .doc-card.indigo { border-left-color: var(--accent); }
+        .doc-card.dark { border-left-color: #333; }
+        .doc-card.violet { border-left-color: #5c2d91; }
+
+        .doc-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .doc-card p, .doc-card li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .doc-card ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .doc-card li { margin-bottom: 0.3rem; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: var(--paper-warm);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.6;
+            margin-bottom: 0.3rem;
+        }
+
+        .pull-quote .attribution {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-style: normal;
+            color: var(--ink-faint);
+        }
+
+        /* SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .sidebar-card.gold-border h3 { border-bottom-color: var(--gold); }
+
+        .fact-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .fact-row:last-child { border-bottom: none; }
+
+        .fact-label {
+            font-weight: 600;
+            color: var(--ink);
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+        }
+
+        .fact-value {
+            color: var(--ink-light);
+            text-align: right;
+        }
+
+        .term-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .term-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .term-item .term {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .term-item .term .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+        }
+
+        .term-item .definition {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+            line-height: 1.55;
+        }
+
+        .person-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .person-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .person-item .person-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+
+        .person-item .person-name .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+        }
+
+        .person-item .person-desc {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+            line-height: 1.55;
+        }
+
+        .discussion-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: discussion;
+        }
+
+        .discussion-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.55;
+            counter-increment: discussion;
+        }
+
+        .discussion-list li::before {
+            content: counter(discussion) ".";
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        .discussion-list li:last-child { border-bottom: none; }
+
+        .reading-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reading-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.5;
+        }
+
+        .reading-list li:last-child { border-bottom: none; }
+
+        .reading-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .reading-list a:hover { text-decoration: underline; }
+
+        /* SOURCE TAG */
+        .source-tag {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            display: inline;
+        }
+
+        .source-tag a {
+            color: var(--ink-faint);
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+        .source-tag a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to Korean History through Film</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="course-label">Deep Dive</div>
+        <h1>Spirit's Homecoming</h1>
+        <div class="korean-title">귀향</div>
+        <div class="hero-meta">
+            <span>Cho Jung-rae (조정래)</span>
+            <span>2016</span>
+            <span>127 min</span>
+            <span class="tag">Historical Drama</span>
+            <span class="tag">Military Sexual Slavery</span>
+            <span class="tag">Memory and Redress</span>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN GRID -->
+<div class="main-wrap">
+
+    <!-- LEFT: MAIN CONTENT -->
+    <article class="main-content">
+
+        <h2>Historical Context: Japanese Military Sexual Slavery</h2>
+
+        <p>
+            Between 1932 and 1945, the Imperial Japanese military established and operated a system of sexual slavery
+            across its occupied territories. Women and girls, many as young as fourteen, were abducted, deceived
+            with false promises of factory work or nursing jobs, or coerced into serving as sex slaves in
+            military-run "comfort stations." Estimates of the total number of victims range up to 200,000, though
+            the actual number may have been higher. The majority came from Korea and China, with additional victims
+            from Taiwan, the Philippines, Indonesia, Malaysia, Vietnam, Thailand, East Timor, and the Dutch East Indies.
+            <span class="source-tag">(<a href="https://www.britannica.com/topic/comfort-women">Britannica</a>)</span>
+        </p>
+
+        <p>
+            The euphemism "comfort women" (Japanese: <em>ianfu</em>, 慰安婦; Korean: <em>wianbu</em>, 위안부)
+            obscures the reality of what happened. These were not volunteers, and "comfort" is a grotesque
+            misnomer for systematic rape. The system was created and administered by the Japanese military itself.
+            Women were confined to stations, forced to endure sexual violence from dozens of soldiers per day,
+            subjected to beatings, starvation, and medical experimentation, and killed when they became too ill
+            to continue. Many survivors never returned home. Those who did carried lifelong physical injuries,
+            psychological trauma, and social stigma.
+            <span class="source-tag">(<a href="https://www.britannica.com/topic/comfort-women">Britannica</a> /
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5912496/">PMC, Psychiatry Investigation</a>)</span>
+        </p>
+
+        <div class="doc-card dark">
+            <h4>Scale of the System</h4>
+            <p>
+                The Japanese military sexual slavery system is the largest documented case of government-sponsored
+                human trafficking in modern history. Comfort stations operated in every territory Japan occupied,
+                from Manchuria to Southeast Asia to the Pacific Islands. After Japan's surrender in 1945, military
+                authorities destroyed vast quantities of documentation to conceal evidence of the system. Many
+                women were killed in the final days of the war. Others were abandoned in foreign countries, unable
+                to return home.
+                <span class="source-tag">(<a href="https://www.britannica.com/topic/comfort-women">Britannica</a>)</span>
+            </p>
+        </div>
+
+        <h3>Korea Under Colonial Rule</h3>
+
+        <p>
+            Korea was a Japanese colony from 1910 to 1945. During the final years of the Pacific War, colonial
+            exploitation intensified sharply. Japan's National Mobilization Law (1938) and subsequent labor
+            conscription orders forced millions of Koreans into wartime labor: men into mines, factories, and
+            frontline construction, women and girls into sexual slavery. The abduction of Korean women was
+            facilitated by the colonial infrastructure itself. Japanese police and local collaborators identified
+            targets, often from impoverished rural families with no means of resistance. The victims' youth
+            was the point. Japan targeted girls precisely because they were vulnerable, controllable, and
+            (the military believed) less likely to carry venereal diseases.
+            <span class="source-tag">(<a href="https://www.britannica.com/topic/comfort-women">Britannica</a>)</span>
+        </p>
+
+        <h2>The Survivors' Testimony</h2>
+
+        <p>
+            For nearly five decades after Japan's surrender, the survivors remained silent. The shame was
+            enforced from multiple directions: Japanese authorities destroyed evidence, post-war Korean
+            society stigmatized sexual violence survivors, and Cold War geopolitics made both the U.S. and
+            South Korean governments reluctant to press Japan on wartime atrocities. The silence broke on
+            August 14, 1991, when Kim Hak-sun became the first Korean survivor to publicly testify about
+            her experience as a victim of Japanese military sexual slavery. She was 67 years old.
+            <span class="source-tag">(<a href="https://international.ucla.edu/cks/care/comfortwomen_speakup/267562">UCLA, Center for Korean Studies</a>)</span>
+        </p>
+
+        <div class="pull-quote">
+            <p>"On days when the soldiers returned from expeditions, we each had to take as many as 10 to 15 men. They took us as if we were some kind of object, and used us however they wanted."</p>
+            <div class="attribution">Kim Hak-sun, testimony on KBS-TV, 1992</div>
+        </div>
+
+        <p>
+            Kim Hak-sun's testimony shattered the silence. Other survivors across Korea, China, the Philippines,
+            and Indonesia came forward. In December 1991, Kim and two other survivors filed the first lawsuit
+            against the Japanese government. Her courage triggered an international movement for recognition and
+            redress. August 14 is now observed as International "Comfort Women" Memorial Day in her honor.
+            <span class="source-tag">(<a href="https://www.korea.net/NewsFocus/Opinion/view?articleId=202334">Korea.net</a>)</span>
+        </p>
+
+        <h3>The Wednesday Demonstrations</h3>
+
+        <p>
+            On January 8, 1992, the Korean Council for the Women Drafted for Military Sexual Slavery by Japan
+            organized the first Wednesday Demonstration in front of the Japanese Embassy in Seoul. The protest
+            was timed to coincide with an upcoming visit by Japanese Prime Minister Miyazawa Kiichi. It has
+            been held every Wednesday at noon since then, making it the longest-running protest on a single
+            theme in recorded history (recognized by the Guinness Book of Records in 2002). The only week
+            missed was during the 1995 Kobe earthquake, out of solidarity with Japanese earthquake victims.
+            <span class="source-tag">(<a href="https://www.aljazeera.com/news/2017/9/8/south-korea-worlds-longest-protest-over-comfort-women">Al Jazeera</a>)</span>
+        </p>
+
+        <p>
+            On December 14, 2011, the 1,000th Wednesday Demonstration, a bronze statue was unveiled across from
+            the Japanese Embassy. Known as the Statue of Peace (<em>P'yonghwa-ui sonyosang</em>, 평화의 소녀상),
+            it depicts a young girl in a hanbok seated on a chair, staring steadily at the embassy. An empty
+            chair beside her represents the survivors who have already died. A small bird on her shoulder
+            symbolizes peace. Dozens of replicas have since been installed across Korea and in six other countries.
+            <span class="source-tag">(<a href="https://contestedhistories.org/resources/case-studies/statue-of-peace-in-seoul/">Contested Histories</a>)</span>
+        </p>
+
+        <div class="doc-card gold">
+            <h4>Denial and Counter-Denial</h4>
+            <p>
+                The Japanese government's posture on this history has swung between partial acknowledgment and
+                active denial. The 1993 Kono Statement admitted that the military was "directly or indirectly
+                involved" in the comfort station system and that women were recruited "against their own will,
+                through coaxing, coercion." But in 2007, Prime Minister Abe Shinzo declared, "There is no
+                evidence to prove there was coercion." His government attempted to pressure the UN to revise
+                its 1996 report on the system and demanded that McGraw-Hill alter its history textbooks. By
+                the mid-2010s, no mainstream Japanese middle school textbook mentioned the forced recruitment
+                of comfort women, despite having been standard content in the 1990s.
+                <span class="source-tag">(<a href="https://apjjf.org/alexis-dudden/2368/article">Dudden, APJJF</a> /
+                <a href="https://www.britannica.com/topic/comfort-women">Britannica</a>)</span>
+            </p>
+        </div>
+
+        <h2>Director and Production</h2>
+
+        <p>
+            Cho Jung-rae is an independent filmmaker who first encountered the survivors' stories in 2002 while
+            volunteering as a musician at the House of Sharing (나눔의 집, <em>Nanum-ui chip</em>), a shelter
+            for surviving comfort women in Gwangju, Gyeonggi Province. During his time there, he saw a painting
+            by survivor Kang Il-chul titled "Burning Virgins." The image depicted Japanese soldiers dragging
+            weakened and sick women to a pit and burning them alive. It was drawn during an art therapy session.
+            The painting became the seed of the film.
+            <span class="source-tag">(<a href="https://www.koreaherald.com/view.php?ud=20160214000327">Korea Herald</a>)</span>
+        </p>
+
+        <p>
+            Cho spent the next fourteen years trying to bring the film to production. Commercial investors
+            refused. The subject was considered too politically sensitive, too commercially risky, and too
+            likely to provoke diplomatic trouble with Japan. Cho eventually turned to crowdfunding, producing
+            a minimal-budget teaser that attracted donations from 75,270 individuals worldwide. Cast and crew
+            worked for near-volunteer wages. Shooting proceeded in increments as funding arrived.
+            <span class="source-tag">(<a href="https://www.koreaherald.com/view.php?ud=20160214000327">Korea Herald</a>)</span>
+        </p>
+
+        <div class="doc-card indigo">
+            <h4>Grassroots Cinema</h4>
+            <p>
+                The film's production model was itself a statement. With an estimated budget of 1.2 billion won
+                (roughly $1 million), Spirit's Homecoming was made for a fraction of a typical Korean commercial
+                production. The crowdfunding campaign turned audiences into stakeholders before the film was
+                even complete. All 75,270 donors are credited by name in the film's closing sequence. Cho
+                described the film as "cultural evidence," comparing its function to that of <em>Schindler's
+                List</em>: not entertainment, but testimony preserved in cinematic form.
+                <span class="source-tag">(<a href="https://www.koreaherald.com/view.php?ud=20160214000327">Korea Herald</a> /
+                <a href="https://londonkoreanlinks.net/2016/12/27/festival-film-review-spirits-homecoming/">London Korean Links</a>)</span>
+            </p>
+        </div>
+
+        <p>
+            Spirit's Homecoming opened on February 24, 2016, and debuted at number one at the Korean box office.
+            It grossed approximately $6.4 million in its opening weekend from 1.06 million admissions. By the
+            end of its theatrical run, the film had sold over 3.58 million tickets and earned approximately
+            $22 million domestically. For a crowdfunded independent film about wartime sexual slavery, these
+            numbers were extraordinary. The audience itself became part of the story: Korean viewers treated
+            the film as an act of national witness.
+            <span class="source-tag">(<a href="https://londonkoreanlinks.net/2016/12/27/festival-film-review-spirits-homecoming/">London Korean Links</a>)</span>
+        </p>
+
+        <h2>Film Analysis</h2>
+
+        <h3>Dual Timeline Structure</h3>
+
+        <p>
+            The film operates on two timelines. In 1943, during the Japanese occupation, two teenage girls
+            from rural Korea are seized by Japanese soldiers: 14-year-old Jung-min and 16-year-old Young-hee.
+            They are transported in livestock wagons to a comfort station in Manchuria, where they endure
+            systematic rape, beatings, starvation, and the murder of fellow captives. In 1991, an elderly
+            survivor named Young-ok lives with the trauma of what she witnessed, including the death of
+            her friend Jung-min, whose spirit never returned home.
+        </p>
+
+        <p>
+            The two timelines converge through a shamanic ritual. A young woman named Eun-kyung, herself
+            a survivor of sexual violence, discovers she has the ability to communicate with the dead.
+            At a shaman's temple, she meets Young-ok and agrees to perform a gut (굿), a Korean shamanic
+            ceremony, to call back the spirits of the women who died in the comfort stations. The ritual
+            scene is the film's emotional climax. The spirits of the dead girls, visualized as butterflies,
+            are released from their suffering and guided home.
+            <span class="source-tag">(<a href="https://londonkoreanlinks.net/2016/12/27/festival-film-review-spirits-homecoming/">London Korean Links</a>)</span>
+        </p>
+
+        <h3>Shamanism as Framework for Justice</h3>
+
+        <p>
+            The choice of shamanism as the film's spiritual framework is not incidental. Korean shamanism
+            (musok, 무속) centers on the idea that the spirits of the dead who suffered unjust or violent
+            deaths become restless, unable to pass on. A gut performed by a mudang (무당, shaman) can
+            release these spirits by acknowledging their suffering, naming the injustice, and guiding them
+            to peace. In Spirit's Homecoming, the shamanic ritual does what the Japanese government has
+            refused to do: it recognizes the victims, names what was done to them, and offers resolution.
+            The film proposes that spiritual justice can exist even where political justice has been denied.
+        </p>
+
+        <div class="doc-card violet">
+            <h4>The Title Itself</h4>
+            <p>
+                The Korean title, <em>Kwihyang</em> (귀향), means "returning home." The word carries deep
+                resonance. Many of the women who were taken never returned. Many who survived could not go
+                home because of the stigma. The film's argument is that homecoming, for these women, can
+                only happen in the spirit realm, through the intervention of ritual. The title is
+                simultaneously a wish and an indictment: if the living world cannot grant return, perhaps
+                the dead can find their way home through other means.
+            </p>
+        </div>
+
+        <h3>Anti-War, Not Anti-Japanese</h3>
+
+        <p>
+            Director Cho has consistently stated that Spirit's Homecoming is "not intended to be anti-Japanese"
+            but rather "anti-war and pro women's rights." This distinction matters. The film does not depict
+            Japanese people as inherently villainous. It depicts a military system that treated women as
+            disposable material. The violence is institutional, not ethnic. Reviewers noted that the film
+            handles its subject "delicately, movingly, and with surprisingly little anger," focusing on
+            the bonds between the captive women rather than on spectacles of cruelty.
+            <span class="source-tag">(<a href="https://londonkoreanlinks.net/2016/12/27/festival-film-review-spirits-homecoming/">London Korean Links</a>)</span>
+        </p>
+
+        <h2>Legacy and Ongoing Struggle</h2>
+
+        <p>
+            Spirit's Homecoming was released just two months after the December 2015 Japan-South Korea
+            "comfort women" agreement, in which Japan offered one billion yen and an apology in exchange
+            for a "final and irreversible" resolution. The agreement was negotiated between the two
+            governments without consulting the surviving victims themselves. Many survivors publicly rejected
+            the deal. Within weeks, Abe told the Japanese National Assembly, "There was no document found
+            that the comfort women were forcibly taken away," directly contradicting the spirit of the
+            agreement his own government had just signed.
+            <span class="source-tag">(<a href="https://thediplomat.com/2021/11/why-did-the-2015-japan-korea-comfort-women-agreement-fall-apart">The Diplomat</a>)</span>
+        </p>
+
+        <p>
+            The film's release in this context gave it an urgency beyond its artistic merits. For Korean
+            audiences, buying a ticket was itself an act of solidarity, a way of saying that the survivors'
+            testimony mattered more than a diplomatic deal made over their heads. The 3.58 million admissions
+            were not just a box office statistic. They were a referendum.
+        </p>
+
+        <div class="doc-card gold">
+            <h4>The Survivors' Dwindling Numbers</h4>
+            <p>
+                When the South Korean government began officially registering survivors in the early 1990s,
+                238 women came forward. By the time Spirit's Homecoming was released in 2016, only 38
+                registered survivors were still alive. As of 2023, fewer than 10 remained. The survivors'
+                average age is now over 95. Every year, the Wednesday Demonstrations grow smaller. The
+                urgency of the redress movement is biological: the women who can testify in their own voices
+                are nearly gone. Films like Spirit's Homecoming carry the testimonies forward after the
+                witnesses themselves cannot.
+                <span class="source-tag">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5912496/">PMC, Psychiatry Investigation</a> /
+                <a href="https://justiceforcomfortwomen.org/2023/09/30/another-death-leaves-only-9-surviving-korean-comfort-women/">Justice for Comfort Women</a>)</span>
+            </p>
+        </div>
+
+        <h3>Connection to Course Themes</h3>
+
+        <p>
+            Spirit's Homecoming connects to several core themes of this course. First, it is a case study
+            in <strong>historical memory</strong>: how societies choose what to remember, what to suppress,
+            and who gets to tell the story. Japan's systematic destruction of wartime documents, its textbook
+            revisions, and its diplomatic pressure campaigns represent one approach to the past. The
+            survivors' testimonies, the Wednesday Demonstrations, and the Statue of Peace represent another.
+        </p>
+
+        <p>
+            Second, the film illuminates the mechanics of <strong>redress movements</strong>. The comfort
+            women movement did not emerge from elite institutions. It was built by survivors, activists,
+            and ordinary citizens, the same people who crowdfunded this film. The movement's tools were
+            testimony, protest, public art, and cinema, not state power.
+        </p>
+
+        <p>
+            Third, the film raises the question of what <strong>justice</strong> means when the perpetrators
+            deny responsibility and the survivors are dying. Spirit's Homecoming answers with shamanism:
+            if institutional justice is withheld, spiritual justice can still be performed. Whether or not
+            one shares the film's spiritual framework, its argument is clear. Some debts cannot be settled
+            by diplomatic agreements. They require acknowledgment at a deeper level.
+        </p>
+
+        <p>
+            Finally, the film sits at the center of <strong>Japan-Korea relations</strong>, a relationship
+            shaped by colonialism, Cold War alliance, economic competition, and unresolved historical
+            grievances. The comfort women issue is not a bilateral "dispute" with two legitimate sides.
+            It is a documented atrocity. The question is not whether it happened, but whether the
+            perpetrating state will fully reckon with it.
+        </p>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- QUICK FACTS -->
+        <div class="sidebar-card gold-border">
+            <h3>Quick Facts</h3>
+            <div class="fact-row">
+                <span class="fact-label">Director</span>
+                <span class="fact-value">Cho Jung-rae</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Year</span>
+                <span class="fact-value">2016</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Runtime</span>
+                <span class="fact-value">127 minutes</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Language</span>
+                <span class="fact-value">Korean / Japanese</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Crowdfunding</span>
+                <span class="fact-value">75,270 donors</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Production Time</span>
+                <span class="fact-value">14 years</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Korean Admissions</span>
+                <span class="fact-value">3.58 million</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Korean Gross</span>
+                <span class="fact-value">~$22 million</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Lead Actress</span>
+                <span class="fact-value">Kang Ha-na</span>
+            </div>
+        </div>
+
+        <!-- KEY FIGURES -->
+        <div class="sidebar-card">
+            <h3>Key Figures</h3>
+            <div class="person-item">
+                <div class="person-name">Kim Hak-sun <span class="kr">김학순</span></div>
+                <div class="person-desc">First Korean survivor to publicly testify about her experience as a comfort woman (August 14, 1991). Filed the first lawsuit against Japan in December 1991. Died in 1997. August 14 is now International "Comfort Women" Memorial Day.
+                    <span class="source-tag">(<a href="https://international.ucla.edu/cks/care/comfortwomen_speakup/267562">UCLA</a>)</span>
+                </div>
+            </div>
+            <div class="person-item">
+                <div class="person-name">Kang Il-chul <span class="kr">강일출</span></div>
+                <div class="person-desc">Survivor taken at age 16 in 1943 to a comfort station in China. Her painting "Burning Virgins," created during art therapy at the House of Sharing, depicted Japanese soldiers burning women alive. The painting directly inspired Cho Jung-rae to make Spirit's Homecoming.
+                    <span class="source-tag">(<a href="https://www.koreaherald.com/view.php?ud=20160214000327">Korea Herald</a>)</span>
+                </div>
+            </div>
+            <div class="person-item">
+                <div class="person-name">Cho Jung-rae <span class="kr">조정래</span></div>
+                <div class="person-desc">Independent filmmaker. Began volunteering at the House of Sharing in 2002. Spent 14 years developing Spirit's Homecoming, crowdfunding from 75,270 donors after commercial investors refused. Described the film as "cultural evidence."</div>
+            </div>
+            <div class="person-item">
+                <div class="person-name">Yun Mi-hyang <span class="kr">윤미향</span></div>
+                <div class="person-desc">Longtime leader of the Korean Council for Justice and Remembrance (formerly the Korean Council for the Women Drafted for Military Sexual Slavery by Japan). Organized the Wednesday Demonstrations since 1992.</div>
+            </div>
+        </div>
+
+        <!-- KEY TERMS -->
+        <div class="sidebar-card">
+            <h3>Key Terms</h3>
+            <div class="term-item">
+                <div class="term">Wianbu <span class="kr">위안부</span></div>
+                <div class="definition">Euphemism meaning "comfort women." The preferred scholarly term is "victims of Japanese military sexual slavery," which names the system accurately rather than using the perpetrators' language.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Kwihyang <span class="kr">귀향</span></div>
+                <div class="definition">"Returning home." The film's title. Refers both to the survivors' unfulfilled desire to return home and to the shamanic ritual that guides the spirits of the dead back to their homeland.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Gut <span class="kr">굿</span></div>
+                <div class="definition">Korean shamanic ritual. Performed by a mudang (shaman) to resolve the suffering of restless spirits, particularly those who died unjust or violent deaths. Central to the film's climax.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Nanum-ui chip <span class="kr">나눔의 집</span></div>
+                <div class="definition">"House of Sharing." Shelter for comfort women survivors in Gwangju, Gyeonggi Province, founded 1992 and built 1995. Includes a museum. Where Cho Jung-rae first heard the survivors' stories.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">P'yonghwa-ui sonyosang <span class="kr">평화의 소녀상</span></div>
+                <div class="definition">"Statue of Peace." Bronze statue of a young girl unveiled in 2011 at the 1,000th Wednesday Demonstration. Now replicated across Korea and in six other countries. Japan has repeatedly demanded its removal.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Kono damhwa <span class="kr">고노 담화</span></div>
+                <div class="definition">The 1993 Kono Statement. Japan's most explicit official acknowledgment that the military was involved in recruiting comfort women "against their own will." Repeatedly undermined by subsequent Japanese officials.</div>
+            </div>
+        </div>
+
+        <!-- DISCUSSION QUESTIONS -->
+        <div class="sidebar-card">
+            <h3>Discussion Questions</h3>
+            <ol class="discussion-list">
+                <li>Why did the survivors remain silent for nearly fifty years after the war? What combination of forces enforced that silence?</li>
+                <li>The film uses a shamanic ritual rather than a courtroom or political speech as its vehicle for justice. What does this choice say about the limits of institutional justice?</li>
+                <li>Cho describes the film as "cultural evidence." How does cinematic testimony differ from legal or historical testimony? What can film do that a courtroom cannot?</li>
+                <li>The 2015 Japan-Korea agreement was negotiated without the survivors' input. What does this reveal about whose interests diplomatic "resolutions" serve?</li>
+                <li>Compare the crowdfunding of Spirit's Homecoming (75,270 donors) with the Wednesday Demonstrations (weekly protests since 1992). What do these grassroots movements share in strategy and purpose?</li>
+                <li>How does Japan's textbook revision campaign (removing comfort women from school curricula) relate to the broader politics of historical memory? What is at stake when a state controls how its past is taught?</li>
+            </ol>
+        </div>
+
+        <!-- FURTHER READING -->
+        <div class="sidebar-card">
+            <h3>Further Reading</h3>
+            <ul class="reading-list">
+                <li><a href="https://www.britannica.com/topic/comfort-women">Comfort Women: Definition, History, and Facts</a>, Britannica</li>
+                <li><a href="https://www.koreaherald.com/view.php?ud=20160214000327">"Spirit's Homecoming" to Open After 14 Years</a>, Korea Herald</li>
+                <li><a href="https://londonkoreanlinks.net/2016/12/27/festival-film-review-spirits-homecoming/">Festival Film Review: Spirit's Homecoming</a>, London Korean Links</li>
+                <li><a href="https://apjjf.org/alexis-dudden/2368/article">Abe's Violent Denial: Japan's PM and the "Comfort Women"</a>, Dudden, Asia-Pacific Journal</li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5912496/">Psychiatric Sequelae of Former "Comfort Women"</a>, PMC / Psychiatry Investigation</li>
+                <li><a href="https://thediplomat.com/2021/11/why-did-the-2015-japan-korea-comfort-women-agreement-fall-apart">Why Did the 2015 Agreement Fall Apart?</a>, The Diplomat</li>
+                <li><a href="https://international.ucla.edu/cks/care/comfortwomen_speakup/267562">Kim Hak-sun's Breakthrough Testimony</a>, UCLA Center for Korean Studies</li>
+                <li><a href="https://contestedhistories.org/resources/case-studies/statue-of-peace-in-seoul/">Statue of Peace in Seoul</a>, Contested Histories</li>
+                <li><a href="https://kls.law.columbia.edu/content/military-sexual-slavery-1931-1945">Military Sexual Slavery, 1931-1945</a>, Columbia Law School</li>
+            </ul>
+        </div>
+
+    </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Korean History through Film | Deep Dive: Spirit's Homecoming (2016)</p>
+    <p style="margin-top: 0.25rem;">All sources linked inline. Page last updated March 2026.</p>
+</footer>
+
+</body>
+</html>
