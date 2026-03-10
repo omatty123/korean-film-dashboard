@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Deep Dive: Peppermint Candy (박하사탕) | Korean History through Film</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #e8edf2;
+      --ink-light: #b0bec5;
+      --ink-faint: #78909c;
+      --paper: #0a1220;
+      --paper-warm: #0e1a2e;
+      --surface: rgba(255,255,255,0.04);
+      --accent: #1a5276;
+      --accent-light: #2471a3;
+      --gold: #a67c00;
+      --border: rgba(255,255,255,0.1);
+      --shadow: rgba(0,0,0,0.3);
+      --frost: #85c1e9;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: var(--frost); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* BREADCRUMB NAV */
+    nav {
+      background: #060d17;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    nav a {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    nav .sep { color: rgba(255,255,255,0.25); margin: 0 0.4rem; font-size: 0.75rem; }
+    nav .current { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #0a1628 0%, #102a44 40%, #1a5276 80%, #0e1a2e 100%);
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(133,193,233,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(26,82,118,0.15) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(133,193,233,0.25);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.75rem;
+    }
+    .hero-meta strong { color: rgba(255,255,255,0.8); }
+
+    /* MAIN LAYOUT */
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+    }
+
+    /* MAIN COLUMN */
+    .main h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--frost);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .main h2:first-child { margin-top: 0; }
+
+    .main h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .main p {
+      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .main p a { border-bottom: 1px solid rgba(133,193,233,0.3); }
+    .main p a:hover { border-bottom-color: var(--frost); text-decoration: none; }
+
+    /* DOC CARDS */
+    .doc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .doc-card.blue { border-left: 4px solid var(--accent-light); }
+    .doc-card.gold { border-left: 4px solid var(--gold); }
+    .doc-card.frost { border-left: 4px solid var(--frost); }
+
+    .doc-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--frost);
+      margin-bottom: 0.5rem;
+    }
+    .doc-card.gold h4 { color: var(--gold); }
+
+    .doc-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .doc-card p:last-child { margin-bottom: 0; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      background: linear-gradient(135deg, rgba(26,82,118,0.15) 0%, rgba(26,82,118,0.05) 100%);
+      border-left: 4px solid var(--frost);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-style: normal;
+      color: var(--ink-faint);
+    }
+
+    /* EPISODE TIMELINE */
+    .episode-list {
+      list-style: none;
+      position: relative;
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(133,193,233,0.2);
+    }
+    .episode-list li {
+      position: relative;
+      padding: 0.75rem 0 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .episode-list li:last-child { border-bottom: none; }
+    .episode-list li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 1.1rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 2px solid var(--paper);
+    }
+    .episode-list li strong { color: var(--frost); }
+    .episode-list li em { color: var(--ink-faint); }
+
+    /* FILMOGRAPHY TIMELINE */
+    .filmography {
+      list-style: none;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(166,124,0,0.3);
+    }
+    .filmography li {
+      position: relative;
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .filmography li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 0.85rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(166,124,0,0.4);
+      border: 2px solid var(--paper);
+    }
+    .filmography li.highlight::before {
+      background: var(--gold);
+      width: 10px;
+      height: 10px;
+      left: -1.9rem;
+      box-shadow: 0 0 8px rgba(166,124,0,0.5);
+    }
+    .filmography li strong { color: var(--gold); }
+
+    /* SIDEBAR */
+    .sidebar { align-self: start; position: sticky; top: 4rem; }
+
+    .sidebar-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-box h3 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-box ul { list-style: none; font-size: 0.85rem; }
+    .sidebar-box li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.75);
+    }
+    .sidebar-box li:last-child { border-bottom: none; }
+    .sidebar-box li strong { color: var(--frost); font-weight: 600; }
+
+    .sidebar-box ol {
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .sidebar-box ol li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .sidebar-box ol li:last-child { border-bottom: none; }
+
+    .sidebar-box .source-link {
+      display: block;
+      padding: 0.35rem 0;
+      font-size: 0.8rem;
+      color: var(--frost);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .sidebar-box .source-link:last-child { border-bottom: none; }
+    .sidebar-box .source-link:hover { color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #060d17;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer a { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-korean { font-size: 2.5rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .content-wrap { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Breadcrumb -->
+<nav>
+  <a href="../index.html">&larr; Course Index</a>
+  <span class="sep">/</span>
+  <span class="current">Peppermint Candy Deep Dive</span>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Film Deep Dive &middot; Week 6</div>
+    <div class="hero-korean">박하사탕</div>
+    <h1>Peppermint Candy</h1>
+    <div class="hero-meta">
+      Directed by <strong>Lee Chang-dong</strong> (이창동) &middot; 1999 &middot; 130 min<br>
+      Starring Sol Kyung-gu, Moon So-ri, Kim Yeo-jin
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="content-wrap">
+  <div class="two-col">
+
+    <!-- LEFT: Main Column -->
+    <div class="main">
+
+      <h2>Historical Context</h2>
+
+      <p>Peppermint Candy spans twenty years of South Korean history, from the autumn of 1979 to the spring of 1999. This is not an arbitrary timeframe. It covers the most turbulent stretch of the country's modern existence: the assassination of Park Chung-hee, the Gwangju Uprising, the authoritarian 1980s, the democratic transition, and the economic collapse of the late 1990s. The film uses one man's life as a map of collective national trauma.</p>
+
+      <div class="doc-card blue">
+        <h4>The Gwangju Uprising (May 18-27, 1980)</h4>
+        <p>After General Chun Doo-hwan seized power through a military coup in December 1979 and declared martial law in May 1980, citizens and students in the southwestern city of Gwangju rose up in protest. The military crushed the uprising with lethal force. Official figures put the death toll at nearly 200, though participants insist the number was closer to 2,000. The massacre became the defining trauma of a generation and a catalyst for the democratization movement that followed. (<a href="https://www.britannica.com/event/Gwangju-Uprising" target="_blank">Britannica</a>)</p>
+      </div>
+
+      <p>The Gwangju Uprising functions as the film's moral center of gravity. Yongho, the protagonist, is a young soldier deployed to Gwangju in May 1980. What he does and witnesses there destroys the idealistic young man he had been. The film argues that this destruction was not personal but systemic: the state broke its own citizens, then expected them to carry on as if nothing had happened.</p>
+
+      <div class="doc-card gold">
+        <h4>The IMF Crisis (1997-1998)</h4>
+        <p>South Korea's economy collapsed during the Asian financial crisis of 1997. The country received a $55 billion bailout from the IMF, the World Bank, and individual governments. Unemployment tripled, reaching 7.6% by mid-1998. Millions fell below the poverty line. Suicide rates rose sharply. Koreans call this period the "IMF days," a shorthand for national humiliation. (<a href="https://www.koreaherald.com/article/3212370" target="_blank">Korea Herald</a>)</p>
+      </div>
+
+      <p>The film opens in 1999, in the wreckage of the IMF crisis. Yongho has lost his business, his marriage, and his capacity for human connection. Lee Chang-dong places this economic catastrophe at the end of the story (chronologically) but at the beginning of the film, making it the audience's entry point. The implication is clear: the crisis was not merely financial but the culmination of two decades of moral corrosion.</p>
+
+      <h2>Plot and Structure</h2>
+
+      <p>Peppermint Candy tells its story in reverse. The film opens with Yongho standing on a railroad bridge in the spring of 1999, screaming "I'm going back!" as a train bears down on him. From there, the narrative moves backward through seven episodes, each introduced by a shot of a train running in reverse. Every episode is dated and titled.</p>
+
+      <h3>The Seven Episodes</h3>
+
+      <ul class="episode-list">
+        <li><strong>Episode 1: Outing</strong> (Spring 1999) <em>A group of old friends gathers for a 20-year reunion picnic at a riverside. Yongho arrives drunk, hostile, and broken. He climbs the railroad bridge.</em></li>
+        <li><strong>Episode 2: Camera</strong> (Three Days Earlier, 1999) <em>Yongho visits his dying first love, Sun-im, in the hospital. His business has failed in the IMF crisis. He carries a gun.</em></li>
+        <li><strong>Episode 3: Life is Beautiful</strong> (Summer 1994) <em>Yongho is a corrupt businessman, unfaithful to his wife. The title is bitterly ironic.</em></li>
+        <li><strong>Episode 4: Confession</strong> (Spring 1987) <em>Yongho works as a police interrogator during the pro-democracy protests. He tortures suspects. He tries to confess to a former colleague but cannot.</em></li>
+        <li><strong>Episode 5: Prayer</strong> (Fall 1984) <em>Yongho is a young policeman, already hardened. He visits his first love Sun-im, who works in a factory, but the relationship is dying.</em></li>
+        <li><strong>Episode 6: Military Visit</strong> (May 1980) <em>Yongho is a young conscript deployed to Gwangju. He accidentally shoots a young girl. This is the event that destroys him.</em></li>
+        <li><strong>Episode 7: Picnic</strong> (Autumn 1979) <em>The same riverside from Episode 1, twenty years earlier. Yongho is a gentle, hopeful young man. He meets Sun-im at a group picnic. She gives him a peppermint candy.</em></li>
+      </ul>
+
+      <p>The reverse structure is not a gimmick. It transforms causality into revelation. We know Yongho will die before we learn how he became someone worth mourning. Each backward step recovers a layer of innocence, making the loss progressively more unbearable. By the time we reach the 1979 picnic, the gap between who he was and who he became is devastating.</p>
+
+      <div class="pull-quote">
+        "I'm going back!"
+        <cite>Kim Yongho's final words, standing on the railroad bridge, 1999</cite>
+      </div>
+
+      <h2>Director: Lee Chang-dong</h2>
+
+      <p>Lee Chang-dong (born April 1, 1954, in Daegu) came to filmmaking late, through literature. He graduated from Kyungpook National University with a degree in Korean Literature in 1981, taught high school Korean, and published his first novel, <em>Chonri</em>, in 1983. He did not make his first film until he was over 40. (<a href="https://www.moma.org/calendar/film/5043" target="_blank">MoMA</a>)</p>
+
+      <p>His literary background matters. Lee's films are structured like novels. They build character through accumulation of small details rather than dramatic set pieces. They trust the audience to sit with ambiguity. Every one of his six features deals with suffering, alienation, and the failure of innocence to survive contact with the world.</p>
+
+      <h3>Filmography</h3>
+
+      <ul class="filmography">
+        <li><strong>1997:</strong> Green Fish (초록 물고기). Debut film. A young man returns from military service and drifts into organized crime.</li>
+        <li class="highlight"><strong>1999:</strong> Peppermint Candy (박하사탕). Twenty years of Korean history told in reverse through one man's disintegration.</li>
+        <li><strong>2002:</strong> Oasis (오아시스). A man with an intellectual disability and a woman with cerebral palsy form a bond. Silver Lion for Best Director, Venice.</li>
+        <li><strong>2007:</strong> Secret Sunshine (밀양). A grieving mother confronts faith and forgiveness in a provincial town. Jeon Do-yeon won Best Actress at Cannes.</li>
+        <li><strong>2010:</strong> Poetry (시). An elderly woman developing Alzheimer's discovers her grandson committed a terrible crime. Best Screenplay at Cannes.</li>
+        <li><strong>2018:</strong> Burning (버닝). Based on Haruki Murakami's short story. First Korean film shortlisted for the Academy Award for Best International Feature Film. (<a href="https://letterboxd.com/journal/lee-chang-dong-interview-retrospective/" target="_blank">Letterboxd</a>)</li>
+      </ul>
+
+      <p>Lee also served as South Korea's Minister of Culture and Tourism from 2003 to 2004 under President Roh Moo-hyun. He remains one of the most critically respected filmmakers in world cinema. MoMA titled its Lee Chang-dong retrospective "Cinema of Trauma," a phrase that captures the through-line of his work. (<a href="https://www.moma.org/calendar/film/5043" target="_blank">MoMA</a>)</p>
+
+      <h2>Critical Reception</h2>
+
+      <p>Peppermint Candy premiered as the opening film of the 1999 Busan International Film Festival, a significant honor that signaled its importance to Korean cinema. It went on to win multiple awards. (<a href="https://www.imdb.com/title/tt0247613/awards/" target="_blank">IMDB Awards</a>)</p>
+
+      <div class="doc-card frost">
+        <h4>Awards</h4>
+        <p><strong>Karlovy Vary International Film Festival (2000):</strong> Don Quijote Award, Special Prize of the Jury, NETPAC Award (Special Mention).</p>
+        <p><strong>Grand Bell Awards (2000):</strong> Best Film, Best Director, Best Supporting Actress (Kim Yeo-jin), Best New Actor (Sol Kyung-gu).</p>
+        <p><strong>Korean Association of Film Critics Awards:</strong> Best Film, Best Director, Best Screenplay, Best New Actor (Sol Kyung-gu).</p>
+      </div>
+
+      <p>In 2020, The Guardian's Peter Bradshaw ranked Peppermint Candy number 12 among the classics of modern South Korean cinema. The film is now widely considered essential viewing for anyone studying Korean cinema or Korean history. (<a href="https://www.rottentomatoes.com/m/peppermint_candy" target="_blank">Rotten Tomatoes</a>)</p>
+
+      <h2>Personal Biography as National Allegory</h2>
+
+      <p>The central argument of Peppermint Candy, and the reason it matters for this course, is its insistence that personal destruction and national history are inseparable. Yongho does not simply happen to live through the Gwangju Uprising and the IMF crisis. These events make him. They transform a gentle young man into a torturer, a corrupt businessman, and finally a suicide.</p>
+
+      <p>This is a specific claim about how history works. It rejects the idea that individuals freely choose their paths. Instead, Lee Chang-dong shows how state violence (Gwangju), authoritarian institutions (the police apparatus of the 1980s), and economic collapse (the IMF crisis) deform human beings from the inside out. Yongho's cruelty in 1987 and 1994 is not innate. It is manufactured by the political system he inhabits.</p>
+
+      <p>The reverse chronology reinforces this argument structurally. Moving backward in time means moving toward innocence. The audience discovers that the man they watched die in Episode 1 was once someone capable of tenderness, hope, and love. The film's emotional power comes from this gap: knowing what he will become while watching what he once was.</p>
+
+      <div class="doc-card blue">
+        <h4>Collective Memory and Korean Cinema</h4>
+        <p>Scholars have described Peppermint Candy as a model of "national cinema" that narrates twenty years of South Korean society through one individual's story. The film's two central historical anchors, the Gwangju Uprising and the IMF crisis, are events that virtually every Korean viewer would recognize as personally formative. By structuring one man's story around these events, Lee asks the audience to see their own collective biography in Yongho's personal one. (<a href="https://www.sensesofcinema.com/2012/cteq/peppermint-candy/" target="_blank">Senses of Cinema</a>)</p>
+      </div>
+
+      <p>The peppermint candy itself is the film's central symbol. Sun-im gives Yongho a candy at the 1979 picnic, a small, sweet gesture of first love. By the time we reach this moment (the film's final scene, but chronologically its first), the candy represents everything that was lost: not just a relationship, but a version of the self that the coming decades will annihilate. It is the sweetness that history will melt away.</p>
+
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h3>Quick Facts</h3>
+        <ul>
+          <li><strong>Korean Title:</strong> 박하사탕 (Bakha Satang)</li>
+          <li><strong>Director:</strong> Lee Chang-dong (이창동)</li>
+          <li><strong>Year:</strong> 1999</li>
+          <li><strong>Runtime:</strong> 130 minutes</li>
+          <li><strong>Lead Actor:</strong> Sol Kyung-gu as Kim Yongho</li>
+          <li><strong>Supporting:</strong> Moon So-ri as Sun-im</li>
+          <li><strong>Supporting:</strong> Kim Yeo-jin as Hong-ja</li>
+          <li><strong>Language:</strong> Korean</li>
+          <li><strong>Premiere:</strong> Opening film, Busan International Film Festival 1999</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Historical Events in the Film</h3>
+        <ul>
+          <li><strong>Oct 1979:</strong> Assassination of President Park Chung-hee. End of 18-year dictatorship.</li>
+          <li><strong>Dec 1979:</strong> Chun Doo-hwan's military coup (12.12 incident).</li>
+          <li><strong>May 1980:</strong> Gwangju Uprising. Military massacres civilian protesters.</li>
+          <li><strong>June 1987:</strong> June Democracy Movement. Mass protests force free elections.</li>
+          <li><strong>1997-98:</strong> IMF crisis. Economic collapse, mass unemployment, social disintegration.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Discussion Questions</h3>
+        <ol>
+          <li>The reverse chronology forces viewers to encounter Yongho's death before his innocence. How does this structure change the way we assign moral responsibility?</li>
+          <li>Yongho accidentally shoots a young girl during the Gwangju crackdown. To what extent is individual guilt meaningful when the state deploys soldiers against civilians?</li>
+          <li>Compare the 1979 picnic scene with the 1999 reunion. Same location, same people. What does the contrast reveal about what twenty years of Korean history did to this generation?</li>
+          <li>Lee Chang-dong was a novelist before becoming a filmmaker. How does the film's literary structure (chapters, titles, dated episodes) shape the viewing experience differently than a conventional narrative?</li>
+          <li>The peppermint candy is a small, personal symbol set against enormous historical events. Why might Lee choose this quiet image rather than a grander one?</li>
+        </ol>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Course Connections</h3>
+        <ul>
+          <li><strong>Week 6 Theme:</strong> Democratization, labor, state violence</li>
+          <li><strong>Pair with:</strong> A Single Spark (1995), the labor movement and Jeon Tae-il</li>
+          <li><strong>Key Reading:</strong> Cumings Ch. 7, on the democratic transition</li>
+          <li><strong>Compare:</strong> Aimless Bullet (1961) for earlier cinematic treatment of systemic destruction of individuals</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Further Reading and Sources</h3>
+        <a class="source-link" href="https://www.imdb.com/title/tt0247613/" target="_blank">IMDB: Peppermint Candy</a>
+        <a class="source-link" href="https://letterboxd.com/film/peppermint-candy/" target="_blank">Letterboxd: Peppermint Candy</a>
+        <a class="source-link" href="https://www.rottentomatoes.com/m/peppermint_candy" target="_blank">Rotten Tomatoes</a>
+        <a class="source-link" href="https://www.sensesofcinema.com/2012/cteq/peppermint-candy/" target="_blank">Senses of Cinema: Critical Analysis</a>
+        <a class="source-link" href="https://www.britannica.com/event/Gwangju-Uprising" target="_blank">Britannica: Gwangju Uprising</a>
+        <a class="source-link" href="https://www.moma.org/calendar/film/5043" target="_blank">MoMA: Cinema of Trauma</a>
+        <a class="source-link" href="https://guides.loc.gov/south-korean-democratization-movement/kwangju-uprising" target="_blank">Library of Congress: Gwangju</a>
+        <a class="source-link" href="https://www.cambridge.org/core/books/abs/korean-cinema-in-global-contexts/do-not-include-me-in-your-us-peppermint-candy-and-the-politics-of-difference/D0AFA24DD9C28633DF99C50BE0B7421E" target="_blank">Cambridge: Politics of Difference</a>
+        <a class="source-link" href="https://filmmovement.com/educational/film/peppermint-candy" target="_blank">Film Movement: Educational</a>
+        <a class="source-link" href="https://www.koreanfilm.or.kr/eng/films/index/peopleView.jsp?peopleCd=10057659" target="_blank">Korean Film Council: Lee Chang-dong</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>Korean History through Literature and Film &middot; Spring 2026<br>Lawrence University</div>
+    <div><a href="../index.html">&larr; Back to Course Index</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
