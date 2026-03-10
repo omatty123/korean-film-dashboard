@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopyonje (1993) | Korean History through Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #2e7d32;
+            --accent-light: #43a047;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #1b3a1e 0%, #2e5731 40%, #3a7040 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-meta .tag {
+            background: rgba(255,255,255,0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* MAIN GRID */
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 860px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MAIN CONTENT */
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .main-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .main-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .main-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .main-content a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* DOC CARDS */
+        .doc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 3px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .doc-card.gold { border-left-color: var(--gold); }
+        .doc-card.green { border-left-color: var(--accent); }
+        .doc-card.dark { border-left-color: #333; }
+        .doc-card.earth { border-left-color: #6d4c41; }
+
+        .doc-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .doc-card p, .doc-card li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .doc-card ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .doc-card li { margin-bottom: 0.3rem; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: var(--paper-warm);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.6;
+            margin-bottom: 0.3rem;
+        }
+
+        .pull-quote .attribution {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-style: normal;
+            color: var(--ink-faint);
+        }
+
+        /* SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .sidebar-card.gold-border h3 { border-bottom-color: var(--gold); }
+
+        .fact-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .fact-row:last-child { border-bottom: none; }
+
+        .fact-label {
+            font-weight: 600;
+            color: var(--ink);
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+        }
+
+        .fact-value {
+            color: var(--ink-light);
+            text-align: right;
+        }
+
+        .term-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .term-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .term-item .term {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .term-item .term .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+        }
+
+        .term-item .definition {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+            line-height: 1.55;
+        }
+
+        .discussion-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: discussion;
+        }
+
+        .discussion-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.55;
+            counter-increment: discussion;
+        }
+
+        .discussion-list li::before {
+            content: counter(discussion) ".";
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        .discussion-list li:last-child { border-bottom: none; }
+
+        .reading-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reading-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.5;
+        }
+
+        .reading-list li:last-child { border-bottom: none; }
+
+        .reading-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .reading-list a:hover { text-decoration: underline; }
+
+        /* SOURCE TAG */
+        .source-tag {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            display: inline;
+        }
+
+        .source-tag a {
+            color: var(--ink-faint);
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+        .source-tag a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to Korean History through Film</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="course-label">Deep Dive</div>
+        <h1>Sopyonje</h1>
+        <div class="korean-title">서편제</div>
+        <div class="hero-meta">
+            <span>Im Kwon-taek (임권택)</span>
+            <span>1993</span>
+            <span>112 min</span>
+            <span class="tag">Drama / Music</span>
+            <span class="tag">Cultural Preservation</span>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN GRID -->
+<div class="main-wrap">
+
+    <!-- LEFT: MAIN CONTENT -->
+    <article class="main-content">
+
+        <h2>Historical Context: The Pansori Tradition</h2>
+
+        <p>
+            Pansori is a centuries-old Korean form of narrative singing in which a single vocalist, accompanied by a drummer
+            playing a <em>buk</em> (barrel drum), tells an extended dramatic story through a combination of <em>chang</em>
+            (song), <em>sasol</em> (spoken narration), and <em>ballim</em> (dramatic gesture). The word itself combines
+            <em>pan</em> (an open performance space, such as a marketplace) and <em>sori</em> (sound or singing). A full
+            performance of a single pansori cycle can last eight to ten hours.
+            <span class="source-tag">(<a href="https://www.britannica.com/art/pansori">Britannica</a>)</span>
+        </p>
+
+        <p>
+            Five major song cycles survive today: <em>Chunhyangga</em> (a love story), <em>Simcheongga</em> (a tale of
+            filial sacrifice), <em>Heungbuga</em> (a morality tale), <em>Sugungga</em> (a satirical fable), and
+            <em>Cheokbyeokga</em> (based on the Battle of Red Cliffs). Originally performed for commoners in open-air
+            markets, pansori gained popularity among the literati class during the 19th century before entering a long
+            period of decline in the 20th century. The South Korean government designated pansori as National Intangible
+            Cultural Heritage No. 5 in 1964, and UNESCO recognized it as a Masterpiece of the Oral and Intangible Heritage
+            of Humanity in 2003.
+            <span class="source-tag">(<a href="https://www.britannica.com/art/pansori">Britannica</a> /
+            <a href="https://ich.unesco.org/en/RL/pansori-epic-chant-00070">UNESCO</a>)</span>
+        </p>
+
+        <div class="doc-card green">
+            <h4>Two Schools: Sopyonje and Dongpyeonje</h4>
+            <p>
+                Pansori developed into distinct regional schools (<em>je</em>) in southwestern Korea's Jeolla province.
+                The <strong>dongpyeonje</strong> (eastern school) favors a deep, controlled voice projected from the
+                abdomen, vigorous rhythmic delivery, and emphasis on the <em>ujo</em> melodic mode, which conveys
+                strength and grandeur. The <strong>seopyeonje</strong> (western school), created by the singer Park
+                Yujeon in the late 19th century, is highly ornamented in both melody and rhythm, favors the sorrowful
+                <em>kyemyeon</em> melodic mode, and tends toward slower, more emotionally elaborate performances.
+                By the late 20th century, the sorrowful western style had come to dominate, and pansori itself became
+                widely associated with the concept of <em>han</em>.
+            </p>
+            <p style="margin-top: 0.5rem;">
+                <span class="source-tag">(<a href="https://www.britannica.com/art/sopyonje">Britannica: Sopyonje</a> /
+                <a href="https://www.britannica.com/art/tongpyonje">Britannica: Tongpyonje</a>)</span>
+            </p>
+        </div>
+
+        <h2>Cultural Loss and Modernization</h2>
+
+        <p>
+            Sopyonje is set during the 1960s and 1970s, the exact decades when South Korea underwent one of the fastest
+            industrial transformations in modern history. Under President Park Chung-hee, the state launched its First
+            Five-Year Economic Development Plan in 1962, channeling resources into export-oriented manufacturing. GDP
+            grew at an average annual rate of nearly 9 percent for three decades. The urban population surged from 28
+            percent in 1960 to 41 percent by 1970 as millions of rural Koreans migrated to factory cities.
+            <span class="source-tag">(<a href="https://www.britannica.com/place/South-Korea/Economic-and-social-developments">Britannica</a>)</span>
+        </p>
+
+        <p>
+            This economic miracle came at a cultural cost. The government's Saemaul Undong (New Community Movement),
+            launched in 1970 to modernize rural areas, actively suppressed folk traditions deemed backward or
+            superstitious. Village guardian trees were cut down. Shamanic practitioners were harassed. Traditional
+            performing arts, including pansori, lost their audiences as young Koreans moved to cities and consumed
+            Western popular culture. The Park regime controlled artistic expression directly, persecuting artists
+            deemed insufficiently patriotic while promoting a narrow, state-approved version of "national culture."
+            <span class="source-tag">(<a href="https://www.wilsoncenter.org/blog-post/paving-path-soft-power-crucial-moments-south-koreas-cultural-policies">Wilson Center</a>)</span>
+        </p>
+
+        <div class="doc-card earth">
+            <h4>The Paradox of Cultural Policy</h4>
+            <p>
+                The Park Chung-hee government pursued a contradictory double policy. On one hand, it created the
+                National Intangible Cultural Heritage system (1962) to preserve traditional arts, designating master
+                practitioners as "Living National Treasures." On the other hand, its modernization campaigns actively
+                destroyed the rural folk culture in which those arts were rooted. Pansori was officially protected
+                as Heritage No. 5, yet the village audiences and traveling performance circuits that had sustained
+                pansori for centuries were disappearing. The art was preserved in museum form while its living context
+                was erased.
+            </p>
+        </div>
+
+        <p>
+            It is this gap between official preservation and lived extinction that Sopyonje dramatizes. The wandering
+            pansori family in the film occupies a Korea that no longer wants what they have to offer. Their audiences
+            have radios, record players, and television sets. The father, Yu-bong, is not fighting a foreign occupier
+            or an explicit ban. He is fighting indifference, which is harder to resist because there is no enemy to
+            confront.
+        </p>
+
+        <h2>Director Profile: Im Kwon-taek</h2>
+
+        <p>
+            Im Kwon-taek, born May 2, 1936, in Jangseong, South Jeolla Province, is widely known as "the father of
+            Korean cinema." He grew up in Gwangju and endured severe hardship during the Korean War, when his family
+            suffered losses in the fighting. He moved to Busan in search of work, then to Seoul in 1956, where
+            director Jeong Chang-hwa offered him room and board in exchange for work as a production assistant.
+            <span class="source-tag">(<a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica</a>)</span>
+        </p>
+
+        <p>
+            Im made his directorial debut with <em>Farewell to the Duman River</em> in 1962. Over the next decade he
+            directed roughly 50 films, most of them commercial genre pictures. Around 1973, he made a conscious turn
+            toward creating films that were distinctly Korean in subject and sensibility, exploring the country's history,
+            spiritual traditions, and cultural identity. Since <em>Mandala</em> (1981), a film about wandering Buddhist
+            monks, Im has been considered Korea's leading director.
+            <span class="source-tag">(<a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica</a>)</span>
+        </p>
+
+        <div class="doc-card gold">
+            <h4>Key Films</h4>
+            <ul>
+                <li><strong>Mandala</strong> (1981). Two Buddhist monks on a spiritual journey through rural Korea. Marked Im's artistic maturation and established his reputation internationally.</li>
+                <li><strong>The Genealogy</strong> (Chokpo, 1978). A historical drama confronting the Japanese colonial occupation and its assault on Korean identity through the genealogy system.</li>
+                <li><strong>Sopyonje</strong> (1993). The pansori film that became a national cultural event, the first Korean film to sell over one million tickets in Seoul.</li>
+                <li><strong>The Taebaek Mountains</strong> (1994). A Korean War epic exploring ideological divisions in a rural community.</li>
+                <li><strong>Chunhyang</strong> (2000). A pansori adaptation of Korea's most beloved love story, screened in competition at Cannes.</li>
+                <li><strong>Chihwaseon (Painted Fire)</strong> (2002). A biographical drama about the 19th-century painter Jang Seung-eop. Won Im the Best Director prize at Cannes, making him the first Korean filmmaker to win an award at the festival.</li>
+            </ul>
+            <p style="margin-top: 0.5rem;">
+                <span class="source-tag">(<a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica</a> /
+                <a href="https://www.imdb.com/name/nm0407990/">IMDB</a>)</span>
+            </p>
+        </div>
+
+        <p>
+            By the time of his retirement, Im had directed 102 films across a career spanning over four decades.
+            His honors include the Akira Kurosawa Award from the San Francisco International Film Festival (1998)
+            and the French Legion of Honour (2007). His body of work constitutes one of the most sustained
+            explorations of national identity in world cinema.
+            <span class="source-tag">(<a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica</a>)</span>
+        </p>
+
+        <h2>Film Analysis: The Story of Sopyonje</h2>
+
+        <p>
+            Based on the novel by Yi Chong-jun, Sopyonje follows Yu-bong, a wandering pansori master, and his two
+            adopted children, Song-hwa and Dong-ho, as they travel the rural Korean countryside performing for
+            dwindling audiences. Yu-bong is devoted to the <em>seopyeonje</em> (western school) style of pansori,
+            with its emphasis on sorrow and ornamentation. He trains Song-hwa as a vocalist and Dong-ho as a drummer.
+        </p>
+
+        <p>
+            The film's narrative unfolds in two time periods. In the present-day frame (early 1960s), the adult
+            Dong-ho travels through the countryside searching for Song-hwa, whom he has not seen since adolescence.
+            Through flashbacks, we learn how Yu-bong's obsessive devotion to pansori drove the family apart. Unable
+            to tolerate his father's tyrannical demands, the teenage Dong-ho abandons the family. In the film's most
+            devastating revelation, we learn that Yu-bong, desperate to keep Song-hwa bound to pansori and to deepen
+            her capacity for <em>han</em>, fed her a drug that blinded her.
+        </p>
+
+        <div class="pull-quote">
+            <p>"Only through suffering can one attain the deepest expression of sori. Without han, the voice is empty."</p>
+            <div class="attribution">Yu-bong's conviction, as dramatized in the film</div>
+        </div>
+
+        <p>
+            Yu-bong's act is monstrous, yet the film refuses to reduce him to a villain. He is also a victim of
+            historical forces: a man watching the art form that gives his life meaning dissolve under the pressures
+            of modernization. His cruelty toward Song-hwa is inseparable from his love for pansori itself.
+            The film asks whether a tradition can demand so much of its practitioners that preservation becomes
+            a form of violence.
+        </p>
+
+        <h3>The Famous Long Take</h3>
+
+        <p>
+            Sopyonje contains one of the most celebrated sequences in Korean cinema history: a long, unbroken shot
+            of Yu-bong, Song-hwa, and the young Dong-ho walking along a rural path, singing <em>Chunhyangga</em>
+            together. The camera follows them from behind as they wind through green hills. The shot lasts over
+            three minutes and captures the family at their most harmonious, before the fractures that will destroy
+            them. This single image became an icon of the film and, more broadly, of nostalgia for a vanishing
+            rural Korea.
+        </p>
+
+        <h2>Cultural Impact</h2>
+
+        <p>
+            Sopyonje was not expected to be a commercial success. An art-house drama about a dying folk tradition,
+            it opened on a single screen in Seoul. It then ran for six months and became the first domestically
+            produced Korean film to draw over one million spectators in the Seoul box office alone, with roughly
+            the same number attending outside the capital. It outperformed Hollywood blockbusters like
+            <em>The Bodyguard</em>, <em>The Fugitive</em>, and <em>The Last of the Mohicans</em>.
+            <span class="source-tag">(<a href="https://www.hancinema.net/-sopyonje--this-1993-film-broke-new-ground-as-a-cultural-blockbuster-5640.html">HanCinema</a>)</span>
+        </p>
+
+        <p>
+            The film triggered a national emotional reckoning. Audiences, young and old, wept openly in theaters.
+            There was a widespread outpouring of collective guilt at the sense that something essential to Korean
+            identity had been sacrificed in the rush toward industrial prosperity. The cultural response was
+            immediate and measurable: enrollment in pansori classes surged, recordings of pansori masters sold
+            in unprecedented numbers, and public performance venues reported sharp increases in attendance.
+            Pansori experienced its most significant revival since the late 19th century.
+            <span class="source-tag">(<a href="https://cinemareborn.com.au/Sopyonje">Cinema Reborn</a>)</span>
+        </p>
+
+        <div class="doc-card dark">
+            <h4>A Turning Point for Korean Cinema</h4>
+            <p>
+                Sopyonje's success demonstrated that Korean audiences would turn out in massive numbers for
+                a Korean film about Korean subjects. This was not a given in 1993, when Hollywood dominated
+                the domestic box office and the Korean film industry was still struggling for viability.
+                The film's million-ticket milestone helped shift the industry's confidence and laid
+                groundwork for the Korean New Wave that would produce internationally celebrated directors
+                like Park Chan-wook, Bong Joon-ho, and Lee Chang-dong in the following decade.
+            </p>
+        </div>
+
+        <h3>Connection to Course Themes</h3>
+
+        <p>
+            Sopyonje connects to several core threads in this course. First, the film dramatizes the tension between
+            modernization and cultural preservation that defined South Korea's postwar decades. The economic "miracle"
+            that transformed the country required the dismantling of the rural world in which traditions like pansori
+            had lived. Second, the film raises the question of what Korean identity consists of, once colonialism
+            and then industrialization have stripped away the material conditions of traditional culture. Third,
+            Yu-bong's decision to blind Song-hwa poses an uncomfortable question about preservation itself: at what
+            point does the desire to save a tradition become its own form of oppression? Finally, the film's box
+            office success revealed a deep, unmet hunger among Korean audiences for engagement with their own
+            cultural heritage, a hunger that the state's narrow cultural policies had failed to satisfy.
+        </p>
+
+        <div class="doc-card gold">
+            <h4>Colonial Roots of Cultural Loss</h4>
+            <p>
+                The decline of pansori did not begin with industrialization. During the Japanese colonial period
+                (1910-1945), Korean language and cultural expression were systematically suppressed, particularly
+                in the final decade of colonial rule. Traditional performing arts were marginalized in favor of
+                Japanese cultural forms. When liberation came in 1945, followed almost immediately by national
+                division and the Korean War (1950-1953), the infrastructure for transmitting traditional arts
+                had been severely damaged. Industrialization after 1962 completed what colonialism had started.
+                Sopyonje is therefore a film about layers of loss: colonial erasure compounded by postcolonial
+                self-erasure in the name of progress.
+            </p>
+        </div>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- QUICK FACTS -->
+        <div class="sidebar-card gold-border">
+            <h3>Quick Facts</h3>
+            <div class="fact-row">
+                <span class="fact-label">Director</span>
+                <span class="fact-value">Im Kwon-taek</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Year</span>
+                <span class="fact-value">1993</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Runtime</span>
+                <span class="fact-value">112 minutes</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Language</span>
+                <span class="fact-value">Korean</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Source</span>
+                <span class="fact-value">Novel by Yi Chong-jun</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Box Office</span>
+                <span class="fact-value">1M+ tickets (Seoul)</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Setting</span>
+                <span class="fact-value">1960s rural Jeolla</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Director's Films</span>
+                <span class="fact-value">102 total</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Cannes (Director)</span>
+                <span class="fact-value">Best Director, 2002</span>
+            </div>
+        </div>
+
+        <!-- KEY TERMS -->
+        <div class="sidebar-card">
+            <h3>Key Terms</h3>
+            <div class="term-item">
+                <div class="term">Pansori <span class="kr">판소리</span></div>
+                <div class="definition">Traditional Korean narrative singing performed by a vocalist and drummer. Combines song (<em>chang</em>), narration (<em>sasol</em>), and dramatic gesture (<em>ballim</em>). UNESCO Intangible Cultural Heritage since 2003.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Han <span class="kr">한 (恨)</span></div>
+                <div class="definition">A distinctly Korean emotional concept encompassing deep sorrow, resentment, grief, and a longing for resolution. Often linked to collective historical trauma: colonial occupation, war, national division. Novelist Pak Kyongni described it as containing both sadness and hope.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Seopyeonje <span class="kr">서편제</span></div>
+                <div class="definition">The "western school" of pansori, originating in western Jeolla province. Characterized by ornate melodic embellishment, the sorrowful <em>kyemyeon</em> mode, and slow, emotionally elaborate delivery. Created by singer Park Yujeon in the late 19th century.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Dongpyeonje <span class="kr">동편제</span></div>
+                <div class="definition">The "eastern school" of pansori, from eastern Jeolla. Features a deep, controlled voice projected from the abdomen, vigorous rhythm, and emphasis on the powerful <em>ujo</em> melodic mode.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Sorikkun <span class="kr">소리꾼</span></div>
+                <div class="definition">A pansori singer or vocalist. The word combines <em>sori</em> (sound) with <em>kkun</em> (a person skilled in something). Song-hwa and Yu-bong are sorikkun in the film.</div>
+            </div>
+        </div>
+
+        <!-- DISCUSSION QUESTIONS -->
+        <div class="sidebar-card">
+            <h3>Discussion Questions</h3>
+            <ol class="discussion-list">
+                <li>Yu-bong blinds Song-hwa to deepen her experience of <em>han</em> and make her a greater singer. Is this an act of love, cruelty, or both? What does it say about the costs of cultural transmission?</li>
+                <li>Why does Dong-ho leave the family? What does his departure represent about the choices young Koreans faced during industrialization?</li>
+                <li>The film triggered a massive pansori revival in 1993. Why did Korean audiences respond so intensely to a story about a dying art form? What nerve did it touch?</li>
+                <li>Compare the state's approach to cultural preservation (designating "Living National Treasures") with Yu-bong's approach (sacrificing his daughter's sight). Are both forms of the same impulse?</li>
+                <li>How does Sopyonje complicate the narrative of South Korea's economic miracle? What does "progress" cost in this film?</li>
+                <li>Consider the famous long-take walking scene. Why is this image, rather than any dramatic moment, the one that became iconic?</li>
+            </ol>
+        </div>
+
+        <!-- FURTHER READING -->
+        <div class="sidebar-card">
+            <h3>Further Reading</h3>
+            <ul class="reading-list">
+                <li><a href="https://www.britannica.com/biography/Im-Kwon-Taek">Im Kwon-taek</a>, Britannica biography</li>
+                <li><a href="https://www.britannica.com/art/pansori">Pansori: History, Performance, and Cultural Significance</a>, Britannica</li>
+                <li><a href="https://ich.unesco.org/en/RL/pansori-epic-chant-00070">Pansori Epic Chant</a>, UNESCO Intangible Cultural Heritage</li>
+                <li><a href="https://www.britannica.com/place/South-Korea/Economic-and-social-developments">South Korea: Economic and Social Developments</a>, Britannica</li>
+                <li><a href="https://www.wilsoncenter.org/blog-post/paving-path-soft-power-crucial-moments-south-koreas-cultural-policies">Crucial Moments in South Korea's Cultural Policies</a>, Wilson Center</li>
+                <li><a href="https://lareviewofbooks.org/blog/the-korea-blog/seopyeonje-surprise-art-house-megahit-showed-korea-forgotten-culture/">How a Surprise Art-House Megahit Showed Korea Its Own Forgotten Culture</a>, LA Review of Books</li>
+                <li><a href="https://aeon.co/essays/against-han-or-why-koreans-are-not-defined-by-sadness">Against "Han," or Why Koreans Are Not Defined by Sadness</a>, Aeon</li>
+                <li><a href="https://www.imdb.com/title/tt0108192/">Sopyonje</a>, IMDB</li>
+            </ul>
+        </div>
+
+    </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Korean History through Film | Deep Dive: Sopyonje (1993)</p>
+    <p style="margin-top: 0.25rem;">All sources linked inline. Page last updated March 2026.</p>
+</footer>
+
+</body>
+</html>
