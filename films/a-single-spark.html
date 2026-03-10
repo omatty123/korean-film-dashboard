@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Deep Dive: A Single Spark (아름다운 청년 전태일) | Korean History through Film</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #e8edf2;
+      --ink-light: #b0bec5;
+      --ink-faint: #78909c;
+      --paper: #0a1220;
+      --paper-warm: #1a0e05;
+      --surface: rgba(255,255,255,0.04);
+      --accent: #e65100;
+      --accent-light: #ef6c00;
+      --gold: #a67c00;
+      --border: rgba(255,255,255,0.1);
+      --shadow: rgba(0,0,0,0.3);
+      --flame: #ffab40;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: var(--flame); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* BREADCRUMB NAV */
+    nav {
+      background: #060d17;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    nav a {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    nav .sep { color: rgba(255,255,255,0.25); margin: 0 0.4rem; font-size: 0.75rem; }
+    nav .current { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #1a0800 0%, #3e1800 40%, #e65100 80%, #1a0e05 100%);
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(255,171,64,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(230,81,0,0.15) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: rgba(255,171,64,0.25);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.75rem;
+    }
+    .hero-meta strong { color: rgba(255,255,255,0.8); }
+
+    /* MAIN LAYOUT */
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+    }
+
+    /* MAIN COLUMN */
+    .main h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--flame);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .main h2:first-child { margin-top: 0; }
+
+    .main h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .main p {
+      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .main p a { border-bottom: 1px solid rgba(255,171,64,0.3); }
+    .main p a:hover { border-bottom-color: var(--flame); text-decoration: none; }
+
+    /* DOC CARDS */
+    .doc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .doc-card.orange { border-left: 4px solid var(--accent-light); }
+    .doc-card.gold { border-left: 4px solid var(--gold); }
+    .doc-card.flame { border-left: 4px solid var(--flame); }
+
+    .doc-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--flame);
+      margin-bottom: 0.5rem;
+    }
+    .doc-card.gold h4 { color: var(--gold); }
+
+    .doc-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .doc-card p:last-child { margin-bottom: 0; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      background: linear-gradient(135deg, rgba(230,81,0,0.15) 0%, rgba(230,81,0,0.05) 100%);
+      border-left: 4px solid var(--flame);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-style: normal;
+      color: var(--ink-faint);
+    }
+
+    /* TIMELINE */
+    .timeline-list {
+      list-style: none;
+      position: relative;
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(255,171,64,0.2);
+    }
+    .timeline-list li {
+      position: relative;
+      padding: 0.75rem 0 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .timeline-list li:last-child { border-bottom: none; }
+    .timeline-list li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 1.1rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 2px solid var(--paper);
+    }
+    .timeline-list li strong { color: var(--flame); }
+    .timeline-list li em { color: var(--ink-faint); }
+
+    /* FILMOGRAPHY TIMELINE */
+    .filmography {
+      list-style: none;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(166,124,0,0.3);
+    }
+    .filmography li {
+      position: relative;
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .filmography li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 0.85rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(166,124,0,0.4);
+      border: 2px solid var(--paper);
+    }
+    .filmography li.highlight::before {
+      background: var(--gold);
+      width: 10px;
+      height: 10px;
+      left: -1.9rem;
+      box-shadow: 0 0 8px rgba(166,124,0,0.5);
+    }
+    .filmography li strong { color: var(--gold); }
+
+    /* SIDEBAR */
+    .sidebar { align-self: start; position: sticky; top: 4rem; }
+
+    .sidebar-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-box h3 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-box ul { list-style: none; font-size: 0.85rem; }
+    .sidebar-box li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.75);
+    }
+    .sidebar-box li:last-child { border-bottom: none; }
+    .sidebar-box li strong { color: var(--flame); font-weight: 600; }
+
+    .sidebar-box ol {
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .sidebar-box ol li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .sidebar-box ol li:last-child { border-bottom: none; }
+
+    .sidebar-box .source-link {
+      display: block;
+      padding: 0.35rem 0;
+      font-size: 0.8rem;
+      color: var(--flame);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .sidebar-box .source-link:last-child { border-bottom: none; }
+    .sidebar-box .source-link:hover { color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #060d17;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer a { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-korean { font-size: 2rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .content-wrap { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Breadcrumb -->
+<nav>
+  <a href="../index.html">&larr; Course Index</a>
+  <span class="sep">/</span>
+  <span class="current">A Single Spark Deep Dive</span>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Film Deep Dive</div>
+    <div class="hero-korean">아름다운 청년 전태일</div>
+    <h1>A Single Spark</h1>
+    <div class="hero-meta">
+      Directed by <strong>Park Kwang-su</strong> (박광수) &middot; 1995 &middot; 155 min<br>
+      Starring Hong Kyung-in, Moon Sung-keun &middot; Screenplay by Lee Chang-dong, Park Kwang-su, Kim Jung-hwan
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="content-wrap">
+  <div class="two-col">
+
+    <!-- LEFT: Main Column -->
+    <div class="main">
+
+      <h2>Historical Context: Industrialization and Its Human Cost</h2>
+
+      <p>South Korea's economic transformation under Park Chung-hee (1961-1979) remains one of the most dramatic cases of state-directed industrialization in modern history. When Park seized power through a military coup in 1961, the country's per-capita GDP was lower than that of many sub-Saharan African nations. By the time of his assassination in 1979, South Korea had become a major exporter of textiles, electronics, and steel. Extreme poverty dropped from 66.9 percent in 1961 to 11.2 percent in 1979. (<a href="https://open.muhlenberg.pub/koreanhistory/chapter/park-economy/" target="_blank">Muhlenberg Korean History</a>)</p>
+
+      <p>The cost of this transformation was borne disproportionately by industrial workers. Park's "growth-first" policies relied on long working hours, suppressed wages, and systematic repression of labor organizing. The government funneled low-interest state loans to favored conglomerates (chaebol) such as Samsung and Hyundai, in exchange for meeting strict export targets. Workers who tried to organize were met with police violence. The Labor Standards Act, which mandated basic protections including maximum working hours and minimum age requirements, existed on paper but was almost never enforced. (<a href="https://jacobin.com/2021/05/south-korea-park-chung-hee-coup-1961" target="_blank">Jacobin</a>)</p>
+
+      <div class="doc-card orange">
+        <h4>Pyeonghwa Market: The Sweatshops Above the Stream</h4>
+        <p>Pyeonghwa (Peace) Market was built in 1961 over the covered Cheonggyecheon stream in Seoul's Dongdaemun district. Originally established by North Korean refugees selling clothes made from U.S. army uniforms, the market grew into a massive garment production center. Factory floors were divided into duplexes of 1.5 meters in height, packing four to five workers per pyeong (3.3 square meters) in rooms without windows or ventilation. Female workers as young as thirteen sewed for 14 to 15 hours a day. Tuberculosis was rampant due to poor ventilation. Employers injected workers with amphetamines to keep them awake through overnight shifts. (<a href="https://nvdatabase.swarthmore.edu/content/south-korean-workers-campaign-against-apparel-sweatshop-conditions-pyunghwa-market-1969-1970" target="_blank">Global Nonviolent Action Database</a>)</p>
+      </div>
+
+      <p>The garment industry was central to Park Chung-hee's export strategy. Cheap labor was the competitive advantage, and any disruption to production was treated as a threat to national security. This was not simply neglect. It was policy. The state actively prevented workers from exercising the rights that its own laws guaranteed them.</p>
+
+      <h2>Jeon Tae-il: The Life and Death of a Garment Worker</h2>
+
+      <p>Jeon Tae-il was born on August 26, 1948, in Daegu. His family was poor. He dropped out of school after completing elementary education and began working in the Pyeonghwa Market garment district as a boy. At age fifteen, he became a sida (assistant) at a small tailor shop. By seventeen, he had advanced to tailor. (<a href="https://workingclasshistory.com/podcast/e51-jeon-tae-il-and-lee-so-sun/" target="_blank">Working Class History</a>)</p>
+
+      <p>As a tailor, Jeon witnessed the conditions firsthand: teenage girls hunched over sewing machines in windowless rooms so cramped they could not stand upright, working fourteen-hour shifts for wages that barely covered food. He began reading the Labor Standards Act and discovered that the conditions surrounding him violated virtually every provision in the law. He started documenting violations and filing complaints with the Labor Office. The officials ignored him. (<a href="https://nvdatabase.swarthmore.edu/content/south-korean-workers-campaign-against-apparel-sweatshop-conditions-pyunghwa-market-1969-1970" target="_blank">Global Nonviolent Action Database</a>)</p>
+
+      <div class="doc-card gold">
+        <h4>The Babo-hoe (Fool's Association)</h4>
+        <p>In June 1969, Jeon founded the Babo-hoe, the first labor organization in the Pyeonghwa Market district. The group consisted of ten tailors with Jeon as chairman. He chose the name "Fool's Association" as self-deprecation: only fools, he said, would naively pursue reform in a system designed to exploit them. The group's purpose was to document working conditions through grassroots surveys, collecting data on hours, wages, and safety violations that could be presented to government labor inspectors. (<a href="https://solidaritystorieskr.wordpress.com/tag/jeon-tae-il/" target="_blank">Solidarity Stories Korea</a>)</p>
+      </div>
+
+      <p>For over a year, Jeon submitted petitions, wrote letters to newspapers, and tried to engage the Seoul Labor Office. He kept a detailed diary documenting the conditions he witnessed, the indifference of officials, and his own anguish. His letters and diary entries reveal a young man torn between hope and despair, increasingly aware that the system had no mechanism for hearing workers like him.</p>
+
+      <p>On November 13, 1970, Jeon and his fellow workers organized a demonstration at Pyeonghwa Market to demand enforcement of the Labor Standards Act. When police moved to suppress the protest, Jeon doused himself in kerosene and set himself on fire. He was twenty-two years old. His final words: "Enforce the Labor Standards Act. We are not machines." He died later that day from his burns. (<a href="https://workingclasshistory.com/podcast/e51-jeon-tae-il-and-lee-so-sun/" target="_blank">Working Class History</a>)</p>
+
+      <div class="pull-quote">
+        "Enforce the Labor Standards Act! We are not machines!"
+        <cite>Jeon Tae-il, November 13, 1970, Pyeonghwa Market</cite>
+      </div>
+
+      <h2>Director: Park Kwang-su and the Korean New Wave</h2>
+
+      <p>Park Kwang-su (born January 22, 1955, in Sokcho, Gangwon Province) is widely considered the central voice of the Korean New Wave, the movement that transformed South Korean cinema in the late 1980s and 1990s. He grew up in Busan, studied fine arts at Seoul National University, and co-founded the Seoul Film Group, a collective dedicated to politically engaged filmmaking closely tied to the student protest movement. He later studied at the ESEC film school in Paris before returning to Korea to work as an assistant director to Lee Chang-ho. (<a href="https://www.koreanfilm.or.kr/eng/films/index/peopleView.jsp?peopleCd=10028460" target="_blank">Korean Film Council</a>)</p>
+
+      <p>Park's significance lies in his direct confrontation with subjects that mainstream Korean cinema had avoided under decades of state censorship. His films address the social and political scars of rapid modernization, authoritarian rule, and the suppression of dissent. In 1993, he became the first Korean filmmaker to found his own production company, and in 1996 he co-founded the Pusan (now Busan) International Film Festival, which became one of the most important film festivals in Asia. (<a href="https://asianwiki.com/Park_Kwang-Su" target="_blank">AsianWiki</a>)</p>
+
+      <h3>Key Filmography</h3>
+
+      <ul class="filmography">
+        <li><strong>1988:</strong> Chilsu and Mansu (칠수와 만수). Debut film. Two billboard painters, alienated and marginalized, become an allegory for South Korea's identity crisis under authoritarianism.</li>
+        <li><strong>1990:</strong> Black Republic (그들도 우리처럼). A student activist on the run hides in a coal-mining town and confronts the reality of working-class life.</li>
+        <li><strong>1993:</strong> To the Starry Island (그 섬에 가고 싶다). A funeral journey to a small island becomes a reckoning with political violence and divided loyalties.</li>
+        <li class="highlight"><strong>1995:</strong> A Single Spark (아름다운 청년 전태일). The life of Jeon Tae-il and the price of South Korea's industrialization.</li>
+        <li><strong>1998:</strong> The Uprising (이재수의 난). A peasant rebellion on Jeju Island in 1901, exploring anti-colonial resistance and religious conflict.</li>
+      </ul>
+
+      <h2>Film Analysis: Dual Timelines and the Persistence of Struggle</h2>
+
+      <p>A Single Spark interweaves two timelines. The first, shot in black and white, follows Jeon Tae-il (played by Hong Kyung-in) through the months leading to his self-immolation in 1970. The second, shot in color, follows Kim Yeong-su (Moon Sung-keun), a dissident intellectual in hiding during the mid-1970s who is writing Jeon's biography while his pregnant wife, Shin Jeong-soon, tries to organize a trade union at her own workplace. The screenplay was co-written by Lee Chang-dong, who would later become one of Korea's most acclaimed directors (Peppermint Candy, Poetry, Burning). (<a href="https://www.koreanscreen.com/reviews/a-single-spark" target="_blank">Korean Screen</a>)</p>
+
+      <p>The visual distinction between timelines is purposeful. Black and white conveys the rawness of Jeon's world, the cramped factories, the indifferent bureaucrats, the escalating desperation. Color marks the Yeong-su timeline, but offers no comfort. His life in hiding under the Yushin system is as constrained and surveilled as the sweatshop workers' existence five years earlier. The film's central argument emerges from the juxtaposition: nothing has changed. The state still suppresses dissent. Workers still lack protection. The only difference is the form of the struggle. (<a href="https://asianmoviepulse.com/2021/04/film-review-a-single-spark-1995-by-park-kwang-su/" target="_blank">Asian Movie Pulse</a>)</p>
+
+      <div class="doc-card flame">
+        <h4>The Editing as Argument</h4>
+        <p>Park Kwang-su uses the cuts between timelines to draw structural parallels. A knock on a door in Jeon's 1970 world is answered by someone entering in Yeong-su's 1975 world. These transitions blur the boundary between past and present, arguing that the labor struggle is not a historical episode but a continuous condition. The biography Yeong-su is writing is not a memorial. It is a diagnosis of what remains unresolved. (<a href="https://www.koreanscreen.com/reviews/a-single-spark" target="_blank">Korean Screen</a>)</p>
+      </div>
+
+      <p>The film is based on the biography <em>A Single Spark: The Biography of Chun Tae-il</em> by labor lawyer Cho Young-rae, which was itself based on Jeon's diaries, letters, and interviews with witnesses. The title references a Maoist phrase, "A single spark can start a prairie fire," repurposed here to describe how one worker's death ignited a movement. (<a href="https://www.amazon.com/Single-Spark-Biography-Chun-Tae/dp/8971991577" target="_blank">Amazon</a>)</p>
+
+      <h3>Hong Kyung-in as Jeon Tae-il</h3>
+
+      <p>Hong Kyung-in's performance avoids the trap of hagiography. His Jeon Tae-il is not a saint or a martyr-in-waiting. He is confused, frustrated, sometimes naive. He reads the Labor Standards Act with the same bewildered faith that others bring to scripture: surely the words mean something, surely someone will listen. The performance captures the specific tragedy of a person who believed the system would work if he could just reach the right official, only to discover that the system's indifference was not a flaw but a feature.</p>
+
+      <h2>Legacy: From a Single Spark to a Movement</h2>
+
+      <p>Jeon Tae-il's death produced immediate, measurable effects. Labor disputes in South Korea jumped from 165 cases in 1970 to 1,656 in 1971. Two weeks after his death, his mother Lee So-sun and the Samdong Friendship Association organized the Cheonggye Garment Workers' Union on the rooftop of Pyeonghwa Market. Lee So-sun, who had no education and had never been involved in organizing, became one of Korea's most important labor leaders. She helped establish roughly 2,500 unions across the country during the 1970s despite continuous violent repression. She died in 2011 at the age of 82, widely known as "the mother of workers." (<a href="https://workingclasshistory.com/podcast/e51-jeon-tae-il-and-lee-so-sun/" target="_blank">Working Class History</a>)</p>
+
+      <div class="doc-card orange">
+        <h4>The Minjung Connection</h4>
+        <p>Jeon's death became a catalyst for the minjung (people's) movement, which united workers, students, religious leaders, and intellectuals against authoritarian rule. Before his self-immolation, these groups had remained largely separate. Afterward, university students began working in factories as undercover organizers, and religious figures like Cardinal Kim Sou-hwan provided institutional protection for labor activists. The minjung movement reached its peak during the June 1987 nationwide protests that forced the military government to accept democratic elections. (<a href="https://blogs.loc.gov/international-collections/2025/01/the-posters-of-the-minjung-movement-in-the-1980s/" target="_blank">Library of Congress</a>)</p>
+      </div>
+
+      <p>In 2001, the South Korean government formally recognized Jeon Tae-il as a participant in the democratization movement. In 2005, a memorial statue was erected at the Cheonggyecheon 6-ga overpass, now known as the Jeon Tae-il Bridge. On the 50th anniversary of his death in 2020, the government posthumously awarded him the Mugungwha Medal of the Order of Civil Merit, the first time this honor was granted in the category of labor. (<a href="https://english.visitseoul.net/attractions/Jeon-Tae-il-Memorial-Hall_/34881" target="_blank">Visit Seoul</a>)</p>
+
+      <p>The film itself marked a cultural milestone. It won the Best Film award at the 1995 Blue Dragon Film Awards and was nominated for the Golden Bear at the 46th Berlin International Film Festival in 1996. More importantly, it brought Jeon's story to a generation of Koreans who had grown up after democratization, connecting them to the labor struggles that had made their present possible. (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19950050" target="_blank">Korean Film Council</a>)</p>
+
+      <h2>Course Themes: Who Pays for the Miracle?</h2>
+
+      <p>A Single Spark asks a question that runs through the entire course: who bears the cost of national transformation? South Korea's "economic miracle" is often narrated as a story of collective sacrifice and triumphant development. This film refuses that framing. It shows the miracle from the position of the people it consumed: teenage seamstresses with tuberculosis, tailors working in rooms where they could not stand upright, a twenty-two-year-old who set himself on fire because no one would listen.</p>
+
+      <p>The dual-timeline structure extends this critique beyond the Park Chung-hee era. By showing that conditions for dissenters in the 1970s remained as dangerous as conditions for workers in the 1960s, the film argues that the authoritarian state's suppression of labor was not a temporary feature of early development. It was structural. The chaebol system, the compliant press, the indifferent bureaucracy, the violent police: these constituted a machinery of extraction that did not disappear when GDP rose.</p>
+
+      <p>Park Kwang-su, as a filmmaker shaped by the student protest movement, is not offering a neutral historical account. He is making an argument. The "beautiful young man" of the Korean title is not a figure from a completed past. He is an indictment of any system that treats human beings as fuel for economic growth.</p>
+
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h3>Quick Facts</h3>
+        <ul>
+          <li><strong>Korean Title:</strong> 아름다운 청년 전태일 (Beautiful Young Jeon Tae-il)</li>
+          <li><strong>Director:</strong> Park Kwang-su (박광수)</li>
+          <li><strong>Year:</strong> 1995</li>
+          <li><strong>Runtime:</strong> 155 minutes</li>
+          <li><strong>Screenwriters:</strong> Lee Chang-dong, Park Kwang-su, Kim Jung-hwan</li>
+          <li><strong>Jeon Tae-il:</strong> Hong Kyung-in</li>
+          <li><strong>Kim Yeong-su:</strong> Moon Sung-keun</li>
+          <li><strong>Language:</strong> Korean</li>
+          <li><strong>Awards:</strong> Blue Dragon Best Film (1995), Berlin Golden Bear nomination (1996)</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Figures</h3>
+        <ul>
+          <li><strong>Jeon Tae-il</strong> (1948-1970). Garment worker and labor activist. Self-immolated at Pyeonghwa Market to protest labor conditions.</li>
+          <li><strong>Lee So-sun</strong> (1929-2011). Jeon's mother. Founded the Cheonggye Garment Workers' Union. Known as "the mother of workers."</li>
+          <li><strong>Cho Young-rae</strong> (1943-). Labor lawyer. Wrote the biography <em>A Single Spark</em> on which the film is based.</li>
+          <li><strong>Park Chung-hee</strong> (1917-1979). President and dictator. Architect of South Korea's export-led industrialization.</li>
+          <li><strong>Park Kwang-su</strong> (1955-). Director. Pioneer of the Korean New Wave.</li>
+          <li><strong>Lee Chang-dong</strong> (1954-). Co-screenwriter. Later directed Peppermint Candy, Burning, and Poetry.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Terms</h3>
+        <ul>
+          <li><strong>Minjung</strong> (민중). "The people." Refers to the broad coalition of workers, students, and intellectuals who formed the pro-democracy movement of the 1970s-1980s.</li>
+          <li><strong>Chaebol</strong> (재벌). Family-controlled industrial conglomerates (Samsung, Hyundai, LG) that drove export-led growth under state patronage.</li>
+          <li><strong>Pyeonghwa Market</strong> (평화시장). "Peace Market." The garment district in Seoul's Dongdaemun area where Jeon Tae-il worked and died.</li>
+          <li><strong>Yushin</strong> (유신). Park Chung-hee's 1972 constitutional revision granting himself permanent rule. Intensified repression of labor and dissent.</li>
+          <li><strong>Sida</strong> (시다). Young assistant workers in garment factories, often teenage girls, who performed menial and low-paid tasks.</li>
+          <li><strong>Babo-hoe</strong> (바보회). "Fool's Association." The informal labor group Jeon founded at Pyeonghwa Market in 1969.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Discussion Questions</h3>
+        <ol>
+          <li>The film uses black and white for Jeon Tae-il's 1970 timeline and color for the 1975 timeline. How does this visual choice shape the audience's perception of which era is more "real"?</li>
+          <li>Jeon Tae-il trusted the legal system. He read the Labor Standards Act and believed that if he could get officials to enforce it, conditions would improve. What does his failure reveal about the relationship between law and power?</li>
+          <li>Park Kwang-su and Lee Chang-dong both came out of the student protest movement. How does the filmmaker's position within a political movement shape the kind of historical film they produce?</li>
+          <li>Compare the role of Jeon's mother, Lee So-sun, with Jeon himself. How does the film frame individual sacrifice versus sustained organizing?</li>
+          <li>South Korea's economic transformation is often called a "miracle." What does this film argue about who gets excluded from that story?</li>
+        </ol>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Course Connections</h3>
+        <ul>
+          <li><strong>Theme:</strong> Industrialization's human cost, state violence, labor rights</li>
+          <li><strong>Pair with:</strong> Peppermint Candy (1999) for a companion view of state violence and personal destruction</li>
+          <li><strong>Compare:</strong> Aimless Bullet (1961) for an earlier depiction of urban poverty and systemic failure</li>
+          <li><strong>Connect:</strong> Parasite (2019) for how class inequality persists into the 21st century</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Further Reading and Sources</h3>
+        <a class="source-link" href="https://www.imdb.com/title/tt0121755/" target="_blank">IMDB: A Single Spark</a>
+        <a class="source-link" href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19950050" target="_blank">Korean Film Council: A Single Spark</a>
+        <a class="source-link" href="https://asianmoviepulse.com/2021/04/film-review-a-single-spark-1995-by-park-kwang-su/" target="_blank">Asian Movie Pulse: Film Review</a>
+        <a class="source-link" href="https://www.koreanscreen.com/reviews/a-single-spark" target="_blank">Korean Screen: Review</a>
+        <a class="source-link" href="https://workingclasshistory.com/podcast/e51-jeon-tae-il-and-lee-so-sun/" target="_blank">Working Class History: Jeon Tae-il Podcast</a>
+        <a class="source-link" href="https://nvdatabase.swarthmore.edu/content/south-korean-workers-campaign-against-apparel-sweatshop-conditions-pyunghwa-market-1969-1970" target="_blank">Swarthmore: Pyeonghwa Market Campaign</a>
+        <a class="source-link" href="https://blogs.loc.gov/international-collections/2025/01/the-posters-of-the-minjung-movement-in-the-1980s/" target="_blank">Library of Congress: Minjung Posters</a>
+        <a class="source-link" href="https://english.visitseoul.net/attractions/Jeon-Tae-il-Memorial-Hall_/34881" target="_blank">Visit Seoul: Jeon Tae-il Memorial Hall</a>
+        <a class="source-link" href="https://open.muhlenberg.pub/koreanhistory/chapter/park-economy/" target="_blank">Muhlenberg: Park Chung-hee Economy</a>
+        <a class="source-link" href="https://www.koreanfilm.or.kr/eng/films/index/peopleView.jsp?peopleCd=10028460" target="_blank">Korean Film Council: Park Kwang-su</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>Korean History through Literature and Film &middot; Spring 2026<br>Lawrence University</div>
+    <div><a href="../index.html">&larr; Back to Course Index</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
