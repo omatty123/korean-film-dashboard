@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parasite (2019) | Korean History through Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #1b5e20;
+            --accent-light: #2e7d32;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0d3311 0%, #1b5e20 40%, #2e7d32 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-meta .tag {
+            background: rgba(255,255,255,0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* MAIN GRID */
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 860px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MAIN CONTENT */
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .main-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .main-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .main-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .main-content a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* DOC CARDS */
+        .doc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 3px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .doc-card.gold { border-left-color: var(--gold); }
+        .doc-card.green { border-left-color: var(--accent); }
+        .doc-card.dark { border-left-color: #333; }
+
+        .doc-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .doc-card p, .doc-card li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .doc-card ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .doc-card li { margin-bottom: 0.3rem; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: var(--paper-warm);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.6;
+            margin-bottom: 0.3rem;
+        }
+
+        .pull-quote .attribution {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-style: normal;
+            color: var(--ink-faint);
+        }
+
+        /* SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .sidebar-card.gold-border h3 { border-bottom-color: var(--gold); }
+
+        .fact-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .fact-row:last-child { border-bottom: none; }
+
+        .fact-label {
+            font-weight: 600;
+            color: var(--ink);
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+        }
+
+        .fact-value {
+            color: var(--ink-light);
+            text-align: right;
+        }
+
+        .term-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .term-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .term-item .term {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .term-item .term .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+        }
+
+        .term-item .definition {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+            line-height: 1.55;
+        }
+
+        .award-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .award-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.35rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .award-list li:last-child { border-bottom: none; }
+
+        .award-list .award-icon {
+            color: var(--gold);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .discussion-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: discussion;
+        }
+
+        .discussion-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.55;
+            counter-increment: discussion;
+        }
+
+        .discussion-list li::before {
+            content: counter(discussion) ".";
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        .discussion-list li:last-child { border-bottom: none; }
+
+        .reading-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reading-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.5;
+        }
+
+        .reading-list li:last-child { border-bottom: none; }
+
+        .reading-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .reading-list a:hover { text-decoration: underline; }
+
+        /* SOURCE TAG */
+        .source-tag {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            display: inline;
+        }
+
+        .source-tag a {
+            color: var(--ink-faint);
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+        .source-tag a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to Korean History through Film</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="course-label">Deep Dive</div>
+        <h1>Parasite</h1>
+        <div class="korean-title">기생충</div>
+        <div class="hero-meta">
+            <span>Bong Joon-ho (봉준호)</span>
+            <span>2019</span>
+            <span>132 min</span>
+            <span class="tag">Thriller / Dark Comedy</span>
+            <span class="tag">Class Inequality</span>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN GRID -->
+<div class="main-wrap">
+
+    <!-- LEFT: MAIN CONTENT -->
+    <article class="main-content">
+
+        <h2>Historical Context: Inequality in Modern Korea</h2>
+
+        <p>
+            Parasite is not simply a thriller about two families. It is a diagnosis of contemporary South Korea,
+            a society that underwent the fastest industrialization in modern history and now confronts the
+            social fractures that process left behind. The "Miracle on the Han River" lifted millions out of
+            poverty between the 1960s and 1990s, but by the 2010s a new consensus had formed among Korean
+            youth: upward mobility was a lie. They called their country <strong>Hell Joseon</strong>
+            (헬조선), a bitter coinage comparing modern Korea to the rigid caste hierarchies of the
+            Joseon dynasty (1392-1897).
+            <span class="source-tag">(<a href="https://keia.org/the-peninsula/the-rise-of-self-deprecating-terms-such-as-hell-chosun-and-dirt-spoon-among-the-young-generations-in-korea/">KEIA</a>)</span>
+        </p>
+
+        <p>
+            The term gained traction around 2015, alongside the "spoon class theory" (수저론) that
+            sorted citizens by birth: "gold spoon" children (금수저) inherit chaebol wealth and elite
+            education pipelines, while "dirt spoon" children (흙수저) face precarious labor regardless
+            of effort. Data bears this out. Total sales from just four conglomerates (Samsung, Hyundai Motor,
+            LG, SK) account for roughly 60 percent of South Korea's GDP, while non-regular workers earn
+            only 54.6 percent of what regular workers make.
+            <span class="source-tag">(<a href="https://www.globalasia.org/v11no2/cover/rising-inequalities-in-south-korea-and-the-search-for-a-new-business-ecosystem_choong-yong-ahn">Global Asia</a>)</span>
+        </p>
+
+        <div class="doc-card gold">
+            <h4>The Chaebol Problem</h4>
+            <p>
+                South Korea's family-controlled conglomerates (재벌, <em>chaebol</em>) drove export-led
+                industrialization under Park Chung-hee. But the same concentration of capital that enabled
+                rapid growth now produces what economists call a "dual economy." Large firms pay high wages
+                and offer stable contracts. Small and medium enterprises, which employ the majority of workers,
+                offer low wages and non-regular contracts with few protections. Over 30 percent of the
+                Korean workforce is classified as non-regular.
+                <span class="source-tag">(<a href="https://www.globalasia.org/v11no2/cover/rising-inequalities-in-south-korea-and-the-search-for-a-new-business-ecosystem_choong-yong-ahn">Ahn, Global Asia</a>)</span>
+            </p>
+        </div>
+
+        <p>
+            Youth unemployment compounds the problem. Over 58 percent of South Korea's young people
+            are either unemployed or underemployed. The hypercompetitive education system, which
+            demands years of private tutoring (사교육, <em>sagyo-yuk</em>) costing families thousands
+            of dollars monthly, no longer guarantees a stable career. In Parasite, the Kim family's
+            son Ki-woo has failed the university entrance exam four times. His sister Ki-jung is
+            equally talented but has never been able to afford formal training. Their intelligence
+            is not the issue. Access is.
+            <span class="source-tag">(<a href="https://jacobin.com/2021/10/squid-game-capitalism-south-korea-parasite-inequality-netflix">Jacobin</a>)</span>
+        </p>
+
+        <h2>The Architecture of Class</h2>
+
+        <p>
+            Bong Joon-ho has said he conceived Parasite as a film about spaces. The vertical axis of
+            Seoul, a city built on hills, becomes a literal diagram of class. The wealthy Park family
+            lives in an architect-designed modernist home high on a hillside, flooded with natural light
+            and surrounded by a manicured garden. The impoverished Kim family lives in a <em>banjiha</em>
+            (반지하), a semi-basement apartment at the bottom of a sloping alley, where their only
+            window sits at street level and drunks urinate against the glass.
+            <span class="source-tag">(<a href="https://www.diggitmagazine.com/when-space-becomes-class-exploring-parasite-2019">Diggit Magazine</a>)</span>
+        </p>
+
+        <h3>Vertical Movement as Narrative Engine</h3>
+
+        <p>
+            Every transition between these two worlds is marked by stairs. When the Kims ascend to
+            the Park residence, the camera follows them upward into sunlight and open space. When
+            they flee back to their own neighborhood during a rainstorm, every shot tracks downward.
+            The cinematographer, Hong Kyung-pyo, described the strategy: "I tried to reflect the gap
+            between the rich and the poor in the amount of sunshine. In terms of topography, if you
+            visit the concentrated semi-basement area in the lowland and the rich area in the highland,
+            the difference in the amount of sunlight is obvious."
+            <span class="source-tag">(<a href="https://www.indiewire.com/awards/industry/parasite-cinematographer-hong-kyung-pyo-1202189824/">IndieWire</a>)</span>
+        </p>
+
+        <div class="doc-card green">
+            <h4>The Park House as Set Design</h4>
+            <p>
+                Production designer Lee Ha-jun built the Park residence as a complete set, not a
+                location. Every element was designed to communicate control and order: clean horizontal
+                lines, uncluttered surfaces, a palette of controlled greens and grays. The house
+                is minimal, large, and orderly, a contrast to the semi-basement neighborhood.
+                The garden is visible through floor-to-ceiling glass, a luxury of transparency that
+                the Kim family (whose window exposes them to anyone walking past) can never afford.
+                <span class="source-tag">(<a href="https://www.filmmakersacademy.com/look-of-parasite/">Filmmakers Academy</a>)</span>
+            </p>
+        </div>
+
+        <h3>The Hidden Basement: A Third Vertical Layer</h3>
+
+        <p>
+            The film's most shocking reveal is a secret bunker beneath the Park house, where a man
+            has been living for years, hidden by his wife (the Parks' former housekeeper). This adds
+            a third layer to the vertical structure: the Parks live in the light, the Kims live at
+            street level in shadow, and a man they do not even know exists lives in total darkness
+            below them. The architecture of the single house contains the entire class system.
+        </p>
+
+        <h2>The Banjiha: From Bunker to Housing Crisis</h2>
+
+        <p>
+            The semi-basement apartment is not a fictional device. It is a defining feature of
+            Seoul's housing landscape and a product of Cold War military planning. In the 1970s,
+            the South Korean government required new residential buildings to include underground
+            floors that could serve as bunkers in the event of a North Korean attack. As rural
+            migration flooded Seoul with workers seeking factory and service jobs, landlords began
+            renting these spaces illegally. In 1984, the government legalized habitation of
+            semi-basements, creating the <em>banjiha</em> category.
+            <span class="source-tag">(<a href="https://observers.france24.com/en/asia-pacific/20220812-seoul-south-korea-flooding-banjiha-basement-parasite-housing-danger">France 24</a>)</span>
+        </p>
+
+        <p>
+            By the time Parasite premiered, approximately 200,000 households in Seoul lived in
+            banjiha apartments, roughly 5 percent of the capital's residences. Nationwide, that
+            figure reached nearly 400,000 households. These units are cheaper than above-ground
+            apartments but carry serious health risks: chronic dampness, mold, poor ventilation,
+            and vulnerability to flooding.
+            <span class="source-tag">(<a href="https://www.nbcnews.com/news/world/south-korea-ban-parasite-basement-homes-deadly-floods-rcna42776">NBC News</a>)</span>
+        </p>
+
+        <div class="doc-card dark">
+            <h4>The 2022 Floods and the Ban</h4>
+            <p>
+                In August 2022, record rainfall hit Seoul and killed at least 11 people. Three of
+                those deaths occurred in a single flooded banjiha apartment, a family trapped in
+                rising water in the Gwanak district. The tragedy prompted the Seoul Metropolitan
+                Government to announce a phased ban on new banjiha construction. Officials pledged
+                to eliminate all semi-basement housing within 20 years and provide public housing
+                alternatives for displaced residents.
+                <span class="source-tag">(<a href="https://gizmodo.com/seoul-ban-banjiha-apartments-parasite-floods-1849400049">Gizmodo</a> /
+                <a href="https://www.nbcnews.com/news/world/south-korea-ban-parasite-basement-homes-deadly-floods-rcna42776">NBC News</a>)</span>
+            </p>
+        </div>
+
+        <h2>Director Profile: Bong Joon-ho</h2>
+
+        <p>
+            Born September 14, 1969, in Daegu, South Korea, Bong Joon-ho studied sociology at
+            Yonsei University before enrolling at the Korean Academy of Film Arts. His father,
+            Bong Sang-gyun, was a graphic designer and professor of art at Yeungnam University.
+            The sociological training proved formative. Every one of Bong's films treats systemic
+            structures (police bureaucracy, environmental crisis, global capitalism, class hierarchy)
+            as the true subject, with genre serving as the delivery mechanism.
+            <span class="source-tag">(<a href="https://www.britannica.com/biography/Bong-Joon-Ho">Britannica</a>)</span>
+        </p>
+
+        <h3>Key Filmography</h3>
+
+        <div class="doc-card green">
+            <h4>Five Films Before Parasite</h4>
+            <ul>
+                <li><strong>Memories of Murder</strong> (2003). Based on South Korea's first serial murder case (1986-1991), set during the authoritarian Fifth Republic. Became the highest-grossing Korean film of 2003 and is now considered one of the greatest crime films ever made.</li>
+                <li><strong>The Host</strong> (2006). A monster film triggered by U.S. military pollution of the Han River (based on a real 2000 incident). Became the highest-grossing film in South Korean history at the time of its release.</li>
+                <li><strong>Mother</strong> (2009). A thriller about a widow navigating a corrupt legal system to free her intellectually disabled son.</li>
+                <li><strong>Snowpiercer</strong> (2013). Bong's English-language debut. A train carrying the last survivors of a frozen Earth is stratified by class, with the poor in the back and the rich in the front. The vertical metaphor of Parasite runs horizontally here.</li>
+                <li><strong>Okja</strong> (2017). A Netflix-produced film about the global meat industry and corporate manipulation. Screened in competition at Cannes.</li>
+            </ul>
+            <p style="margin-top: 0.5rem;">
+                <span class="source-tag">(<a href="https://www.britannica.com/biography/Bong-Joon-Ho">Britannica</a> /
+                <a href="https://www.imdb.com/name/nm0094435/">IMDB</a>)</span>
+            </p>
+        </div>
+
+        <p>
+            Across this body of work, Bong developed a signature method: genre films that operate as
+            social critique without ever becoming didactic. His tonal control, shifting between comedy,
+            horror, and pathos within a single scene, is often cited as what makes his work accessible
+            to global audiences while remaining rooted in specifically Korean social conditions.
+        </p>
+
+        <h2>Cultural Impact and the Korean Wave</h2>
+
+        <p>
+            Parasite premiered at the 2019 Cannes Film Festival and won the Palme d'Or by unanimous
+            jury vote, the first South Korean film to receive the prize. It then swept the 92nd Academy
+            Awards in February 2020, winning four Oscars: Best Picture, Best Director, Best Original
+            Screenplay, and Best International Feature Film. It was the first non-English-language
+            film to win Best Picture in the Academy's 92-year history.
+            <span class="source-tag">(<a href="https://www.pbs.org/newshour/arts/parasite-becomes-first-non-english-language-film-to-win-best-picture-oscar">PBS NewsHour</a>)</span>
+        </p>
+
+        <div class="pull-quote">
+            <p>"Once you overcome the one-inch-tall barrier of subtitles, you will be introduced to so many more amazing films."</p>
+            <div class="attribution">Bong Joon-ho, 2020 Golden Globe acceptance speech</div>
+        </div>
+
+        <p>
+            The film's global success represented a new peak for hallyu (한류, the Korean Wave), the
+            broad diffusion of South Korean cultural products across global markets. Korean Wave
+            exports rose 22.4 percent in 2019 from the previous year, and Parasite became a symbol
+            of Korean cinema's ability to produce work that was simultaneously local in its social
+            specificity and universal in its themes. Produced on an $11.4 million budget, the film
+            grossed $263 million worldwide ($71.4 million in South Korea, $53.4 million in North
+            America, and $133.9 million in other territories).
+            <span class="source-tag">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7786884/">PMC</a> /
+            <a href="https://www.the-numbers.com/movie/gi-saeng-chung-(South-Korea)-(2019)">The Numbers</a>)</span>
+        </p>
+
+        <h3>Connection to Course Themes</h3>
+
+        <p>
+            Parasite connects directly to several threads running through this course. First, it
+            dramatizes the consequences of South Korea's compressed modernization. The chaebol-driven
+            export economy that Park Chung-hee initiated in the 1960s created enormous wealth but
+            concentrated it in a small number of family dynasties. Second, the film inverts Confucian
+            hierarchy: the Kim family performs deference and loyalty (the classic subordinate virtues)
+            as a con, exposing how the language of respect functions as a tool of class maintenance
+            rather than moral order. Third, the "smell" that the Parks detect on the Kims (and that
+            Mr. Kim eventually murders over) is the smell of the banjiha itself: dampness, mold, poverty
+            encoded in the body. Class in Korea is not only economic. It is sensory, spatial, and biological.
+        </p>
+
+        <div class="doc-card gold">
+            <h4>From "Miracle" to "Hell Joseon"</h4>
+            <p>
+                The arc from the developmental state to Parasite can be traced in a single statistic.
+                In 1960, South Korea's GDP per capita was roughly equivalent to Ghana's. By 2019,
+                it was the 12th-largest economy in the world. But the Gini coefficient for income
+                inequality has risen steadily since the 1997 Asian Financial Crisis, and housing
+                prices in Seoul have become among the most unaffordable on Earth relative to
+                average income. The "miracle" produced its own negation: a generation that sees no
+                future in the system their parents built.
+                <span class="source-tag">(<a href="https://gjia.georgetown.edu/2020/05/26/the-korean-wave/">Georgetown GJIA</a>)</span>
+            </p>
+        </div>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- QUICK FACTS -->
+        <div class="sidebar-card gold-border">
+            <h3>Quick Facts</h3>
+            <div class="fact-row">
+                <span class="fact-label">Director</span>
+                <span class="fact-value">Bong Joon-ho</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Year</span>
+                <span class="fact-value">2019</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Runtime</span>
+                <span class="fact-value">132 minutes</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Language</span>
+                <span class="fact-value">Korean</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Budget</span>
+                <span class="fact-value">$11.4 million</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Worldwide Gross</span>
+                <span class="fact-value">$263 million</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Production</span>
+                <span class="fact-value">Barunson E&A</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Cinematographer</span>
+                <span class="fact-value">Hong Kyung-pyo</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Composer</span>
+                <span class="fact-value">Jung Jae-il</span>
+            </div>
+        </div>
+
+        <!-- KEY TERMS -->
+        <div class="sidebar-card">
+            <h3>Key Terms</h3>
+            <div class="term-item">
+                <div class="term">Banjiha <span class="kr">반지하</span></div>
+                <div class="definition">Semi-basement apartment. Originally built as Cold War bunkers in the 1970s, legalized for habitation in 1984. About 200,000 households in Seoul lived in banjiha units as of 2019.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Chaebol <span class="kr">재벌</span></div>
+                <div class="definition">Family-controlled conglomerate. Samsung, Hyundai, LG, and SK together account for roughly 60% of South Korea's GDP. The word combines "wealth" (재) and "clan" (벌).</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Hell Joseon <span class="kr">헬조선</span></div>
+                <div class="definition">Satirical term (c. 2015) comparing modern Korea's rigid class system to the Joseon dynasty. Expresses youth frustration with impossible housing costs, education arms races, and precarious labor.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Sujeori <span class="kr">수저론</span></div>
+                <div class="definition">"Spoon class theory." Classifies people as gold spoon (금수저, born wealthy) or dirt spoon (흙수저, born poor), arguing that birth determines outcomes more than effort.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Hallyu <span class="kr">한류</span></div>
+                <div class="definition">The "Korean Wave." The global spread of South Korean popular culture (film, music, TV, food). Parasite's Oscar wins marked a high point for Korean cinema within this broader phenomenon.</div>
+            </div>
+        </div>
+
+        <!-- AWARDS -->
+        <div class="sidebar-card gold-border">
+            <h3>Awards</h3>
+            <ul class="award-list">
+                <li><span class="award-icon">*</span> Academy Award, Best Picture (first non-English-language winner)</li>
+                <li><span class="award-icon">*</span> Academy Award, Best Director</li>
+                <li><span class="award-icon">*</span> Academy Award, Best Original Screenplay</li>
+                <li><span class="award-icon">*</span> Academy Award, Best International Feature Film</li>
+                <li><span class="award-icon">*</span> Palme d'Or, Cannes 2019 (unanimous jury, first Korean film)</li>
+                <li><span class="award-icon">*</span> Golden Globe, Best Foreign Language Film</li>
+                <li><span class="award-icon">*</span> BAFTA, Best Film Not in the English Language</li>
+                <li><span class="award-icon">*</span> Screen Actors Guild Award, Outstanding Cast</li>
+            </ul>
+            <p style="font-size: 0.75rem; color: var(--ink-faint); margin-top: 0.5rem;">
+                Over 300 awards and nominations total.
+                <a href="https://en.wikipedia.org/wiki/List_of_accolades_received_by_Parasite" style="color: var(--ink-faint); text-decoration: underline dotted;">Full list</a>
+            </p>
+        </div>
+
+        <!-- DISCUSSION QUESTIONS -->
+        <div class="sidebar-card">
+            <h3>Discussion Questions</h3>
+            <ol class="discussion-list">
+                <li>How does the vertical geography of the film (basement, ground floor, hilltop) map onto the class structure of contemporary Seoul?</li>
+                <li>The Kim family is resourceful, creative, and skilled. Why does the film suggest that individual talent is insufficient to escape poverty?</li>
+                <li>Mr. Park repeatedly mentions that Ki-taek (the father) "crosses the line" in terms of smell and personal boundaries. What is Bong saying about how class is perceived through the body rather than just the wallet?</li>
+                <li>Compare Parasite's depiction of a stratified train/building to Snowpiercer's horizontal class system. What does the shift from horizontal to vertical suggest about Bong's evolving analysis?</li>
+                <li>How does the "Hell Joseon" discourse among Korean youth challenge the developmental state narrative that economic growth lifts all boats?</li>
+                <li>The Parks are not portrayed as villains. They are "nice." What argument is the film making about structural violence versus individual morality?</li>
+            </ol>
+        </div>
+
+        <!-- FURTHER READING -->
+        <div class="sidebar-card">
+            <h3>Further Reading</h3>
+            <ul class="reading-list">
+                <li><a href="https://www.britannica.com/biography/Bong-Joon-Ho">Bong Joon-ho</a>, Britannica biography</li>
+                <li><a href="https://www.globalasia.org/v11no2/cover/rising-inequalities-in-south-korea-and-the-search-for-a-new-business-ecosystem_choong-yong-ahn">Rising Inequalities in South Korea</a>, Choong-yong Ahn, Global Asia</li>
+                <li><a href="https://keia.org/the-peninsula/the-rise-of-self-deprecating-terms-such-as-hell-chosun-and-dirt-spoon-among-the-young-generations-in-korea/">"Hell Chosun" and "Dirt Spoon" Terms</a>, Korea Economic Institute</li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7786884/">Film as Cultural Diplomacy: South Korea's Nation Branding through Parasite</a>, PMC / Humanities and Social Sciences Communications</li>
+                <li><a href="https://www.indiewire.com/awards/industry/parasite-cinematographer-hong-kyung-pyo-1202189824/">How Parasite's Cinematography Depicts the Class Divide</a>, IndieWire</li>
+                <li><a href="https://observers.france24.com/en/asia-pacific/20220812-seoul-south-korea-flooding-banjiha-basement-parasite-housing-danger">Seoul Floods Highlight Dangers of Banjiha Housing</a>, France 24</li>
+                <li><a href="https://www.nbcnews.com/news/world/south-korea-ban-parasite-basement-homes-deadly-floods-rcna42776">South Korea to Ban Basement Homes After Deadly Floods</a>, NBC News</li>
+                <li><a href="https://www.diggitmagazine.com/when-space-becomes-class-exploring-parasite-2019">When a Space Becomes Class: Exploring Parasite</a>, Diggit Magazine</li>
+            </ul>
+        </div>
+
+    </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Korean History through Film | Deep Dive: Parasite (2019)</p>
+    <p style="margin-top: 0.25rem;">All sources linked inline. Page last updated March 2026.</p>
+</footer>
+
+</body>
+</html>
