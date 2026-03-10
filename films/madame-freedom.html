@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Deep Dive: Madame Freedom (자유부인) | Korean History through Film</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #e8e0d8;
+      --ink-light: #b8a99a;
+      --ink-faint: #8a7a6c;
+      --paper: #1a0e14;
+      --paper-warm: #241620;
+      --surface: rgba(255,255,255,0.04);
+      --accent: #880e4f;
+      --accent-light: #ad1457;
+      --gold: #a67c00;
+      --border: rgba(255,255,255,0.1);
+      --shadow: rgba(0,0,0,0.3);
+      --rose: #e091b2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: var(--rose); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* BREADCRUMB NAV */
+    nav {
+      background: #100a0e;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    nav a {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    nav .sep { color: rgba(255,255,255,0.25); margin: 0 0.4rem; font-size: 0.75rem; }
+    nav .current { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #1a0e14 0%, #2e1024 40%, #880e4f 80%, #1a0e14 100%);
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(224,145,178,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(136,14,79,0.15) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(224,145,178,0.25);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.75rem;
+    }
+    .hero-meta strong { color: rgba(255,255,255,0.8); }
+
+    /* MAIN LAYOUT */
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+    }
+
+    /* MAIN COLUMN */
+    .main h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--rose);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .main h2:first-child { margin-top: 0; }
+
+    .main h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .main p {
+      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .main p a { border-bottom: 1px solid rgba(224,145,178,0.3); }
+    .main p a:hover { border-bottom-color: var(--rose); text-decoration: none; }
+
+    /* DOC CARDS */
+    .doc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .doc-card.rose { border-left: 4px solid var(--accent-light); }
+    .doc-card.gold { border-left: 4px solid var(--gold); }
+    .doc-card.mauve { border-left: 4px solid var(--rose); }
+
+    .doc-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--rose);
+      margin-bottom: 0.5rem;
+    }
+    .doc-card.gold h4 { color: var(--gold); }
+
+    .doc-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .doc-card p:last-child { margin-bottom: 0; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      background: linear-gradient(135deg, rgba(136,14,79,0.15) 0%, rgba(136,14,79,0.05) 100%);
+      border-left: 4px solid var(--rose);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-style: normal;
+      color: var(--ink-faint);
+    }
+
+    /* FILMOGRAPHY TIMELINE */
+    .filmography {
+      list-style: none;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(166,124,0,0.3);
+    }
+    .filmography li {
+      position: relative;
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .filmography li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 0.85rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(166,124,0,0.4);
+      border: 2px solid var(--paper);
+    }
+    .filmography li.highlight::before {
+      background: var(--gold);
+      width: 10px;
+      height: 10px;
+      left: -1.9rem;
+      box-shadow: 0 0 8px rgba(166,124,0,0.5);
+    }
+    .filmography li strong { color: var(--gold); }
+
+    /* SIDEBAR */
+    .sidebar { align-self: start; position: sticky; top: 4rem; }
+
+    .sidebar-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-box h3 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-box ul { list-style: none; font-size: 0.85rem; }
+    .sidebar-box li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.75);
+    }
+    .sidebar-box li:last-child { border-bottom: none; }
+    .sidebar-box li strong { color: var(--rose); font-weight: 600; }
+
+    .sidebar-box ol {
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .sidebar-box ol li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .sidebar-box ol li:last-child { border-bottom: none; }
+
+    .sidebar-box .source-link {
+      display: block;
+      padding: 0.35rem 0;
+      font-size: 0.8rem;
+      color: var(--rose);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .sidebar-box .source-link:last-child { border-bottom: none; }
+    .sidebar-box .source-link:hover { color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #100a0e;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer a { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-korean { font-size: 2.5rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .content-wrap { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Breadcrumb -->
+<nav>
+  <a href="../index.html">&larr; Course Index</a>
+  <span class="sep">/</span>
+  <span class="current">Madame Freedom Deep Dive</span>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Film Deep Dive &middot; Week 7</div>
+    <div class="hero-korean">자유부인</div>
+    <h1>Madame Freedom</h1>
+    <div class="hero-meta">
+      Directed by <strong>Han Hyongmo</strong> (한형모) &middot; 1956 &middot; 124 min<br>
+      Starring Kim Jeong-rim, Park Am, Lee Min, No Gyeong-hui
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="content-wrap">
+  <div class="two-col">
+
+    <!-- LEFT: Main Column -->
+    <div class="main">
+
+      <h2>Historical Context: Post-War Seoul and American Influence</h2>
+
+      <p>By 1956, Seoul was a city caught between devastation and desire. The Korean War (1950-1953) had left South Korea one of the poorest countries on earth. Seoul itself had changed hands four times during the conflict, and much of the city lay in ruins. Per capita income hovered below $100. Yet American economic and military aid was pouring in at an extraordinary rate, at one point accounting for nearly 80 percent of all government revenues. (<a href="https://www.asianstudies.org/publications/eaa/archives/an-unpromising-recovery-south-koreas-post-korean-war-economic-development-1953-1961/" target="_blank">Association for Asian Studies</a>)</p>
+
+      <div class="doc-card rose">
+        <h4>The Aid Economy and Its Cultural Side Effects</h4>
+        <p>From 1946 to 1976, the United States provided $12.6 billion in economic assistance to South Korea, making it one of the largest per capita aid recipients in the world alongside Israel and South Vietnam. Much of this aid was relief (food, building materials), not long-term development. But it also brought American consumer goods, fashions, and cultural products into a society where traditional Confucian norms still governed daily life. The result was a collision between material aspiration and inherited moral order. (<a href="https://www.asianstudies.org/publications/eaa/archives/an-unpromising-recovery-south-koreas-post-korean-war-economic-development-1953-1961/" target="_blank">Association for Asian Studies</a>)</p>
+      </div>
+
+      <p>The U.S. military presence brought more than strategic protection. American bases introduced Western music, dance, fashion, and social customs directly into Korean cities. Cabarets and dance halls opened near military installations and then spread into civilian neighborhoods. Western-style social dancing, considered scandalous by Korean standards due to physical contact between men and women, became a marker of cosmopolitan sophistication for some and moral decay for others. (<a href="https://ijoc.org/index.php/ijoc/article/viewFile/6280/2107" target="_blank">International Journal of Communication</a>)</p>
+
+      <p>President Syngman Rhee's government relied heavily on American support while simultaneously attempting to construct a self-sufficient Korean economy. Rhee resisted American pressure to liberalize markets and cooperate with Japan, preferring import-substitution industries. Yet the flood of American consumer culture could not be controlled by government policy. By the mid-1950s, a visible gap had opened between the traditional domestic world of the Korean household and the glittering, Western-inflected public sphere of Seoul's commercial districts. This is the exact tension that Madame Freedom dramatizes. (<a href="https://www.asianstudies.org/publications/eaa/archives/an-unpromising-recovery-south-koreas-post-korean-war-economic-development-1953-1961/" target="_blank">Association for Asian Studies</a>)</p>
+
+      <h2>The Novel: Jeong Bi-seok's Sensation</h2>
+
+      <p>The film is based on the serialized novel <em>Jayubuin</em> (자유부인) by Jeong Bi-seok (정비석, 1911-1991), published in the Seoul Shinmun newspaper throughout 1954. The novel created what contemporaries described as an "unexampled sensation." It became the first South Korean book to sell more than 100,000 copies after the Korean War, moving some 140,000 copies. (<a href="https://library.ltikorea.or.kr/writer/200012.0?currentLanguageCd=CO-LAN-ENG" target="_blank">LTI Korea</a>)</p>
+
+      <div class="doc-card gold">
+        <h4>Jeong Bi-seok (1911-1991)</h4>
+        <p>Born in Uiju, Pyeonganbuk-do, Jeong joined a reading group in middle school that was shut down for violating the Japanese colonial Peace Preservation Law in 1927. He spent a year in jail, then studied at Nihon University's Faculty of Literature in Tokyo. He debuted in 1935 with the story "Yeoja" (Woman) in the daily Maeil Shinbo. Before liberation, he wrote primarily in a literary-realist mode. After 1945, he shifted to popular romance novels, of which <em>Jayubuin</em> was the most famous. He went on to become the most prolific newspaper serial novelist in Korean literary history through the 1970s. (<a href="https://library.ltikorea.or.kr/writer/200012.0?currentLanguageCd=CO-LAN-ENG" target="_blank">LTI Korea</a>)</p>
+      </div>
+
+      <p>The novel's daily serialization meant that readers across Seoul followed the story of Professor Jang's wife in real time, debating her choices at breakfast tables and in offices. The narrative tapped into anxieties that were already pervasive: what happens when a respectable woman from a Confucian household enters the world of Western commerce and leisure? The novel did not invent this question. It gave a name to the social rupture that urbanites were already witnessing around them.</p>
+
+      <h2>Director: Han Hyongmo, Cold War Cosmopolitan</h2>
+
+      <p>Han Hyongmo (한형모, April 29, 1917 - September 22, 1999) was born in Uiju, Pyeonganbuk-do, and studied art at the Shingyeong Art School. He entered the film industry as an art director on Choe In-gyu's <em>Homeless Angel</em> (1941), then trained at Dongbo Film Studios in Japan. After Korean independence, he worked as a cinematographer before making his directorial debut with the anti-communist film <em>Breaking the Wall</em> (1949). During the Korean War, he produced propaganda films for the South Korean government. (<a href="https://www.koreanfilm.or.kr/eng/films/index/peopleView.jsp?peopleCd=10087805" target="_blank">Korean Film Council</a>)</p>
+
+      <p>Han was one of the most commercially successful directors of 1950s Korea and the first to implement a production company system in the country. His dual background in art direction and cinematography gave him an unusually strong visual sensibility. Scholars have described him as a "cold war cosmopolitan," a filmmaker who used the visual language of Hollywood glamour to explore the specific dislocations of postwar Korean society. (<a href="https://www.koreasociety.org/arts-culture/item/1451-cold-war-cosmopolitan-han-hyung-mo-korean-cinema-of-the-1950s" target="_blank">Korea Society</a>)</p>
+
+      <div class="pull-quote">
+        "Han Hyung-mo changed the landscape of popular Korean film with his spectacular images of cosmopolitan Seoul, powered by brilliant camera movements and stylish editing, often featuring women's navigation of a 'liberalized' postwar South Korea versus traditional patriarchy."
+        <cite>Harvard Film Archive, screening notes for <em>Madame Freedom</em></cite>
+      </div>
+
+      <h3>Selected Filmography</h3>
+
+      <ul class="filmography">
+        <li><strong>1949:</strong> Breaking the Wall (성벽을 뚫고). Directorial debut. Anti-communist drama, sometimes described as the first Korean film in that genre.</li>
+        <li><strong>1954:</strong> The Hand of Destiny (운명의 손). A North Korean spy falls in love with a South Korean counterintelligence officer. Featured Korea's first on-screen kiss, which lasted only two seconds but caused a national sensation. (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19540024" target="_blank">Korean Film Council</a>)</li>
+        <li class="highlight"><strong>1956:</strong> Madame Freedom (자유부인). Adaptation of Jeong Bi-seok's bestselling novel. Box office phenomenon and cultural lightning rod.</li>
+        <li><strong>1956:</strong> Hyperbolae of Youth (청춘쌍곡선). Youth drama released the same year as Madame Freedom.</li>
+        <li><strong>1957:</strong> The Pure Love (순애보). Romance drama.</li>
+        <li><strong>1961:</strong> My Sister Is a Hussy (오빠는 풍래쟁이). Light comedy.</li>
+      </ul>
+
+      <p>Han's political conservatism is worth noting. He was a committed rightist whose films express skepticism toward uncontrolled liberalism and sympathy for social order. This makes Madame Freedom a more complicated film than a simple celebration or condemnation of female liberation. Han was fascinated by the spectacle of modernity precisely because he viewed it with suspicion. The camera lingers on the dance halls and boutiques with a mixture of attraction and warning. (<a href="https://archives.cinemas-asie.com/en/members/item/1725-han-hyung-mo.html" target="_blank">Festival des Cin&eacute;mas d'Asie de Vesoul</a>)</p>
+
+      <h2>Film Analysis: Plot and Themes</h2>
+
+      <p>Professor Jang Tae-yun (Park Am) and his wife Oh Seon-yeong (Kim Jeong-rim) live a modest, respectable life in Seoul. She wears traditional hanbok and raises their son. But their household income is insufficient, a common problem for professors in postwar Korea, and Seon-yeong takes a job as a cosmetics saleswoman at a Western-style boutique run by the married businessman Shin Chun-ho (Lee Min). (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=20100510" target="_blank">Korean Film Council</a>)</p>
+
+      <p>The boutique is the film's threshold. Once Seon-yeong crosses it, she enters a world of Western consumer goods, social drinking, and flirtation. Her neighbor Choe Yun-ju (No Gyeong-hui) introduces her to the world of jazz and dance parties. Shin Chun-ho makes romantic advances. Seon-yeong begins attending dance halls, where she discovers both physical pleasure and social independence. Meanwhile, Professor Jang is himself tempted by the flattery of a young female student, though he resists more than his wife does. (<a href="https://asianmoviepulse.com/2021/05/film-review-madame-freedom-1956-by-han-hyeong-mo/" target="_blank">Asian Movie Pulse</a>)</p>
+
+      <div class="doc-card mauve">
+        <h4>The Mambo Scene</h4>
+        <p>The film's most famous sequence takes place in a dance hall where an orchestra plays the mambo. A professional dancer, Na Bok-hui, performs in a thin black dress. This scene was technically groundbreaking: Madame Freedom was the first Korean film to shoot in a dance hall, and the first to use a crane shot. The hiring of professional musicians and the dancer Na Bok-hui strained the production budget considerably. For audiences in 1956, the scene was electrifying and scandalous in equal measure. (<a href="https://harvardfilmarchive.org/calendar/madame-freedom-2023-11" target="_blank">Harvard Film Archive</a>)</p>
+      </div>
+
+      <p>The film ends with Seon-yeong's return to her husband and household after recognizing the cost of her choices. Some scholars read this as a conservative restoration of patriarchal order. Others note that the film has already spent most of its runtime showing the audience exactly how seductive and understandable her choices were. The conclusion may restore the social framework, but the images of liberation linger longer in memory than the final scene of repentance.</p>
+
+      <h3>Western Modernity as Seduction and Threat</h3>
+
+      <p>The Harvard Film Archive described Madame Freedom as a film that "visually foregrounds the irresistible American culture sweeping Seoul." The key word is "irresistible." The film does not present Westernization as a neutral phenomenon to be rationally evaluated. It presents it as a sensory experience: the textures of imported fabrics, the rhythms of Latin dance music, the taste of cocktails, the physical thrill of the mambo. Seon-yeong does not make a philosophical decision to reject Confucian womanhood. She is drawn into a world of sensation that her inherited moral framework has no vocabulary to process. (<a href="https://harvardfilmarchive.org/calendar/madame-freedom-2023-11" target="_blank">Harvard Film Archive</a>)</p>
+
+      <p>This is what makes the film valuable for historical analysis. It captures the moment when American material culture arrived in Korea not as an idea but as an experience. The political and diplomatic framework (the U.S.-ROK alliance, Rhee's dependence on American aid) created the conditions. But what actually changed people's lives was the encounter with consumer goods, social customs, and bodily pleasures that had no precedent in the Confucian domestic order.</p>
+
+      <h2>Cultural Impact and Controversy</h2>
+
+      <p>Madame Freedom set a new box office record for 1956 and became one of the most commercially successful Korean films of the decade. Its popularity was inseparable from its controversy. State censors declared the kissing and embracing scenes "lascivious" and demanded cuts. Public debate raged in newspapers, many of the same papers that had serialized the novel. (<a href="https://harvardfilmarchive.org/calendar/madame-freedom-2023-11" target="_blank">Harvard Film Archive</a>)</p>
+
+      <p>The controversy was not simply about sex. It was about the public visibility of female desire. In Confucian Korean society of the 1950s, a married woman's duty was understood in terms of household management, child-rearing, and deference to her husband. A wife who worked outside the home, attended dance parties, and pursued her own pleasures was, in the language of the era, "unthinkable." The Korea Times later noted that Seon-yeong's "choice to leave her marriage to a professor in order to live her own life as an independent individual put the patriarchal Korean society into shock." (<a href="https://www.koreatimes.co.kr/lifestyle/books/20200131/madam-freedom-liberates-korean-women-from-patriarchal-duty" target="_blank">Korea Times</a>)</p>
+
+      <div class="doc-card rose">
+        <h4>U.S. Cold War Cultural Policy</h4>
+        <p>The film's gender politics cannot be separated from Cold War strategy. The United States actively promoted Western ideals, including women's rights and individual freedom, as part of its effort to counter communist influence in Asia. U.S. foreign policy created what scholars have called a "favorable atmosphere" for cinema featuring women's emancipation as a theme. This does not mean the film was propaganda. But it does mean that the cultural space in which it was made and received was shaped by Cold War pressures that neither the filmmakers nor the audience could fully step outside. (<a href="https://www.koreatimes.co.kr/lifestyle/books/20200131/madam-freedom-liberates-korean-women-from-patriarchal-duty" target="_blank">Korea Times</a>)</p>
+      </div>
+
+      <p>The film is now recognized as a defining work of Korea's Golden Age of cinema in the 1950s. The Korean Film Archive has included it among the 100 most important Korean films ever made. Scholar Christina Klein, author of <em>Cold War Cosmopolitanism: Period Style in 1950s Korean Cinema</em>, discovered the film while participating in a Harvard workshop on Korean cinema and described it as "the most famous, and scandalous, film of the 1950s." (<a href="https://www.jstor.org/stable/j.ctv1f8851b" target="_blank">JSTOR</a>)</p>
+
+      <h2>Course Connections</h2>
+
+      <p>Madame Freedom sits at the intersection of several course themes. As a Week 7 film focused on Korea's relations with the United States, it demonstrates how American influence operated not only through diplomacy and military alliance but through material culture, consumer desire, and the transformation of gender expectations.</p>
+
+      <p>The film also connects backward to Week 4's Aimless Bullet (1961), another portrait of postwar Seoul's social ruptures, though from the perspective of male economic failure rather than female cultural transgression. Where Aimless Bullet depicts poverty and displacement grinding down a family from below, Madame Freedom depicts abundance and aspiration pulling a family apart from above. Together, they offer complementary views of the same postwar crisis: a society that was simultaneously too poor to sustain its people and too flooded with foreign goods to maintain its inherited norms.</p>
+
+      <p>The gender dimension connects forward to Week 8's discussion of sex and gender politics in Korean history. Seon-yeong's story raises questions that remained live for decades: who defines the boundaries of acceptable womanhood in Korea, and what happens when those boundaries are drawn by a patriarchal order that is itself destabilized by foreign influence?</p>
+
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h3>Quick Facts</h3>
+        <ul>
+          <li><strong>Korean Title:</strong> 자유부인 (Jayu Buin)</li>
+          <li><strong>Director:</strong> Han Hyongmo (한형모)</li>
+          <li><strong>Year:</strong> 1956</li>
+          <li><strong>Runtime:</strong> 124 minutes</li>
+          <li><strong>Lead Actress:</strong> Kim Jeong-rim as Oh Seon-yeong</li>
+          <li><strong>Lead Actor:</strong> Park Am as Professor Jang Tae-yun</li>
+          <li><strong>Supporting:</strong> Lee Min as Shin Chun-ho</li>
+          <li><strong>Supporting:</strong> No Gyeong-hui as Choe Yun-ju</li>
+          <li><strong>Based on:</strong> Novel by Jeong Bi-seok, serialized in Seoul Shinmun (1954)</li>
+          <li><strong>Language:</strong> Korean</li>
+          <li><strong>Box Office:</strong> Record-setting for 1956</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Terms</h3>
+        <ul>
+          <li><strong>Apr&egrave; girl (아프레 걸):</strong> From French <em>apr&egrave;s-guerre</em> ("postwar"). Term used in 1950s Korea for young women who adopted Western fashions, hairstyles, and social behaviors. Associated with dance halls, cabarets, and consumer culture. A loaded term, mixing fascination with moral censure.</li>
+          <li><strong>Yangban wife (양반 부인):</strong> The educated, upper-class married woman. In Confucian tradition, defined by domestic virtue, restraint, and deference to her husband. Seon-yeong begins the film as this figure and then abandons its constraints.</li>
+          <li><strong>Western modernity (서양 근대):</strong> In the context of 1950s Korea, not a neutral concept of progress but a specific package of American material goods, social customs, and bodily practices that arrived through the U.S. military presence and aid economy.</li>
+          <li><strong>Dance hall / cabaret:</strong> Western-style entertainment venues that spread through Seoul after the Korean War. Combination bars and dance spaces with live music. Perceived as both cosmopolitan and decadent.</li>
+          <li><strong>Mambo:</strong> Latin American dance craze that swept postwar Asia. In Madame Freedom, the mambo scene functions as the visual and musical embodiment of Western sensual culture.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Discussion Questions</h3>
+        <ol>
+          <li>The film ends with Seon-yeong returning to her husband. Does this ending endorse patriarchal order, or has the film already undermined that order by spending 120 minutes showing why she left?</li>
+          <li>Han Hyongmo was politically conservative. How does knowing the director's ideological commitments change your reading of the film's treatment of female desire?</li>
+          <li>The mambo scene was technically revolutionary (first crane shot in Korean cinema) and socially explosive. Why might a conservative director invest so much craft in making Western decadence look spectacular?</li>
+          <li>American Cold War policy promoted women's liberation as an alternative to communism. Does this context complicate how we understand Seon-yeong's "freedom"?</li>
+          <li>Compare Madame Freedom's portrait of postwar Seoul with Aimless Bullet (1961). Both films are set in the same devastated city. What does each film identify as the most destructive force in postwar Korean society?</li>
+        </ol>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Course Connections</h3>
+        <ul>
+          <li><strong>Week 7 Theme:</strong> Relations with Japan, China, United States</li>
+          <li><strong>Pair with:</strong> Aimless Bullet (1961), a complementary view of post-war Seoul</li>
+          <li><strong>Key Reading:</strong> Schmid Ch. 2</li>
+          <li><strong>Literary pairing:</strong> Kang Kyeong-ae, Yu Miri</li>
+          <li><strong>Forward connection:</strong> Week 8, Sex and Gender Politics</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Further Reading and Sources</h3>
+        <a class="source-link" href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=20100510" target="_blank">Korean Film Council: Madame Freedom</a>
+        <a class="source-link" href="https://harvardfilmarchive.org/calendar/madame-freedom-2023-11" target="_blank">Harvard Film Archive: Screening Notes</a>
+        <a class="source-link" href="https://www.koreatimes.co.kr/lifestyle/books/20200131/madam-freedom-liberates-korean-women-from-patriarchal-duty" target="_blank">Korea Times: Madam Freedom and Patriarchy</a>
+        <a class="source-link" href="https://asianmoviepulse.com/2021/05/film-review-madame-freedom-1956-by-han-hyeong-mo/" target="_blank">Asian Movie Pulse: Film Review</a>
+        <a class="source-link" href="https://www.koreasociety.org/arts-culture/item/1451-cold-war-cosmopolitan-han-hyung-mo-korean-cinema-of-the-1950s" target="_blank">Korea Society: Cold War Cosmopolitan</a>
+        <a class="source-link" href="https://www.koreanfilm.or.kr/eng/films/index/peopleView.jsp?peopleCd=10087805" target="_blank">Korean Film Council: Han Hyongmo</a>
+        <a class="source-link" href="https://library.ltikorea.or.kr/writer/200012.0?currentLanguageCd=CO-LAN-ENG" target="_blank">LTI Korea: Jeong Bi-seok</a>
+        <a class="source-link" href="https://www.asianstudies.org/publications/eaa/archives/an-unpromising-recovery-south-koreas-post-korean-war-economic-development-1953-1961/" target="_blank">AAS: Post-War Economic Development</a>
+        <a class="source-link" href="https://lareviewofbooks.org/blog/the-korea-blog/watching-madame-freedom-movie-scandalized-postwar-korea-fifty-years-later/" target="_blank">LA Review of Books: Madame Freedom</a>
+        <a class="source-link" href="https://www.imdb.com/title/tt0399221/" target="_blank">IMDB: Madame Freedom</a>
+        <a class="source-link" href="https://letterboxd.com/film/madame-freedom/" target="_blank">Letterboxd: Madame Freedom</a>
+        <a class="source-link" href="https://www.jstor.org/stable/j.ctv1f8851b" target="_blank">JSTOR: Cold War Cosmopolitanism</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>Korean History through Literature and Film &middot; Spring 2026<br>Lawrence University</div>
+    <div><a href="../index.html">&larr; Back to Course Index</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
