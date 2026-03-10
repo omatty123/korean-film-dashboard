@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fly High Run Far (개벽) | Korean History through Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #5d4037;
+            --accent-light: #795548;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+            --green-dark: #33691e;
+            --green-light: #558b2f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 2rem;
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #2e1a0e 0%, #3e2723 40%, #4e342e 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .course-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.6rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.3rem;
+        }
+        .hero .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 1rem;
+        }
+        .hero .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .hero .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* MAIN GRID */
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 65% 35%;
+            gap: 2rem;
+        }
+
+        /* MAIN COLUMN */
+        .main-col section {
+            margin-bottom: 2.5rem;
+        }
+        .main-col h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 1rem;
+        }
+        .main-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin: 1.25rem 0 0.5rem;
+        }
+        .main-col p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+        .main-col a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--border);
+            text-underline-offset: 2px;
+        }
+        .main-col a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* DOC CARDS */
+        .doc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 3px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .doc-card.green { border-left-color: var(--green-dark); }
+        .doc-card.gold { border-left-color: var(--gold); }
+        .doc-card.brown { border-left-color: var(--accent); }
+        .doc-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink-faint);
+            margin-bottom: 0.5rem;
+        }
+        .doc-card p, .doc-card li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.6;
+        }
+        .doc-card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+        .doc-card li { margin-bottom: 0.3rem; }
+
+        /* SIDEBAR */
+        .sidebar section {
+            margin-bottom: 1.75rem;
+        }
+        .sidebar-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        .sidebar-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-box p, .sidebar-box li {
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            line-height: 1.6;
+        }
+        .sidebar-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-box ul li {
+            padding: 0.35rem 0;
+            border-bottom: 1px solid #f0ede8;
+        }
+        .sidebar-box ul li:last-child { border-bottom: none; }
+        .sidebar-box a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .sidebar-box a:hover { text-decoration: underline; }
+
+        /* QUICK FACTS TABLE */
+        .facts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .facts-table td {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f0ede8;
+            vertical-align: top;
+        }
+        .facts-table td:first-child {
+            font-weight: 600;
+            color: var(--ink);
+            width: 40%;
+            padding-right: 0.75rem;
+        }
+        .facts-table td:last-child {
+            color: var(--ink-light);
+        }
+
+        /* KEY TERM */
+        .key-term {
+            background: var(--paper-warm);
+            border-left: 3px solid var(--gold);
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 0.6rem;
+            border-radius: 0 2px 2px 0;
+        }
+        .key-term .term {
+            font-weight: 600;
+            font-size: 0.82rem;
+            color: var(--ink);
+        }
+        .key-term .korean {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+        .key-term .def {
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            margin-top: 0.15rem;
+        }
+
+        /* PERSON CARD */
+        .person-card {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f0ede8;
+        }
+        .person-card:last-child { border-bottom: none; }
+        .person-card .name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+        .person-card .name-kr {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+        .person-card .role {
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            margin-top: 0.1rem;
+        }
+        .person-card .bio {
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+        }
+
+        /* DISCUSSION */
+        .discussion-list {
+            counter-reset: q;
+            padding: 0;
+            list-style: none;
+        }
+        .discussion-list li {
+            counter-increment: q;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            border-bottom: 1px solid #f0ede8;
+        }
+        .discussion-list li:last-child { border-bottom: none; }
+        .discussion-list li::before {
+            content: counter(q) ".";
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* SOURCES */
+        .sources-list {
+            list-style: none;
+            padding: 0;
+        }
+        .sources-list li {
+            font-size: 0.78rem;
+            padding: 0.35rem 0;
+            border-bottom: 1px solid #f0ede8;
+            color: var(--ink-light);
+        }
+        .sources-list li:last-child { border-bottom: none; }
+        .sources-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .sources-list a:hover { text-decoration: underline; }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.5);
+            padding: 1.5rem 2rem;
+            font-size: 0.75rem;
+        }
+        footer .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+                padding: 1.25rem;
+            }
+            .hero { padding: 2rem 1.5rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero .meta-row { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to Film Dashboard</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <div class="course-label">Week 2 (Optional) &middot; Deep Dive</div>
+        <h1>Fly High Run Far</h1>
+        <div class="korean-title">개벽 &middot; Opening of a New World</div>
+        <div class="meta-row">
+            <span>Dir. Im Kwontaek (임권택)</span>
+            <span>1991</span>
+            <span>146 min</span>
+            <span>Drama / Historical Epic</span>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-wrap">
+
+    <!-- LEFT: MAIN CONTENT -->
+    <div class="main-col">
+
+        <!-- HISTORICAL CONTEXT -->
+        <section>
+            <h2>Historical Context: The Donghak Movement</h2>
+
+            <p>In 1860, a failed scholar named Choe Che-u (also romanized Choe Je-u, 최제우) founded a new religious and philosophical movement called <strong>Donghak</strong> (동학, "Eastern Learning"). Alarmed by the spread of Catholicism (known in Korea as Seohak, "Western Learning") and the Anglo-French occupation of Beijing, Choe synthesized elements from Confucianism, Buddhism, Taoism, and Korean shamanism into a doctrine that proclaimed all human beings equal before heaven. His core teaching, <em>Innaech'on</em> (人乃天, "humans are heaven"), radically challenged the rigid class hierarchies of the Chos&#335;n dynasty. (<a href="https://www.britannica.com/biography/Choe-Je-u">Britannica</a>)</p>
+
+            <p>Donghak spread rapidly among impoverished peasants and displaced farmers in the southern provinces. The religion gave them both spiritual solace and a vocabulary for political resistance. The Chos&#335;n court, viewing the movement as seditious, arrested Choe Che-u and executed him in 1864. His death made him a martyr. (<a href="https://www.britannica.com/biography/Choe-Je-u">Britannica</a>)</p>
+
+            <h3>The Second Patriarch: Choe Si-hy&#335;ng</h3>
+            <p>After the founder's execution, Choe Si-hy&#335;ng (최시형, 1827-1898) took over leadership. Born into poverty in Ky&#335;ngju, orphaned young, he worked as a farmhand and paper mill laborer before encountering Donghak in 1861. As the second patriarch, he reorganized the movement through underground networks, published the first two Donghak scriptures in 1880-81, and expanded the doctrine: people must not only recognize their equality before heaven, they must "serve Man as they serve heaven." In 1892 he mobilized tens of thousands for a peaceful demonstration calling for the founder's posthumous exoneration and administrative reform. (<a href="https://www.britannica.com/biography/Choe-Si-hyeong">Britannica</a>)</p>
+
+            <p>This figure is the central protagonist of <em>Fly High Run Far</em>. The film dramatizes his struggle to preserve and propagate Donghak while evading the court's relentless persecution.</p>
+        </section>
+
+        <!-- THE 1894 UPRISING -->
+        <section>
+            <h2>The 1894 Donghak Peasant Revolution</h2>
+
+            <p>By the early 1890s, conditions in southern Korea had become unbearable. Government corruption was systemic: officials purchased their posts and then squeezed peasants to recoup the investment. The <em>yangban</em> (aristocratic) class had expanded dramatically, with many refusing manual labor even as they fell into poverty, shifting the tax burden onto farmers. Foreign encroachment, especially from Japan and Western powers, added to the crisis. (<a href="https://www.newworldencyclopedia.org/entry/Donghak_Peasant_Revolution">New World Encyclopedia</a>)</p>
+
+            <h3>The First Uprising (January-June 1894)</h3>
+            <p>In January 1894, peasants led by Ch&#335;n Pong-jun (전봉준, 1854-1895), a charismatic local teacher nicknamed the "Green Bean General" for his small stature, rose against the corrupt magistrate of Kobu county. After initial victories, the peasant army defeated government forces at the Battle of Hwangt'ohy&#335;n in May 1894 and occupied Ch&#335;nju (Jeonju) Palace. The rebels demanded institutional reform and the expulsion of foreign influences. (<a href="https://www.newworldencyclopedia.org/entry/Donghak_Peasant_Revolution">New World Encyclopedia</a>)</p>
+
+            <div class="doc-card green">
+                <h4>The Ch&#335;nju Treaty (June 1894)</h4>
+                <p>The peasant army and the government negotiated a truce. Peasants agreed to disarm in exchange for reform promises. This brief armistice allowed the peasants to establish local self-governance offices (<em>chipkangso</em>) across the Cholla provinces. However, the pause proved fatal to the movement's military momentum.</p>
+            </div>
+
+            <h3>Foreign Intervention and the Second Uprising</h3>
+            <p>Threatened by the rebellion, King Kojong requested Chinese military assistance. Japan, citing treaty provisions, dispatched its own troops uninvited. With both powers' armies on Korean soil, the Sino-Japanese War erupted in July 1894. Korea, the nominal reason for both countries' intervention, became a battlefield for imperial competition. (<a href="https://www.britannica.com/event/Donghak-Uprising">Britannica</a>)</p>
+
+            <p>When the pro-Japanese government in Seoul suppressed reform, Ch&#335;n Pong-jun launched a second uprising in October 1894. At the Battle of Ug&#365;mch'i in November, the peasant army faced Japanese troops armed with cannons and modern rifles. The peasants, carrying bamboo spears, swords, and flintlock muskets, suffered devastating losses. Ch&#335;n Pong-jun was captured in December 1894 and executed in 1895. Choe Si-hy&#335;ng evaded capture until 1898, when he too was arrested and executed in Seoul. (<a href="https://www.newworldencyclopedia.org/entry/Donghak_Peasant_Revolution">New World Encyclopedia</a>)</p>
+
+            <div class="doc-card gold">
+                <h4>Why This Matters</h4>
+                <p>The Donghak Peasant Revolution occupies a foundational place in Korean national consciousness. It was the first large-scale popular movement demanding equality, human rights, and national sovereignty. The revolution directly triggered the First Sino-Japanese War (1894-95), which ended Chinese suzerainty over Korea and opened the door to Japanese colonial domination. Many later participants in anti-Japanese resistance, including the independence leader Kim Ku, had roots in the Donghak movement. (<a href="https://www.newworldencyclopedia.org/entry/Donghak_Peasant_Revolution">New World Encyclopedia</a>)</p>
+            </div>
+        </section>
+
+        <!-- DIRECTOR PROFILE -->
+        <section>
+            <h2>Director Profile: Im Kwontaek</h2>
+
+            <p>Im Kwontaek (임권택, born May 2, 1936, Changs&#335;ng, South Ch&#335;lla Province) is widely called "the father of Korean cinema." Over a career spanning more than five decades, he directed over 102 films, making him one of the most prolific directors in world cinema history. (<a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica</a>)</p>
+
+            <p>Im grew up in Kwangju during the Japanese occupation and the Korean War. After his father's death, he dropped out of school and drifted to Pusan, then Seoul, where director Ch&#335;ng Ch'ang-hwa offered him work as a production assistant in 1956. He made his directorial debut in 1962 with <em>Farewell to the Duman River</em>. His first decade produced roughly fifty genre films (action, melodrama, war pictures) made quickly for commercial survival. (<a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica</a>)</p>
+
+            <h3>The Turn Toward Korean Identity</h3>
+            <p>Beginning in the late 1970s, Im underwent a creative transformation. He resolved to make films that were "uniquely Korean," exploring the country's history, spiritual traditions, and cultural identity. The breakthrough came with <em>Mandala</em> (1981), a meditation on Buddhist monasticism. From that point forward, each film became an excavation of Korean experience.</p>
+
+            <div class="doc-card brown">
+                <h4>Selected Filmography</h4>
+                <ul>
+                    <li><em>Mandala</em> (1981). Two Buddhist monks on contrasting spiritual paths.</li>
+                    <li><em>The Genealogy</em> (Chokpo, 1978). Japanese occupation and Korean identity.</li>
+                    <li><em>Fly High Run Far</em> (Gaebyeok, 1991). The Donghak movement and Choe Si-hy&#335;ng.</li>
+                    <li><em>Sopyonje</em> (1993). Pansori tradition and cultural loss. Most honored Korean film of its era, with 27 domestic and 3 international prizes.</li>
+                    <li><em>T'aebaek Mountains</em> (1994). Korean War and ideological partition.</li>
+                    <li><em>Ch'unhyang</em> (2000). Classical Korean love story through pansori.</li>
+                    <li><em>Chihwas&#335;n</em> (Painted Fire, 2002). 19th-century painter Jang S&#365;ng-&#365;p. Won Best Director at Cannes, the first Korean director to receive the honor.</li>
+                </ul>
+            </div>
+
+            <p>Im was a founding figure of the Korean New Wave alongside directors Park Kwang-su and Jang S&#335;n-u. His international recognition helped open global audiences to Korean cinema, paving the way for later directors such as Bong Joon-ho and Park Chan-wook. He received the Akira Kurosawa Award from the San Francisco International Film Festival (1998) and the French Legion of Honour (2007). (<a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica</a>)</p>
+        </section>
+
+        <!-- FILM ANALYSIS -->
+        <section>
+            <h2>Film Analysis</h2>
+
+            <h3>Plot and Structure</h3>
+            <p><em>Fly High Run Far</em> focuses on Choe Si-hy&#335;ng, the second patriarch of the Donghak movement, rather than on the more commonly depicted military rebellion of 1894. The screenplay, by the philosopher Kim Yong-ok (김용옥), treats the Donghak story as a spiritual epic: it charts how a persecuted religious leader preserves a vision of human equality while the state hunts him across mountains and provinces. After the founder's execution, Choe inherits a scattered, underground movement and must rebuild it. As the religion grows, so does the court's determination to crush it. The film follows Choe's flight into the T'aebaek Mountains, his separation from his family, and his eventual capture. (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19910051">KOFIC</a>)</p>
+
+            <h3>Title: "Gaebyeok" (개벽)</h3>
+            <p>The Korean title carries more weight than the English one. <em>Gaebyeok</em> (개벽) means "the opening of a new world" or "great transformation." In Donghak theology, <em>gaebyeok</em> refers to a cosmic renewal: the old, corrupt order dissolving to make way for a world where all humans are treated as heaven. It is not simply revolution in the political sense but a total spiritual and social rebirth.</p>
+
+            <h3>Themes</h3>
+            <p><strong>Spiritual resistance as political resistance.</strong> The film frames Donghak not primarily as a protest movement but as a way of being in the world. Choe Si-hy&#335;ng's insistence that "all humans are heaven" is itself an act of defiance against a feudal system built on rigid hierarchy.</p>
+
+            <p><strong>The cost of belief.</strong> Im Kwontaek's camera lingers on the physical and emotional toll of Choe's fugitive existence. Separated from family, hunted by soldiers, moving between safe houses and mountain hermitages, the patriarch's devotion consumes his entire life.</p>
+
+            <p><strong>Peasant Korea.</strong> The film's visual language draws on the landscape of rural Ch&#335;lla and the T'aebaek range. Im uses the natural world not as backdrop but as a character: the mountains shelter the faithful, the fields feed them, and the seasons mark the passage of persecution.</p>
+
+            <div class="doc-card green">
+                <h4>Connection to Course Themes</h4>
+                <ul>
+                    <li><strong>Roots of Korean nationalism.</strong> Donghak was among the earliest indigenous movements to articulate Korean identity in opposition to both the Chinese world order and Western imperialism.</li>
+                    <li><strong>Peasant resistance and class.</strong> The yangban system's collapse and the peasant demand for equality anticipate every subsequent Korean democratic movement.</li>
+                    <li><strong>Origins of colonialism.</strong> The Donghak uprising directly triggered the Sino-Japanese War, which ended Chinese influence in Korea and began Japan's path to colonial annexation (1910).</li>
+                    <li><strong>Minjung consciousness.</strong> The 1980s South Korean democracy movement explicitly claimed the Donghak rebels as predecessors. The <em>minjung</em> ("people's") movement saw itself as inheriting the peasants' unfinished struggle for equality and self-determination. (<a href="https://www.newworldencyclopedia.org/entry/Donghak_Peasant_Revolution">New World Encyclopedia</a>)</li>
+                </ul>
+            </div>
+
+            <h3>Critical Reception</h3>
+            <p>The film won Best Director and Best Actor at the 1991 Chunsa Film Festival and was selected for the Grand Bell Awards. It was also featured in the Korean Cinema Retrospective at the 2013 Busan International Film Festival. The critic Jonathan Rosenbaum called it "a beautiful and powerful spiritual epic." Despite its quality, the film remains under-discussed outside Korea, partly because it requires familiarity with the Donghak movement and late Chos&#335;n history to fully appreciate. (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19910051">KOFIC</a>)</p>
+        </section>
+
+        <!-- SOURCES -->
+        <section>
+            <h2>Sources</h2>
+            <ul class="sources-list">
+                <li><a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica: Im Kwon-Taek</a>. Biography, filmography, and career milestones.</li>
+                <li><a href="https://www.britannica.com/biography/Choe-Je-u">Britannica: Choe Je-u</a>. Founder of Donghak, life and teachings.</li>
+                <li><a href="https://www.britannica.com/biography/Choe-Si-hyeong">Britannica: Choe Si-hyeong</a>. Second Donghak patriarch, scriptures, 1892 demonstration.</li>
+                <li><a href="https://www.britannica.com/event/Donghak-Uprising">Britannica: Donghak Uprising</a>. 1894 revolt, foreign intervention, Sino-Japanese War.</li>
+                <li><a href="https://www.newworldencyclopedia.org/entry/Donghak_Peasant_Revolution">New World Encyclopedia: Donghak Peasant Revolution</a>. Detailed narrative of both uprisings, battles, treaty, legacy.</li>
+                <li><a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19910051">Korean Film Council (KOFIC): Fly High, Run Far</a>. Official Korean film database entry, cast, crew, awards.</li>
+                <li><a href="https://kdemocracy.com/the-donghak-peasant-revolution-a-song-of-hope-and-struggle-in-1894-korea/">KDemocracy: The Donghak Peasant Revolution</a>. Ch&#335;n Pong-jun biography, "Green Bean General" epithet.</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- RIGHT: SIDEBAR -->
+    <div class="sidebar">
+
+        <!-- QUICK FACTS -->
+        <div class="sidebar-box">
+            <h3>Quick Facts</h3>
+            <table class="facts-table">
+                <tr><td>Korean Title</td><td>개벽 (Gaebyeok)</td></tr>
+                <tr><td>English Title</td><td>Fly High Run Far</td></tr>
+                <tr><td>Director</td><td>Im Kwontaek (임권택)</td></tr>
+                <tr><td>Screenplay</td><td>Kim Yong-ok (김용옥)</td></tr>
+                <tr><td>Year</td><td>1991</td></tr>
+                <tr><td>Runtime</td><td>146 minutes</td></tr>
+                <tr><td>Genre</td><td>Drama, Historical Epic</td></tr>
+                <tr><td>Lead Actor</td><td>Lee Duk-hwa (이덕화)</td></tr>
+                <tr><td>Cinematography</td><td>Ch&#335;ng Il-s&#365;ng</td></tr>
+                <tr><td>Awards</td><td>Chunsa Best Director, Best Actor (1991)</td></tr>
+                <tr><td>Historical Period</td><td>1860s-1890s (late Chos&#335;n)</td></tr>
+                <tr><td>Setting</td><td>Southern Korea, T'aebaek Mountains</td></tr>
+            </table>
+        </div>
+
+        <!-- KEY FIGURES -->
+        <div class="sidebar-box">
+            <h3>Key Historical Figures</h3>
+
+            <div class="person-card">
+                <div class="name">Choe Che-u (Choe Je-u)</div>
+                <div class="name-kr">최제우 &middot; 1824-1864</div>
+                <div class="role">Founder of Donghak</div>
+                <div class="bio">Son of a poor village scholar. Founded Donghak in 1860 after a claimed divine revelation. Synthesized Confucian, Buddhist, Taoist, and shamanistic elements into a doctrine of universal equality. Executed by the Chos&#335;n court in 1864 for fomenting rebellion. (<a href="https://www.britannica.com/biography/Choe-Je-u">Britannica</a>)</div>
+            </div>
+
+            <div class="person-card">
+                <div class="name">Choe Si-hy&#335;ng</div>
+                <div class="name-kr">최시형 &middot; 1827-1898</div>
+                <div class="role">Second Patriarch of Donghak (film's protagonist)</div>
+                <div class="bio">Orphaned farmhand who joined Donghak in 1861. Published the first Donghak scriptures, expanded the doctrine to "serve Man as heaven." Led tens of thousands in peaceful demonstrations. Evaded capture for decades before his execution in 1898. (<a href="https://www.britannica.com/biography/Choe-Si-hyeong">Britannica</a>)</div>
+            </div>
+
+            <div class="person-card">
+                <div class="name">Ch&#335;n Pong-jun (Jeon Bong-jun)</div>
+                <div class="name-kr">전봉준 &middot; 1854-1895</div>
+                <div class="role">Military leader of the 1894 uprising</div>
+                <div class="bio">Known as the "Green Bean General" for his small stature. Led the peasant army to early victories at Kobu and Hwangt'ohy&#335;n. Defeated at Ug&#365;mch'i by Japanese firepower. Captured and executed in 1895. (<a href="https://kdemocracy.com/the-donghak-peasant-revolution-a-song-of-hope-and-struggle-in-1894-korea/">KDemocracy</a>)</div>
+            </div>
+
+            <div class="person-card">
+                <div class="name">Son Py&#335;ng-h&#365;i</div>
+                <div class="name-kr">손병희 &middot; 1861-1922</div>
+                <div class="role">Third Patriarch, renamed Donghak to Ch'&#335;ndogyo</div>
+                <div class="bio">Reorganized the movement as the religion Ch'&#335;ndogyo ("Religion of the Heavenly Way"). Later became one of the 33 signatories of Korea's March 1st Independence Declaration in 1919.</div>
+            </div>
+        </div>
+
+        <!-- KEY TERMS -->
+        <div class="sidebar-box">
+            <h3>Key Terms</h3>
+
+            <div class="key-term">
+                <div class="term">Donghak <span class="korean">동학</span></div>
+                <div class="def">"Eastern Learning." A syncretic Korean religious and philosophical movement founded in 1860 as a counter to "Western Learning" (Christianity). Blended Confucian, Buddhist, Taoist, and shamanistic elements.</div>
+            </div>
+
+            <div class="key-term">
+                <div class="term">Innaech'&#335;n <span class="korean">인내천 (人乃天)</span></div>
+                <div class="def">"Humans are heaven." The core Donghak doctrine asserting that all people are divine and equal. Directly challenged the Chos&#335;n class system.</div>
+            </div>
+
+            <div class="key-term">
+                <div class="term">Gaebyeok <span class="korean">개벽</span></div>
+                <div class="def">"Opening of a new world." In Donghak theology, a cosmic transformation where the corrupt old order dissolves and a new era of equality begins. The film's Korean title.</div>
+            </div>
+
+            <div class="key-term">
+                <div class="term">Yangban <span class="korean">양반</span></div>
+                <div class="def">The aristocratic ruling class of the Chos&#335;n dynasty. By the 19th century, the class had expanded enormously while peasant burdens grew, fueling resentment.</div>
+            </div>
+
+            <div class="key-term">
+                <div class="term">Chipkangso <span class="korean">집강소</span></div>
+                <div class="def">Local self-governance offices established by Donghak peasants in Ch&#335;lla province after the Ch&#335;nju Treaty (1894). An experiment in grassroots democracy.</div>
+            </div>
+
+            <div class="key-term">
+                <div class="term">Ch'&#335;ndogyo <span class="korean">천도교</span></div>
+                <div class="def">"Religion of the Heavenly Way." The successor religion to Donghak, renamed by the third patriarch Son Py&#335;ng-h&#365;i. Still practiced in both Koreas today.</div>
+            </div>
+
+            <div class="key-term">
+                <div class="term">Minjung <span class="korean">민중</span></div>
+                <div class="def">"The people" or "the masses." A concept central to South Korea's 1970s-80s democracy movement, which traced its lineage directly to the Donghak rebels.</div>
+            </div>
+        </div>
+
+        <!-- DISCUSSION QUESTIONS -->
+        <div class="sidebar-box">
+            <h3>Discussion Questions</h3>
+            <ol class="discussion-list">
+                <li>The film focuses on Choe Si-hy&#335;ng (the religious leader) rather than Ch&#335;n Pong-jun (the military leader). What does this choice tell us about Im Kwontaek's understanding of the Donghak movement?</li>
+                <li>How does the concept of <em>innaech'&#335;n</em> ("humans are heaven") challenge both the Chos&#335;n class system and the incoming Western ideologies?</li>
+                <li>The 1894 uprising was crushed by a combination of Korean government forces and Japanese troops. How does foreign intervention transform a domestic reform movement into a nationalist one?</li>
+                <li>South Korea's democracy activists in the 1980s explicitly claimed the Donghak rebels as ancestors. Is this a legitimate historical connection or a political appropriation?</li>
+                <li>The Korean title <em>Gaebyeok</em> means "opening of a new world." How does this differ from Western concepts of revolution? What does it reveal about the Donghak movement's self-understanding?</li>
+                <li>Compare Im Kwontaek's treatment of traditional Korean culture here with his approach in <em>Sopyonje</em> (1993). What connects these two films?</li>
+            </ol>
+        </div>
+
+        <!-- FURTHER READING -->
+        <div class="sidebar-box">
+            <h3>Further Reading</h3>
+            <ul>
+                <li><a href="https://www.britannica.com/event/Donghak-Uprising">Britannica: Donghak Uprising</a>. Concise overview of the 1894 rebellion.</li>
+                <li><a href="https://www.newworldencyclopedia.org/entry/Donghak_Peasant_Revolution">New World Encyclopedia: Donghak Peasant Revolution</a>. Detailed narrative with context on causes and aftermath.</li>
+                <li><a href="https://www.britannica.com/biography/Im-Kwon-Taek">Britannica: Im Kwon-Taek</a>. Director biography and complete career overview.</li>
+                <li><a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19910051">KOFIC: Fly High, Run Far</a>. Official Korean Film Council database entry.</li>
+                <li><a href="https://www.mdpi.com/2077-1444/11/5/265">MDPI Religions: "The Mystic Universality of Donghak"</a>. Academic article on Donghak philosophy.</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Film &middot; Spring 2026<br>Lawrence University</div>
+        <div><a href="../index.html">Film Dashboard</a></div>
+    </div>
+</footer>
+
+</body>
+</html>
