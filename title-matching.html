@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Korean Title Translation Activity</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.6in 0.7in;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  .header {
+    text-align: left;
+    margin-bottom: 0.15in;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.1in;
+  }
+  .header h1 {
+    font-size: 15pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .header p {
+    font-size: 9pt;
+    color: #555;
+    margin-top: 2pt;
+  }
+  .name-line {
+    margin: 0.12in 0 0.15in;
+    font-size: 10pt;
+  }
+  .name-line span {
+    display: inline-block;
+    border-bottom: 1px solid #999;
+    width: 2.5in;
+    margin-left: 0.1in;
+  }
+  .instructions {
+    font-size: 9.5pt;
+    color: #444;
+    margin-bottom: 0.15in;
+    padding: 0.1in 0.15in;
+    background: #f5f5f5;
+    border-radius: 3px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.1in;
+  }
+  th {
+    text-align: left;
+    font-size: 8pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    padding: 3pt 5pt;
+    border-bottom: 1.5px solid #333;
+  }
+  td {
+    padding: 4pt 5pt;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+  }
+  .num {
+    width: 0.22in;
+    font-weight: 600;
+    color: #888;
+    font-size: 9pt;
+  }
+  .korean {
+    width: 1.6in;
+    font-size: 12pt;
+    font-weight: 500;
+  }
+  .type-tag {
+    display: inline-block;
+    font-size: 6.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 1pt 3pt;
+    border-radius: 2px;
+    margin-left: 3pt;
+    vertical-align: middle;
+    position: relative;
+    top: -1pt;
+    background: #e8e8e8;
+    color: #555;
+  }
+  .choices {
+    font-size: 9.5pt;
+  }
+  .choices .choice {
+    display: inline-block;
+    margin-right: 0.12in;
+    margin-bottom: 1pt;
+  }
+  .choices .letter {
+    font-weight: 600;
+    margin-right: 2pt;
+  }
+  .answer-box {
+    width: 0.3in;
+    text-align: center;
+    font-size: 10pt;
+  }
+  .section-label {
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #999;
+    padding: 6pt 5pt 2pt;
+    border-bottom: none;
+  }
+  .footer {
+    margin-top: 0.1in;
+    padding-top: 0.08in;
+    border-top: 1px solid #ccc;
+    font-size: 8pt;
+    color: #999;
+  }
+  .bonus {
+    margin-top: 0.15in;
+    padding: 0.1in 0.15in;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .bonus h3 {
+    font-size: 10pt;
+    margin-bottom: 3pt;
+  }
+  .bonus p {
+    font-size: 9pt;
+    color: #444;
+  }
+  .write-line {
+    border-bottom: 1px solid #bbb;
+    height: 0.22in;
+    margin: 2pt 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>한글 제목 맞추기 — What Did They Call It in English?</h1>
+  <p>HIST 418 / FILM 419 — Modern Korean History through Literature and Film</p>
+</div>
+
+<div class="name-line">Name: <span>&nbsp;</span> &nbsp;&nbsp; Date: <span style="width:1.2in">&nbsp;</span></div>
+
+<div class="instructions">
+  Every choice below is a valid English translation of the Korean. But only one is the title actually used. Circle the one you think the translator or filmmaker chose. Be ready to explain <em>why</em> they might have picked that one over the others.
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th class="num">#</th>
+      <th class="korean">한글 제목</th>
+      <th>All valid translations. Which one did they use?</th>
+      <th class="answer-box"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="4" class="section-label">Films 영화</td></tr>
+
+    <tr>
+      <td class="num">1</td>
+      <td class="korean">사도 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Thinking of the Dead</span>
+        <span class="choice"><span class="letter">B.</span> The Throne</span>
+        <span class="choice"><span class="letter">C.</span> A Father's Grief</span>
+        <span class="choice"><span class="letter">D.</span> Royal Mourning</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">2</td>
+      <td class="korean">자유부인 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> A Free Woman</span>
+        <span class="choice"><span class="letter">B.</span> Madame Freedom</span>
+        <span class="choice"><span class="letter">C.</span> The Liberated Wife</span>
+        <span class="choice"><span class="letter">D.</span> Mrs. Liberty</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">3</td>
+      <td class="korean">오발탄 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Stray Bullet</span>
+        <span class="choice"><span class="letter">B.</span> Aimless Bullet</span>
+        <span class="choice"><span class="letter">C.</span> Misfired Round</span>
+        <span class="choice"><span class="letter">D.</span> A Bullet Gone Astray</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">4</td>
+      <td class="korean">서편제 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Sopyonje</span>
+        <span class="choice"><span class="letter">B.</span> The Western Style</span>
+        <span class="choice"><span class="letter">C.</span> Song of the Sorrowful</span>
+        <span class="choice"><span class="letter">D.</span> Western School of Pansori</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">5</td>
+      <td class="korean">박하사탕 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Mint Candy</span>
+        <span class="choice"><span class="letter">B.</span> Peppermint Candy</span>
+        <span class="choice"><span class="letter">C.</span> Peppermint Drop</span>
+        <span class="choice"><span class="letter">D.</span> Menthol Sweet</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">6</td>
+      <td class="korean">태백산맥 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> The Taebaek Range</span>
+        <span class="choice"><span class="letter">B.</span> The Taebaek Mountains</span>
+        <span class="choice"><span class="letter">C.</span> Great White Mountains</span>
+        <span class="choice"><span class="letter">D.</span> Taebaek Sanmaek</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">7</td>
+      <td class="korean">꽃파는 처녀 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> The Flower-Selling Maiden</span>
+        <span class="choice"><span class="letter">B.</span> The Flower Girl</span>
+        <span class="choice"><span class="letter">C.</span> The Girl Who Sells Flowers</span>
+        <span class="choice"><span class="letter">D.</span> A Flower Seller</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">8</td>
+      <td class="korean">귀향 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Homecoming</span>
+        <span class="choice"><span class="letter">B.</span> Spirit's Homecoming</span>
+        <span class="choice"><span class="letter">C.</span> Return to the Homeland</span>
+        <span class="choice"><span class="letter">D.</span> The Return Home</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">9</td>
+      <td class="korean">개벽 <span class="type-tag">film</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> The Opening of the World</span>
+        <span class="choice"><span class="letter">B.</span> Fly High, Run Far</span>
+        <span class="choice"><span class="letter">C.</span> A New Heaven and Earth</span>
+        <span class="choice"><span class="letter">D.</span> Genesis</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr><td colspan="4" class="section-label">Literature 문학</td></tr>
+
+    <tr>
+      <td class="num">10</td>
+      <td class="korean">감자 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Potatoes</span>
+        <span class="choice"><span class="letter">B.</span> Potato</span>
+        <span class="choice"><span class="letter">C.</span> The Potato</span>
+        <span class="choice"><span class="letter">D.</span> Sweet Potatoes</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">11</td>
+      <td class="korean">학 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Cranes</span>
+        <span class="choice"><span class="letter">B.</span> The Crane</span>
+        <span class="choice"><span class="letter">C.</span> Red-Crowned Cranes</span>
+        <span class="choice"><span class="letter">D.</span> White Cranes</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">12</td>
+      <td class="korean">승냥이 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Wolves</span>
+        <span class="choice"><span class="letter">B.</span> Jackals</span>
+        <span class="choice"><span class="letter">C.</span> Wild Dogs</span>
+        <span class="choice"><span class="letter">D.</span> Hyenas</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">13</td>
+      <td class="korean">오적 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Five Thieves</span>
+        <span class="choice"><span class="letter">B.</span> Five Bandits</span>
+        <span class="choice"><span class="letter">C.</span> Five Villains</span>
+        <span class="choice"><span class="letter">D.</span> The Five Criminals</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">14</td>
+      <td class="korean">자각 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Awakening</span>
+        <span class="choice"><span class="letter">B.</span> Self-Awareness</span>
+        <span class="choice"><span class="letter">C.</span> Coming to Consciousness</span>
+        <span class="choice"><span class="letter">D.</span> Realization</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">15</td>
+      <td class="korean">봉별기 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> A Record of Seeing Stars</span>
+        <span class="choice"><span class="letter">B.</span> Meetings and Farewells</span>
+        <span class="choice"><span class="letter">C.</span> A Memoir of Encounters and Partings</span>
+        <span class="choice"><span class="letter">D.</span> An Account of Meeting Venus</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">16</td>
+      <td class="korean">난장이가 쏘아올린 작은 공 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> The Small Ball Shot Up by a Dwarf</span>
+        <span class="choice"><span class="letter">B.</span> A Dwarf Launches a Little Ball</span>
+        <span class="choice"><span class="letter">C.</span> The Little Ball a Midget Sent Flying</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">17</td>
+      <td class="korean">소금 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Salt</span>
+        <span class="choice"><span class="letter">B.</span> Brine</span>
+        <span class="choice"><span class="letter">C.</span> The Salt of the Earth</span>
+        <span class="choice"><span class="letter">D.</span> Salt Workers</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+    <tr>
+      <td class="num">18</td>
+      <td class="korean">해방전후 <span class="type-tag">story</span></td>
+      <td class="choices">
+        <span class="choice"><span class="letter">A.</span> Around the Time of Liberation</span>
+        <span class="choice"><span class="letter">B.</span> Before and After Liberation</span>
+        <span class="choice"><span class="letter">C.</span> Before and After the Emancipation</span>
+        <span class="choice"><span class="letter">D.</span> The Liberation Period</span>
+      </td>
+      <td class="answer-box"></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div class="bonus">
+  <h3>Discussion: Why that translation?</h3>
+  <p>Pick two titles where you found the translator's choice surprising. Why do you think they chose that English title over the other valid options? What is gained or lost?</p>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+</div>
+
+<div class="footer">
+  HIST 418 / FILM 419 — Title Translation Activity
+</div>
+
+</body>
+</html>
