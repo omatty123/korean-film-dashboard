@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Jackals — Han Sorya">
+    <meta property="og:description" content="DPRK socialist realism and the missionary as colonial agent. Korean History through Literature.">
+    <title>Jackals (승냥이) | Korean History through Literature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+        .breadcrumb { background: var(--ink); padding: 0.6rem 2rem; font-size: 0.75rem; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.4); }
+        .hero { background: linear-gradient(rgba(26,34,38,0.82), rgba(55,71,79,0.82)), url('../images/authors/han-sorya.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
+        .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
+        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
+        .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
+        .section-title { font-family: 'Newsreader', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+        .doc-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        .doc-card.gold-border { border-left-color: var(--gold); }
+        .doc-card.dark-border { border-left-color: var(--ink); }
+        .doc-card.light-border { border-left-color: var(--accent-light); }
+        .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
+        .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
+        .doc-card p:last-child { margin-bottom: 0; }
+        .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
+        .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
+        .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
+        .sidebar-card.dark-header h3 { border-bottom-color: var(--ink); }
+        .author-portrait { width: 100%; border-radius: 2px; margin-bottom: 0.75rem; display: block; }
+        .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+        .fact-row:last-child { border-bottom: none; }
+        .fact-label { font-weight: 600; color: var(--ink); }
+        .fact-value { color: var(--ink-light); }
+        .concept-item { margin-bottom: 1rem; }
+        .concept-item:last-child { margin-bottom: 0; }
+        .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+        .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
+        .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .discussion-q:last-child { border-bottom: none; }
+        .discussion-q strong { color: var(--ink); font-weight: 600; }
+        .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+        .source-item:last-child { border-bottom: none; }
+        .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
+        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
+        footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+    <a href="../literature.html">&larr; Back to Literature</a>
+    <span> / Deep Dive</span>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Deep Dive: Novella &mdash; Week 3</div>
+        <h1>Jackals</h1>
+        <div class="hero-korean">승냥이 (Sŭngnyangi) &nbsp;&middot;&nbsp; Han Sorya</div>
+        <div class="hero-meta">
+            <span>Han Sorya (한설야, 1900&ndash;1976)</span>
+            <span>1951</span>
+            <span>Novella</span>
+            <span>DPRK</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrap">
+<div class="two-col">
+
+<main>
+
+    <h2 class="section-title">About the Author</h2>
+
+    <div class="doc-card">
+        <h3>The DPRK's Literary Tsar</h3>
+        <p>Han Sorya (한설야) was the most powerful figure in North Korean literature for nearly two decades. He served as head of the Korean Writers' Alliance (조선작가동맹) and was among Kim Il-sung's closest cultural allies. In this role he did not simply write — he oversaw the development of an entire literary system: setting aesthetic norms, promoting ideologically correct work, and orchestrating the condemnation and purging of writers deemed insufficiently loyal. He was a maker and destroyer of literary reputations.</p>
+        <p>Han Sorya's own career ended in the same way he ended others' careers. He was purged in 1962, apparently caught in political factional struggles within the Korean Workers' Party. He died in 1976, but his fate between 1962 and his death is poorly documented. His trajectory is a case study in what it means to be simultaneously an artist, an ideologue, and a servant of absolute state power.</p>
+    </div>
+
+    <div class="doc-card gold-border">
+        <h3>Why Teach DPRK Literature?</h3>
+        <p>DPRK literature is almost never taught in Western classrooms or even in South Korean literature courses, where it remains largely excluded from the canon. This exclusion is itself a political act: it implies that North Korean writing is not literature, only propaganda, and therefore not worth studying.</p>
+        <p>This course includes "Jackals" because excluding it would replicate the division's distortions in the classroom. DPRK literature is literature — it uses language to construct meaning, deploys rhetoric and metaphor and narrative, makes arguments about the world. That those arguments are often wrong, and that the system producing them was coercive and unjust, does not make the texts irrelevant to understanding Korean history. It makes them essential to understanding how states use culture, how ideological systems shape aesthetic form, and what happens to writers under conditions of total political control.</p>
+    </div>
+
+    <h2 class="section-title">About the Text</h2>
+
+    <div class="doc-card dark-border">
+        <h3>The Jackal Metaphor: Who Is the Predator?</h3>
+        <p><em>Jackals</em> (승냥이, Sŭngnyangi) is set during the Japanese colonial period and portrays American Protestant missionaries and Japanese colonizers as jackals — predatory animals feeding on a vulnerable Korean population. The jackal imagery is not subtle: these are creatures that scavenge, that prey on the weak, that work together to consume what others have built. Han Sorya is making an explicit argument about the relationship between Christian missions and colonialism.</p>
+        <p>This argument had and has real scholarly support. The relationship between Protestant missions and colonial power in Korea was genuinely complex: missionaries often advocated for Koreans against the worst abuses of colonial rule, but they also participated in civilizing missions that devalued Korean culture, served as conduits of American imperial influence, and in some cases collaborated with colonial authorities. Han Sorya's text collapses this complexity into a single, stark metaphor — which is both its rhetorical power and its analytical limitation.</p>
+    </div>
+
+    <div class="doc-card light-border">
+        <h3>Socialist Realism as Aesthetic System</h3>
+        <p>DPRK literature under Han Sorya was governed by socialist realist principles — a set of aesthetic norms developed in the Soviet Union in the 1930s and adapted across socialist states. Socialist realism demanded: positive heroes who embody the correct ideological line; clear antagonists who represent imperialism or class exploitation; narratives that move toward collective victory; language that is accessible to workers and farmers rather than bourgeois elites; and art in service of the revolutionary struggle.</p>
+        <p>These norms are not simply bad aesthetics. They are a coherent theory of what literature is for — and understanding them on their own terms is necessary before critiquing them. The question to bring to "Jackals" is not "why is this propaganda?" but "what does this aesthetic system value, and what does it sacrifice in order to achieve its goals?"</p>
+    </div>
+
+    <div class="doc-card gold-border">
+        <h3>The Writer and the State: A Cautionary Structure</h3>
+        <p>Han Sorya's life trajectory — literary power, political service, purge, obscurity — is a structure that appears repeatedly in the history of writers under authoritarian systems. It raises a question this course returns to throughout: what is the relationship between literary talent and political power? Does serving a state's ideological system require compromising that talent, or is the relationship more complicated than a simple trade-off?</p>
+        <p>Yi Taejun, whose "Before and After Liberation" is also assigned this week, ended up in the same North Korean system and suffered a similar fate. Reading the two writers alongside each other — one who served the system and one who was destroyed by it despite serving it — helps illuminate the specific mechanisms of literary politics in the DPRK.</p>
+    </div>
+
+</main>
+
+<aside>
+
+    <div class="sidebar-card">
+        <img src="../images/authors/han-sorya.png" alt="Han Sorya" class="author-portrait">
+        <div class="fact-row">
+            <span class="fact-label">Author</span>
+            <span class="fact-value">Han Sorya (한설야)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Dates</span>
+            <span class="fact-value">1900&ndash;1976</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Title</span>
+            <span class="fact-value">Jackals / Sŭngnyangi (승냥이)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Published</span>
+            <span class="fact-value">1951</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Genre</span>
+            <span class="fact-value">Novella</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Literary system</span>
+            <span class="fact-value">DPRK socialist realism</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Week</span>
+            <span class="fact-value">Week 3 — Liberation, Occupation, Civil War</span>
+        </div>
+    </div>
+
+    <div class="sidebar-card gold-header">
+        <h3>Key Themes</h3>
+        <ul style="margin-left:1.2rem;font-size:0.83rem;color:var(--ink-light);">
+            <li>Anti-imperialism (against Japan and the US)</li>
+            <li>DPRK socialist realism and its aesthetics</li>
+            <li>The missionary as colonial agent</li>
+            <li>Nationalist literature and state power</li>
+            <li>Propaganda as aesthetic form</li>
+            <li>The writer under absolute political control</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Key Concepts</h3>
+        <div class="concept-item">
+            <div class="concept-term">Socialist realism (사회주의 사실주의)</div>
+            <div class="concept-def">The official aesthetic doctrine of the Soviet Union and aligned socialist states, formalized in the 1934 Soviet Writers' Congress. Required that literature portray reality in its "revolutionary development," feature positive socialist heroes, and serve the political goals of the workers' state. The DPRK adapted this framework extensively.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Korean Writers' Alliance (조선작가동맹)</div>
+            <div class="concept-def">The official state literary organization in North Korea, which Han Sorya led for nearly two decades. Membership was required for publication; the Alliance set aesthetic norms, vetted manuscripts, and organized criticism and self-criticism sessions for writers deemed politically suspect.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Mission and colonialism</div>
+            <div class="concept-def">The relationship between Protestant Christianity and colonialism in Korea is historiographically contested. American missions preceded formal American imperial involvement; missionaries sometimes opposed colonial abuses; but the missions also participated in cultural imperialism and sometimes served as instruments of American political influence. Han Sorya collapses this complexity, but the underlying historical tension is real.</div>
+        </div>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Discussion Questions</h3>
+        <div class="discussion-q"><strong>1.</strong> The story portrays American missionaries as active agents of imperialism. What evidence does it marshal for this argument? Where is it persuasive and where does it oversimplify?</div>
+        <div class="discussion-q"><strong>2.</strong> How does Han Sorya use the "jackal" metaphor? What does it accomplish rhetorically — and what does it foreclose analytically?</div>
+        <div class="discussion-q"><strong>3.</strong> Compare Han Sorya's literary technique with Yi Taejun's. How do their different political commitments produce different prose styles?</div>
+        <div class="discussion-q"><strong>4.</strong> DPRK literature is rarely taught in Western or South Korean classrooms. What do we miss by excluding it from the canon of Korean literature?</div>
+        <div class="discussion-q"><strong>5.</strong> Han Sorya was eventually purged by the same system he served. What does this trajectory reveal about the relationship between the writer and the authoritarian state?</div>
+    </div>
+
+    <div class="sidebar-card">
+        <h3>Further Reading</h3>
+        <div class="source-item">
+            <span class="source-type">Scholarly study (essential)</span>
+            Brian Myers. <em>Han Sŏrya and North Korean Literature: The Failure of Socialist Realism in the DPRK</em>. Cornell East Asia Series, 1994.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Broader context</span>
+            Charles K. Armstrong. <em>The North Korean Revolution, 1945&ndash;1950</em>. Cornell University Press, 2003.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Comparative context</span>
+            Katerina Clark. <em>The Soviet Novel: History as Ritual</em>. University of Chicago Press, 1981. (Socialist realist aesthetics)
+        </div>
+        <div class="source-item">
+            <span class="source-type">On missions and colonialism</span>
+            Donald Clark. <em>Christianity in Modern Korea</em>. University Press of America, 1986.
+        </div>
+    </div>
+
+</aside>
+
+</div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Literature &middot; Spring 2026<br>Lawrence University</div>
+        <div><a href="../literature.html">Literature Index</a></div>
+    </div>
+</footer>
+
+</body>
+</html>

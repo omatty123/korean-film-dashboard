@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="A Stray Bullet (Obaltan) — Yi Beomseon">
+    <meta property="og:description" content="Post-war poverty, displacement, and the impossibility of going home. Korean History through Literature.">
+    <title>A Stray Bullet / Obaltan (오발탄) | Korean History through Literature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+        .breadcrumb { background: var(--ink); padding: 0.6rem 2rem; font-size: 0.75rem; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.4); }
+        .hero { background: linear-gradient(rgba(26,34,38,0.82), rgba(55,71,79,0.82)), url('../images/authors/yi-beomseon.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
+        .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
+        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
+        .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
+        .section-title { font-family: 'Newsreader', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+        .doc-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        .doc-card.gold-border { border-left-color: var(--gold); }
+        .doc-card.dark-border { border-left-color: var(--ink); }
+        .doc-card.light-border { border-left-color: var(--accent-light); }
+        .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
+        .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
+        .doc-card p:last-child { margin-bottom: 0; }
+        .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
+        .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
+        .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
+        .sidebar-card.dark-header h3 { border-bottom-color: var(--ink); }
+        .author-portrait { width: 100%; border-radius: 2px; margin-bottom: 0.75rem; display: block; }
+        .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+        .fact-row:last-child { border-bottom: none; }
+        .fact-label { font-weight: 600; color: var(--ink); }
+        .fact-value { color: var(--ink-light); }
+        .concept-item { margin-bottom: 1rem; }
+        .concept-item:last-child { margin-bottom: 0; }
+        .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+        .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
+        .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .discussion-q:last-child { border-bottom: none; }
+        .discussion-q strong { color: var(--ink); font-weight: 600; }
+        .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+        .source-item:last-child { border-bottom: none; }
+        .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
+        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
+        footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+    <a href="../literature.html">&larr; Back to Literature</a>
+    <span> / Deep Dive</span>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Deep Dive: Short Story &mdash; Week 4</div>
+        <h1>A Stray Bullet</h1>
+        <div class="hero-korean">오발탄 (Obaltan) &nbsp;&middot;&nbsp; Yi Beomseon</div>
+        <div class="hero-meta">
+            <span>Yi Beomseon (이범선, 1920&ndash;1982)</span>
+            <span>1959</span>
+            <span>Short Story</span>
+            <span>South Korea</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrap">
+<div class="two-col">
+
+<main>
+
+    <h2 class="section-title">About the Author</h2>
+
+    <div class="doc-card">
+        <h3>Chronicler of Postwar Dispossession</h3>
+        <p>Yi Beomseon (이범선) was born in 1920 in South P'yŏngan Province and became one of the prominent voices of postwar South Korean fiction. He is known for stories that document poverty, displacement, and the aimless suffering of ordinary people in post-Korean War Seoul — people who survived the war only to find themselves stranded in a society with no place for them. His work belongs to the "postwar literature" (전후 문학) period of the late 1950s, a wave of writing that confronted the devastation the war had left and the failure of the South Korean state and economy to address it.</p>
+        <p><em>Obaltan</em> (오발탄, "A Stray Bullet") is his most celebrated work, later adapted into the landmark 1961 film of the same name directed by Yu Hyonmok — a film regularly cited as one of the greatest Korean films ever made. Both the story and film are assigned in this course.</p>
+    </div>
+
+    <h2 class="section-title">About the Text</h2>
+
+    <div class="doc-card gold-border">
+        <h3>The Family That Cannot Go Home</h3>
+        <p>The story follows Chŏlho, a destitute accountant living in the slums of postwar Seoul with his family: a mother who was displaced from the North and who endlessly cries "가자 가자" (kajа kajа — "let's go, let's go") for the home she can never return to; a brother Yŏngho who has turned to robbery in despair; a pregnant wife who dies in the hospital they cannot afford; a younger sister who has become a sex worker to survive.</p>
+        <p>Chŏlho endures. He does not rebel. He does not find a way out. He suffers with a kind of numb persistence that is itself the story's subject: people who have been fired into a society like bullets from a broken gun — not aimed at anything, not capable of hitting anything — who move forward purely because momentum demands it until they finally come to rest.</p>
+    </div>
+
+    <div class="doc-card dark-border">
+        <h3>The Metaphor of the Stray Bullet</h3>
+        <p>오발탄 (obaltan) literally means a misfired or stray bullet — a round that has left its chamber but has no target, no trajectory that makes sense. The metaphor applies to every member of Chŏlho's family. The mother's bullet was fired toward the North that no longer exists for her. Yŏngho's bullet is fired in criminal desperation. Chŏlho's own bullet is fired at the small domestic goals of survival — feeding his family, paying his bills — but the war has made the social conditions for even these modest targets impossible to reach.</p>
+        <p>The title frames the family's suffering as structural, not individual. They are not stray bullets because of their personal failings. They are stray bullets because the Korean War and its aftermath created a society in which millions of people were displaced, impoverished, and abandoned without any social infrastructure to catch them. The misfiring is the war's; the people are the bullets.</p>
+    </div>
+
+    <div class="doc-card light-border">
+        <h3>"가자" — Let's Go</h3>
+        <p>The mother's repeated cry — "가자 가자" (let's go, let's go) — is one of the most haunting images in postwar Korean literature. She wants to go home. Home is the North. Home is impossible: the border is closed, the country is divided, her home may no longer exist in the form she remembers. Her cry is the sound of a desire that the political situation has made permanently unfulfillable.</p>
+        <p>In the 1961 film adaptation, this image becomes even more powerful cinematically. But the story creates it first, in prose — the old woman in her bed, calling toward a North she cannot reach, her voice a constant background to the family's disintegration. It is among the most precise literary representations of what the Korean division costs at the level of individual human lives.</p>
+    </div>
+
+    <div class="doc-card gold-border">
+        <h3>Comparing Story and Film</h3>
+        <p>Yu Hyonmok's 1961 film <em>Obaltan</em> is one of the masterworks of Korean cinema. It was initially suppressed by the Park Chung-hee government after the 1961 coup — apparently because its portrait of postwar poverty and social failure was considered demoralizing. The story predates the film by two years and is the source text. Both are assigned in this course, making this one of the richest opportunities for comparative analysis: how does the same material function differently in literary prose and in cinematic form?</p>
+    </div>
+
+</main>
+
+<aside>
+
+    <div class="sidebar-card">
+        <img src="../images/authors/yi-beomseon.png" alt="Yi Beomseon" class="author-portrait">
+        <div class="fact-row">
+            <span class="fact-label">Author</span>
+            <span class="fact-value">Yi Beomseon (이범선)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Dates</span>
+            <span class="fact-value">1920&ndash;1982</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Title</span>
+            <span class="fact-value">Obaltan (오발탄)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Published</span>
+            <span class="fact-value">1959</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Genre</span>
+            <span class="fact-value">Short story</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Film adaptation</span>
+            <span class="fact-value">Yu Hyonmok, 1961</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Week</span>
+            <span class="fact-value">Week 4 — Liberation, Occupation, Civil War cont.</span>
+        </div>
+    </div>
+
+    <div class="sidebar-card gold-header">
+        <h3>Key Themes</h3>
+        <ul style="margin-left:1.2rem;font-size:0.83rem;color:var(--ink-light);">
+            <li>Post-war poverty and displacement in Seoul</li>
+            <li>The division's human cost</li>
+            <li>North-South separation and the impossible return</li>
+            <li>Masculinity and economic failure</li>
+            <li>The impossibility of "going home"</li>
+            <li>Literature and film adaptation</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Key Concepts</h3>
+        <div class="concept-item">
+            <div class="concept-term">Postwar literature (전후 문학)</div>
+            <div class="concept-def">A wave of South Korean fiction from the late 1950s confronting the devastation left by the Korean War: poverty, displacement, trauma, and the failure of the emerging South Korean state to address the needs of ordinary people. Yi Beomseon and Pak Wanso are central figures of this movement.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">North-South displacement</div>
+            <div class="concept-def">The Korean War produced massive population displacement. Hundreds of thousands of people fled from North to South (and vice versa). These displaced people — like the mother in "Obaltan" — often could not go back and did not fully belong in the South. Their experience is the human face of division.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Film <em>Obaltan</em> (1961)</div>
+            <div class="concept-def">Yu Hyonmok's landmark film adaptation of Yi Beomseon's story. Suppressed after the 1961 military coup for its unflattering portrait of postwar South Korea. Later recognized as one of the greatest Korean films. The course assigns both story and film, enabling direct comparison.</div>
+        </div>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Discussion Questions</h3>
+        <div class="discussion-q"><strong>1.</strong> The mother's cry "let's go home" — what home does she mean? Why is this impossible, and what does it cost the family?</div>
+        <div class="discussion-q"><strong>2.</strong> Obaltan means "stray bullet." How does this metaphor apply to the story's characters?</div>
+        <div class="discussion-q"><strong>3.</strong> Compare the short story with the film adaptation. What does each medium illuminate about the same material?</div>
+        <div class="discussion-q"><strong>4.</strong> The story was written just six years after the armistice. How does proximity to the war shape its emotional register?</div>
+        <div class="discussion-q"><strong>5.</strong> Yi Beomseon focuses on economic failure as masculine crisis. How does gender structure the experience of post-war poverty in the story?</div>
+    </div>
+
+    <div class="sidebar-card">
+        <h3>Further Reading</h3>
+        <div class="source-item">
+            <span class="source-type">Translation</span>
+            Bruce Fulton and Ju-Chan Fulton, trans. <em>Land of Exile: Contemporary Korean Fiction</em>. M.E. Sharpe, 1993. (Includes Yi Beomseon)
+        </div>
+        <div class="source-item">
+            <span class="source-type">Film pairing</span>
+            Yu Hyonmok, dir. <em>Obaltan</em> (오발탄), 1961 — also assigned in this course.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Historical context</span>
+            Gi-Wook Shin. <em>Ethnic Nationalism in Korea: Genealogy, Politics, and Legacy</em>. Stanford University Press, 2006.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Literary context</span>
+            David McCann, ed. <em>Black Crane: An Anthology of Korean Literature</em>. Cornell East Asia Series, 1977.
+        </div>
+    </div>
+
+</aside>
+
+</div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Literature &middot; Spring 2026<br>Lawrence University</div>
+        <div><a href="../literature.html">Literature Index</a></div>
+    </div>
+</footer>
+
+</body>
+</html>

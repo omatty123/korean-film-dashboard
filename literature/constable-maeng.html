@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Constable Maeng — Chae Mansik">
+    <meta property="og:description" content="Satire of collaboration and moral bankruptcy after liberation. Korean History through Literature.">
+    <title>Constable Maeng (맹순사) | Korean History through Literature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+        .breadcrumb { background: var(--ink); padding: 0.6rem 2rem; font-size: 0.75rem; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.4); }
+        .hero { background: linear-gradient(rgba(26,34,38,0.82), rgba(55,71,79,0.82)), url('../images/authors/chae-mansik.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
+        .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
+        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
+        .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
+        .section-title { font-family: 'Newsreader', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+        .doc-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        .doc-card.gold-border { border-left-color: var(--gold); }
+        .doc-card.dark-border { border-left-color: var(--ink); }
+        .doc-card.light-border { border-left-color: var(--accent-light); }
+        .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
+        .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
+        .doc-card p:last-child { margin-bottom: 0; }
+        .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
+        .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
+        .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
+        .sidebar-card.dark-header h3 { border-bottom-color: var(--ink); }
+        .author-portrait { width: 100%; border-radius: 2px; margin-bottom: 0.75rem; display: block; }
+        .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+        .fact-row:last-child { border-bottom: none; }
+        .fact-label { font-weight: 600; color: var(--ink); }
+        .fact-value { color: var(--ink-light); }
+        .concept-item { margin-bottom: 1rem; }
+        .concept-item:last-child { margin-bottom: 0; }
+        .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+        .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
+        .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .discussion-q:last-child { border-bottom: none; }
+        .discussion-q strong { color: var(--ink); font-weight: 600; }
+        .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+        .source-item:last-child { border-bottom: none; }
+        .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
+        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
+        footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+    <a href="../literature.html">&larr; Back to Literature</a>
+    <span> / Deep Dive</span>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Deep Dive: Short Story &mdash; Week 3</div>
+        <h1>Constable Maeng</h1>
+        <div class="hero-korean">맹순사 (Maeng Sunsa) &nbsp;&middot;&nbsp; Chae Mansik</div>
+        <div class="hero-meta">
+            <span>Chae Mansik (채만식, 1902&ndash;1950)</span>
+            <span>1946</span>
+            <span>Short Story</span>
+            <span>Liberation era</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrap">
+<div class="two-col">
+
+<main>
+
+    <h2 class="section-title">About the Author</h2>
+
+    <div class="doc-card">
+        <h3>Korea's Great Satirist</h3>
+        <p>Chae Mansik (채만식) is one of the finest satirists in the Korean literary tradition. Born in 1902 in North Chŏlla Province, he published extensively during the colonial period — and found himself, like most Korean writers who continued working under Japanese censorship, in a compromised position. His masterwork <em>Peace Under Heaven</em> (태평천하, 1938) is a savagely ironic portrait of a wealthy landlord who collaborates with the Japanese while congratulating himself on his wisdom. It is one of the few colonial-era Korean novels that successfully turns satirical comedy into structural critique.</p>
+        <p>After liberation in August 1945, Chae Mansik wrote a confessional essay acknowledging his own compromised conduct under colonial rule — a rare act of public self-examination. "Constable Maeng" belongs to this period of moral reckoning, and it reflects both his literary method (ironic distance, sharp comedy) and his personal engagement with the question of what it meant to have survived by cooperation.</p>
+    </div>
+
+    <div class="doc-card gold-border">
+        <h3>The Problem of Collaboration</h3>
+        <p>Collaboration (친일, ch'inil) with Japanese colonial rule was not a simple binary. The colonial system created a vast apparatus requiring Korean participation to function: police forces, administrative bureaucracies, schools, agricultural management structures. Koreans who worked within these structures ranged from enthusiastic collaborators who identified with imperial Japan, to opportunists who took what was available, to people with few other choices. The colonial system was designed to make non-participation costly.</p>
+        <p>After liberation, this history became intensely contested. Who was a collaborator? What should happen to them? These questions were never cleanly resolved. The political environment of the American military occupation, which quickly began treating the left as the primary threat, meant that many who had collaborated with Japan ended up protected while anti-colonial activists were sometimes prosecuted. Chae Mansik's story captures this moral chaos at the moment of maximum intensity — 1946, one year after liberation.</p>
+    </div>
+
+    <h2 class="section-title">About the Text</h2>
+
+    <div class="doc-card dark-border">
+        <h3>The Man Who Changes His Uniform</h3>
+        <p>The title character, Officer Maeng (맹순사), served as a constable in the Japanese colonial police force — a position that placed him in direct service of the colonial state's coercive apparatus. The story follows him immediately after liberation as he scrambles to reposition himself in the new political environment, adjusting his rhetoric and his associations without changing his character in the slightest.</p>
+        <p>The darkly comic genius of the story is in its portrait of opportunism as a form of continuity rather than change. Officer Maeng does not undergo any moral reckoning. He does not experience guilt. He experiences tactical recalibration. The same qualities that made him useful under the colonial system — adaptability, self-preservation, willingness to serve whoever holds power — make him useful in the new system. He survives. This is the story's indictment: not that collaborators failed to adapt, but that the system allowed — and in some cases required — their adaptation.</p>
+    </div>
+
+    <div class="doc-card light-border">
+        <h3>Liberation That Wasn't a Clean Break</h3>
+        <p>Liberation (해방) on August 15, 1945 is one of the defining dates in Korean historical memory — the end of colonial rule, the return of sovereignty. Chae Mansik's story punctures the myth that liberation produced a clean moral break. The colonial period did not end on August 15; it persisted in institutions, in personnel, in habits of thought and power. Officers like Maeng did not disappear; they stayed and found new patrons.</p>
+        <p>This argument — that liberation was incomplete, that the colonial legacy was not confronted but absorbed — became one of the central themes of Korean historiography, particularly the field of "colonial modernity" studies that emerged in the 1990s. Chae Mansik made it in 1946 with comic ruthlessness, one year after the fact.</p>
+    </div>
+
+</main>
+
+<aside>
+
+    <div class="sidebar-card">
+        <img src="../images/authors/chae-mansik.png" alt="Chae Mansik" class="author-portrait">
+        <div class="fact-row">
+            <span class="fact-label">Author</span>
+            <span class="fact-value">Chae Mansik (채만식)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Dates</span>
+            <span class="fact-value">1902&ndash;1950</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Title</span>
+            <span class="fact-value">Constable Maeng / Maeng Sunsa (맹순사)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Published</span>
+            <span class="fact-value">1946</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Genre</span>
+            <span class="fact-value">Short story (satirical)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Week</span>
+            <span class="fact-value">Week 3 — Liberation, Occupation, Civil War</span>
+        </div>
+    </div>
+
+    <div class="sidebar-card gold-header">
+        <h3>Key Themes</h3>
+        <ul style="margin-left:1.2rem;font-size:0.83rem;color:var(--ink-light);">
+            <li>Collaboration (ch'inil 친일) and its aftermath</li>
+            <li>Liberation (해방) and its disappointments</li>
+            <li>Moral reckoning and its avoidance</li>
+            <li>The persistence of colonial structures</li>
+            <li>Satire as a mode of historical critique</li>
+            <li>Opportunism as survival strategy</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Key Concepts</h3>
+        <div class="concept-item">
+            <div class="concept-term">Ch'inil (친일, collaboration)</div>
+            <div class="concept-def">Literally "pro-Japanese" — the term for cooperation with Japanese colonial rule. After liberation, ch'inil collaboration became a contested category: who counted, what should happen to them, and how to balance accountability with the need to build a functioning state. South Korea's ch'inil legacy was never fully confronted; a "Collaborator Investigation Committee" was not established until 2004.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Haebang (해방, liberation)</div>
+            <div class="concept-def">August 15, 1945 — the date Japan announced its surrender and Korean colonial rule effectively ended. In Korean historical memory, haebang is both a moment of extraordinary joy and the beginning of a new set of problems: the division of the peninsula, the US and Soviet occupations, and the political violence of the late 1940s.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Colonial police (경찰)</div>
+            <div class="concept-def">The Japanese colonial police force in Korea included a significant number of Korean officers who served in enforcement roles. After liberation, these figures represented a particular problem: they had been instruments of colonial repression against their own people, and their continued presence in police roles was a source of intense resentment.</div>
+        </div>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Discussion Questions</h3>
+        <div class="discussion-q"><strong>1.</strong> How does Officer Maeng justify his collaboration — or does he? What does the story suggest about the psychology of complicity?</div>
+        <div class="discussion-q"><strong>2.</strong> Liberation was August 15, 1945. Why does the story suggest this was not a clean break from the colonial past?</div>
+        <div class="discussion-q"><strong>3.</strong> Compare Chae Mansik's satirical approach with Yi Taejun's more reflective tone in "Before and After Liberation." What does each method illuminate?</div>
+        <div class="discussion-q"><strong>4.</strong> The story was written just one year after liberation. What does its timing tell us about the urgency of these questions?</div>
+        <div class="discussion-q"><strong>5.</strong> How does this story speak to broader questions about transitional justice? What should happen to collaborators after colonial rule ends?</div>
+    </div>
+
+    <div class="sidebar-card">
+        <h3>Further Reading</h3>
+        <div class="source-item">
+            <span class="source-type">Translation</span>
+            Bruce Fulton and Ju-Chan Fulton, trans. <em>Wayfarer: New Fiction by Korean Women</em>. Women in Translation, 1997. (Chae Mansik stories also available in other anthologies)
+        </div>
+        <div class="source-item">
+            <span class="source-type">Major work (untranslated)</span>
+            Chae Mansik. <em>Peace Under Heaven</em> (태평천하, 1938) — his satirical novel of colonial-era collaboration.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Historical context</span>
+            Carter Eckert et al. <em>Korea Old and New: A History</em>. Harvard Korea Institute, 1990. (Chapter on liberation and the transition period)
+        </div>
+        <div class="source-item">
+            <span class="source-type">Scholarly context</span>
+            Gi-Wook Shin and Michael Robinson, eds. <em>Colonial Modernity in Korea</em>. Harvard University Asia Center, 1999.
+        </div>
+    </div>
+
+</aside>
+
+</div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Literature &middot; Spring 2026<br>Lawrence University</div>
+        <div><a href="../literature.html">Literature Index</a></div>
+    </div>
+</footer>
+
+</body>
+</html>

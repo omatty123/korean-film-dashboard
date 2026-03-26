@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Cranes — Hwang Sunwon">
+    <meta property="og:description" content="Korea's most beloved short story — friendship across the Korean War divide. Korean History through Literature.">
+    <title>Cranes (학) | Korean History through Literature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+        .breadcrumb { background: var(--ink); padding: 0.6rem 2rem; font-size: 0.75rem; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.4); }
+        .hero { background: linear-gradient(rgba(26,34,38,0.82), rgba(55,71,79,0.82)), url('../images/authors/hwang-sunwon.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
+        .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
+        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
+        .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
+        .section-title { font-family: 'Newsreader', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+        .doc-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        .doc-card.gold-border { border-left-color: var(--gold); }
+        .doc-card.dark-border { border-left-color: var(--ink); }
+        .doc-card.light-border { border-left-color: var(--accent-light); }
+        .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
+        .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
+        .doc-card p:last-child { margin-bottom: 0; }
+        .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
+        .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
+        .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
+        .sidebar-card.dark-header h3 { border-bottom-color: var(--ink); }
+        .author-portrait { width: 100%; border-radius: 2px; margin-bottom: 0.75rem; display: block; }
+        .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+        .fact-row:last-child { border-bottom: none; }
+        .fact-label { font-weight: 600; color: var(--ink); }
+        .fact-value { color: var(--ink-light); }
+        .concept-item { margin-bottom: 1rem; }
+        .concept-item:last-child { margin-bottom: 0; }
+        .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+        .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
+        .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .discussion-q:last-child { border-bottom: none; }
+        .discussion-q strong { color: var(--ink); font-weight: 600; }
+        .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+        .source-item:last-child { border-bottom: none; }
+        .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
+        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
+        footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+    <a href="../literature.html">&larr; Back to Literature</a>
+    <span> / Deep Dive</span>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Deep Dive: Short Story &mdash; Week 4</div>
+        <h1>Cranes</h1>
+        <div class="hero-korean">학 (Hak) &nbsp;&middot;&nbsp; Hwang Sunwon</div>
+        <div class="hero-meta">
+            <span>Hwang Sunwon (황순원, 1915&ndash;2000)</span>
+            <span>1953</span>
+            <span>Short Story</span>
+            <span>Korea</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrap">
+<div class="two-col">
+
+<main>
+
+    <h2 class="section-title">About the Author</h2>
+
+    <div class="doc-card">
+        <h3>A Writer of Silence and Restraint</h3>
+        <p>Hwang Sunwon (황순원) was born in 1915 in Taedong County, South P'yŏngan Province — in what is now North Korea. He fled south during the Korean War and spent the rest of his long life in Seoul, teaching literature at Kyunghee University for decades. He died in 2000, having produced a body of short fiction and novels that is among the most beloved in Korean literary history.</p>
+        <p>Hwang Sunwon's prose style is defined by what it withholds. Where Yi Sang's modernism is explicit about its formal experiments, Hwang's restraint is harder to see because it looks like simplicity. His sentences say one thing and mean two or three. His stories end before the resolution — not because he cannot provide one, but because the refusal to provide one is the point. The ending of "Cranes" is the most famous example of this method in Korean literature.</p>
+    </div>
+
+    <h2 class="section-title">About the Text</h2>
+
+    <div class="doc-card gold-border">
+        <h3>Korea's Most Famous Short Story</h3>
+        <p>"Cranes" (학, Hak) was published in 1953, the year of the Korean War armistice. It is possibly the most widely read Korean short story in existence — translated into dozens of languages, anthologized constantly, and assigned in Korean secondary schools for generations. Its brevity (under ten pages) makes its weight remarkable: in a few pages, it carries the entire tragedy of the Korean War's fratricidal logic.</p>
+        <p>The story's premise is almost unbearably direct. During the Korean War, a man named Sŏngsam is tasked with escorting his childhood friend Tŏkchae — who has been identified as a Communist — to be executed. The two men grew up together in the same village. The war has made them enemies. In the fields where they played as boys, they are now captor and prisoner.</p>
+    </div>
+
+    <div class="doc-card dark-border">
+        <h3>The Crane and the Ending</h3>
+        <p>The story's resolution — or non-resolution — turns on a crane. Sŏngsam suggests they catch a crane together, as they did as boys. They do. And then the story ends, without telling us what happens next. Does Sŏngsam let Tŏkchae go? Does he turn him back in? Does the act of catching the crane together constitute an escape, an execution of a different kind, or simply a shared moment before the inevitable?</p>
+        <p>Hwang Sunwon's refusal to answer is not evasion. It is a precise literary argument: the Korean War cannot be given a clean resolution because the situation it represents has no clean resolution. The two men's shared humanity — expressed in the completely mundane act of catching a bird together — is real. The political system that requires one of them to kill the other is also real. These facts coexist without synthesis. The story holds them together in tension and stops.</p>
+    </div>
+
+    <div class="doc-card light-border">
+        <h3>The Crane as Symbol</h3>
+        <p>In Korean cultural tradition, the crane (학, hak) is one of the most layered symbolic animals. It represents longevity — cranes were believed to live for a thousand years. It represents loyalty — cranes mate for life and are associated with faithful devotion. It represents transcendence — the crane is the mount of Taoist immortals in East Asian iconography, the creature that carries souls beyond the earthly world. It is also simply a beautiful, wild bird that lives in the fields and wetlands of the Korean countryside.</p>
+        <p>Hwang Sunwon brings all these resonances into the story. The act of catching the crane is not symbolically innocent; it is an act charged with everything the bird has meant in Korean culture for centuries. But it is also just two men catching a bird, the way they did when they were boys and the world had not yet divided them.</p>
+    </div>
+
+    <div class="doc-card gold-border">
+        <h3>Biography and the Story</h3>
+        <p>Hwang Sunwon was from the North and fled south during the war. He had direct experience of the division's personal cost — of a homeland made inaccessible, of relationships severed by a border that had not existed before. Reading "Cranes" against this biography is tempting and instructive. But it also risks reducing the story to autobiography, which misses what is most interesting about it: that it achieves universality from specific particularity. The story is about Sŏngsam and Tŏkchae, not about Hwang Sunwon. The bird they catch is a bird, not a symbol of the author's yearning. The restraint of the prose requires the reader to do the interpretive work, not simply receive authorial meaning.</p>
+    </div>
+
+</main>
+
+<aside>
+
+    <div class="sidebar-card">
+        <img src="../images/authors/hwang-sunwon.png" alt="Hwang Sunwon" class="author-portrait">
+        <div class="fact-row">
+            <span class="fact-label">Author</span>
+            <span class="fact-value">Hwang Sunwon (황순원)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Dates</span>
+            <span class="fact-value">1915&ndash;2000</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Title</span>
+            <span class="fact-value">Cranes / Hak (학)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Published</span>
+            <span class="fact-value">1953</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Genre</span>
+            <span class="fact-value">Short story</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Week</span>
+            <span class="fact-value">Week 4 — Liberation, Occupation, Civil War cont.</span>
+        </div>
+    </div>
+
+    <div class="sidebar-card gold-header">
+        <h3>Key Themes</h3>
+        <ul style="margin-left:1.2rem;font-size:0.83rem;color:var(--ink-light);">
+            <li>Division (분단) and its human cost</li>
+            <li>Friendship versus ideology</li>
+            <li>The Korean War as fratricidal tragedy</li>
+            <li>Mercy, complicity, and shared humanity</li>
+            <li>Silence and restraint as literary method</li>
+            <li>Natural symbolism in Korean literature</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Key Concepts</h3>
+        <div class="concept-item">
+            <div class="concept-term">Pundang (분단, division)</div>
+            <div class="concept-def">The division of the Korean peninsula — first by the 38th parallel (1945), then by the armistice line (1953). The concept of pundang extends far beyond geography: it structures families, literature, memory, and identity. "Cranes" is one of the foundational literary texts of the pundang literature (분단문학) genre.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">The crane (학) in Korean culture</div>
+            <div class="concept-def">In Korean cultural tradition, the crane symbolizes longevity, loyalty, and transcendence. It appears on royal court robes, in classical painting, and in folk tradition. Hwang Sunwon's use of the crane activates this entire symbolic register while keeping the bird concretely present as an animal, not just a symbol.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Korean War armistice (1953)</div>
+            <div class="concept-def">The Korean War (1950&ndash;1953) ended with an armistice, not a peace treaty — meaning the war is technically ongoing. The armistice line became the current Demilitarized Zone (DMZ). "Cranes" was published the year of the armistice, making it a direct literary response to the war's conclusion.</div>
+        </div>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Discussion Questions</h3>
+        <div class="discussion-q"><strong>1.</strong> The story never tells us what happens after Sŏngsam releases the crane with Tŏkchae. Why does Hwang Sunwon end it there? What are the possible meanings of that ending?</div>
+        <div class="discussion-q"><strong>2.</strong> The crane in Korean culture represents longevity, loyalty, and transcendence. How does this symbolism function in the story?</div>
+        <div class="discussion-q"><strong>3.</strong> Sŏngsam and Tŏkchae are on opposite sides of a war, but the story insists on their shared humanity. Is this a political argument, a sentimental one, or something else?</div>
+        <div class="discussion-q"><strong>4.</strong> Compare "Cranes" with Han Sorya's "Jackals." How do the two stories represent the division of the peninsula in completely different registers?</div>
+        <div class="discussion-q"><strong>5.</strong> Hwang Sunwon fled from the North. How might his biography shape the story — and how should we avoid over-determining our reading based on authorial biography?</div>
+    </div>
+
+    <div class="sidebar-card">
+        <h3>Further Reading</h3>
+        <div class="source-item">
+            <span class="source-type">Translation</span>
+            Hwang Sunwon. <em>The Descendants of Cain and Other Stories</em>, trans. Ji-moon Suh and Julie Pickering. M.E. Sharpe, 1997.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Translation anthology</span>
+            Peter H. Lee, ed. <em>Modern Korean Literature: An Anthology</em>. University of Hawai'i Press, 1990. (Includes "Cranes")
+        </div>
+        <div class="source-item">
+            <span class="source-type">Historical context</span>
+            Bruce Cumings. <em>The Korean War: A History</em>. Modern Library, 2010.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Literary context</span>
+            Kwon Youngmin. <em>A History of Korean Literature</em>. Cambridge University Press, 2003. (Chapter on postwar fiction)
+        </div>
+    </div>
+
+</aside>
+
+</div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Literature &middot; Spring 2026<br>Lawrence University</div>
+        <div><a href="../literature.html">Literature Index</a></div>
+    </div>
+</footer>
+
+</body>
+</html>

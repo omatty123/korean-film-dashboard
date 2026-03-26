@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Kyŏnghŭi — Na Hyesŏk">
+    <meta property="og:description" content="Korea's first feminist short story. Korean History through Literature.">
+    <title>Kyŏnghŭi (경희) | Korean History through Literature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --paper-warm: #f5f3ef; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; --shadow: rgba(0,0,0,0.06); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+        .breadcrumb { background: var(--ink); padding: 0.6rem 2rem; font-size: 0.75rem; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.4); }
+        .hero { background: linear-gradient(rgba(26,34,38,0.82), rgba(55,71,79,0.82)), url('../images/authors/na-hyeseok.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; position: relative; }
+        .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
+        .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
+        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
+        .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
+        .section-title { font-family: 'Newsreader', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+        .doc-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        .doc-card.gold-border { border-left-color: var(--gold); }
+        .doc-card.dark-border { border-left-color: var(--ink); }
+        .doc-card.light-border { border-left-color: var(--accent-light); }
+        .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
+        .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
+        .doc-card p:last-child { margin-bottom: 0; }
+        .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
+        .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
+        .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
+        .sidebar-card.dark-header h3 { border-bottom-color: var(--ink); }
+        .author-portrait { width: 100%; border-radius: 2px; margin-bottom: 0.75rem; display: block; }
+        .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+        .fact-row:last-child { border-bottom: none; }
+        .fact-label { font-weight: 600; color: var(--ink); }
+        .fact-value { color: var(--ink-light); }
+        .concept-item { margin-bottom: 1rem; }
+        .concept-item:last-child { margin-bottom: 0; }
+        .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+        .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
+        .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .discussion-q:last-child { border-bottom: none; }
+        .discussion-q strong { color: var(--ink); font-weight: 600; }
+        .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+        .source-item:last-child { border-bottom: none; }
+        .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
+        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
+        footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+    <a href="../literature.html">&larr; Back to Literature</a>
+    <span> / Deep Dive</span>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Deep Dive: Short Story &mdash; Week 2</div>
+        <h1>Kyŏnghŭi</h1>
+        <div class="hero-korean">경희 &nbsp;&middot;&nbsp; Na Hyesŏk</div>
+        <div class="hero-meta">
+            <span>Na Hyesŏk (나혜석, 1896&ndash;1948)</span>
+            <span>1918</span>
+            <span>Short Story</span>
+            <span>Colonial Korea</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrap">
+<div class="two-col">
+
+<main>
+
+    <h2 class="section-title">About the Author</h2>
+
+    <div class="doc-card">
+        <h3>Korea's First Feminist</h3>
+        <p>Na Hyesŏk (나혜석) was born in 1896 into an elite family in Suwon and became one of the most consequential cultural figures of colonial Korea. She studied Western-style painting in Tokyo — among the first Korean women to receive such training — and returned to Korea to become not only a distinguished oil painter but also one of the most provocative writers of her generation.</p>
+        <p>She was a central figure in the "New Woman" (신여성, sin yŏsŏng) movement: women who embraced education, public life, and a critique of the Confucian gender order that had confined Korean women to the domestic sphere. Na Hyesŏk lived her critique as well as wrote it. She traveled to Europe with her husband, openly discussed her romantic attachments, and after a highly publicized divorce scandal that destroyed her reputation, she descended into poverty and obscurity. She died in a charity hospital in 1948. She is now recognized as a foundational feminist voice.</p>
+    </div>
+
+    <div class="doc-card gold-border">
+        <h3>The New Woman (신여성)</h3>
+        <p>The "New Woman" of 1910s&ndash;20s colonial Korea was a figure simultaneously celebrated and feared. Educated at new schools — many established by Christian missionaries — and exposed to Western and Japanese ideas about individual rights, these women challenged arranged marriages, advocated for women's education, bobbed their hair, wore Western clothes, and wrote publicly about their inner lives. They were also targets: conservative Korean society (and much of the colonial press) portrayed them as morally dissolute, a threat to Korean families and cultural integrity.</p>
+        <p>The New Woman movement existed in tension with Korean nationalism. Some nationalists argued that women's liberation was a "Western" distraction from the anti-colonial struggle; others saw women's emancipation as inseparable from national liberation. Na Hyesŏk, Kim Wonju, and others refused this choice — insisting that women's rights were not separable from human rights.</p>
+    </div>
+
+    <h2 class="section-title">About the Text</h2>
+
+    <div class="doc-card dark-border">
+        <h3>Korea's First Feminist Short Story</h3>
+        <p>Published in the journal <em>Hakjigwang</em> (학지광, "Light of Learning") in 1918, <em>Kyŏnghŭi</em> is widely considered Korea's first explicitly feminist short story. The story follows Kyŏnghŭi, a young educated woman who refuses an arranged marriage and insists on determining the course of her own life — radical claims in 1918 colonial Korea, where women's social roles were still largely defined by Confucian norms of domesticity and obedience.</p>
+        <p>The story's argument is made through character and situation rather than polemic. Kyŏnghŭi does not simply state that women should be free; she acts on that conviction and the story explores the social cost of doing so. This is what makes it literature rather than a pamphlet, and what gives it lasting analytical value.</p>
+    </div>
+
+    <div class="doc-card light-border">
+        <h3>Colonial Modernity's Double Bind</h3>
+        <p>Colonial modernity created a specific set of contradictions for Korean women. Japanese colonial rule brought new schools, new forms of labor, and exposure to modern ideas — including ideas about women's equality. But the colonial situation also generated intense pressure on Korean men to assert masculine authority as compensation for the emasculation of colonial subjugation. Korean women who claimed rights were thus navigating opposition from both sides: a colonial power that was indifferent to their freedom, and a Korean patriarchal order that felt threatened by women's independence at precisely the moment it felt most vulnerable.</p>
+        <p>Na Hyesŏk's story operates in this double bind. Kyŏnghŭi's resistance is not simply against arranged marriage as a Confucian institution; it is a refusal to have her life organized by others regardless of the source of that organization.</p>
+    </div>
+
+    <h2 class="section-title">The Author's Life as Text</h2>
+
+    <div class="doc-card gold-border">
+        <h3>When Biography Mirrors Fiction</h3>
+        <p>Na Hyesŏk's own biography tracks Kyŏnghŭi's trajectory with painful precision. She married, had children, traveled the world, fell in love outside her marriage, and was destroyed when she refused to pretend otherwise. Her 1934 essay "Confession" (이혼 고백서, "Divorce Confession") is a remarkable document in which she names the sexual double standard that ruined her reputation — the same forces her character Kyŏnghŭi confronts sixteen years earlier in fiction.</p>
+        <p>Students should resist reading the story purely through Na Hyesŏk's biography, however. Kyŏnghŭi is not Na Hyesŏk, and fiction is not autobiography. The story asks to be read on its own terms, as an argument about what women deserve — an argument that remains coherent regardless of what happened to its author.</p>
+    </div>
+
+</main>
+
+<aside>
+
+    <div class="sidebar-card">
+        <img src="../images/authors/na-hyeseok.png" alt="Na Hyesŏk" class="author-portrait">
+        <div class="fact-row">
+            <span class="fact-label">Author</span>
+            <span class="fact-value">Na Hyesŏk (나혜석)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Dates</span>
+            <span class="fact-value">1896&ndash;1948</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Title</span>
+            <span class="fact-value">Kyŏnghŭi (경희)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Published</span>
+            <span class="fact-value">1918</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Genre</span>
+            <span class="fact-value">Short story</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Published in</span>
+            <span class="fact-value">Hakjigwang (학지광)</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Week</span>
+            <span class="fact-value">Week 2 — Joseon Ends, Colonialism Begins</span>
+        </div>
+    </div>
+
+    <div class="sidebar-card gold-header">
+        <h3>Key Themes</h3>
+        <ul style="margin-left:1.2rem;font-size:0.83rem;color:var(--ink-light);">
+            <li>New Woman / sin yŏsŏng (신여성)</li>
+            <li>Colonial modernity and gender</li>
+            <li>Arranged marriage and resistance</li>
+            <li>Women's education and autonomy</li>
+            <li>Confucian gender roles and their critique</li>
+            <li>The double bind of colonial liberation</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Key Concepts</h3>
+        <div class="concept-item">
+            <div class="concept-term">Sin yŏsŏng (신여성, "New Woman")</div>
+            <div class="concept-def">Educated Korean women of the 1910s–30s who challenged Confucian gender norms. Associated with Western-style education, public life, and claims to individual self-determination. The category was both celebrated and attacked in the colonial press.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Arranged marriage (중매결혼)</div>
+            <div class="concept-def">The dominant form of marriage in Joseon and early colonial Korea, organized by families with little or no input from the bride. New Woman writers attacked it as incompatible with women's dignity and self-determination.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Hakjigwang (학지광)</div>
+            <div class="concept-def">"Light of Learning" — a journal published by Korean students in Tokyo, 1914–1930. A key venue for new literary and intellectual work in the early colonial period. Publishing there positioned a writer within a network of educated reform-minded Koreans.</div>
+        </div>
+    </div>
+
+    <div class="sidebar-card dark-header">
+        <h3>Discussion Questions</h3>
+        <div class="discussion-q"><strong>1.</strong> What specific freedoms does Kyŏnghŭi seek, and what obstacles does she face? How do these reflect the constraints facing Korean women in 1918?</div>
+        <div class="discussion-q"><strong>2.</strong> How does Na Hyesŏk use Kyŏnghŭi's character to argue for women's rights without making the argument didactic?</div>
+        <div class="discussion-q"><strong>3.</strong> Compare Na Hyesŏk's own biography with Kyŏnghŭi's story. How do they mirror and diverge? What are the risks of reading fiction through biography?</div>
+        <div class="discussion-q"><strong>4.</strong> How does colonial modernity create both new possibilities and new pressures for women in this text?</div>
+        <div class="discussion-q"><strong>5.</strong> Read alongside Kim Wonju's "Awakening." How do the two texts construct the "New Woman" differently?</div>
+    </div>
+
+    <div class="sidebar-card">
+        <h3>Further Reading</h3>
+        <div class="source-item">
+            <span class="source-type">Translation and scholarship</span>
+            Translated in: Choi Kyeong-hee, ed. <em>A Ready-Made Life: Early Masters of Modern Korean Fiction</em>. University of Hawai'i Press, 1998.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Scholarly context</span>
+            Insook Kwon. "The 'New Woman' in Early Colonial Korea." <em>Gender and History</em>, 2004.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Scholarly context</span>
+            Theodore Jun Yoo. <em>The Politics of Gender in Colonial Korea: Education, Labor, and Health, 1910&ndash;1945</em>. University of California Press, 2008.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Primary source companion</span>
+            Na Hyesŏk. "Divorce Confession" (이혼 고백서, 1934) — her autobiographical essay on the sexual double standard.
+        </div>
+    </div>
+
+</aside>
+
+</div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Literature &middot; Spring 2026<br>Lawrence University</div>
+        <div><a href="../literature.html">Literature Index</a></div>
+    </div>
+</footer>
+
+</body>
+</html>
