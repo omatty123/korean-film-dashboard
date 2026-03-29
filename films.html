@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean History through Film | HIST 498 / EAST 418 / FILM 419</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Open Graph / Link Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Korean History through Film">
+    <meta property="og:description" content="HIST 498 / EAST 418 / FILM 419 — Spring 2026, Lawrence University. Through literature and film, examining the themes, characters, settings, and tropes that drive Korean culture and development in the modern age.">
+    <meta property="og:image" content="https://omatty123.github.io/korean-film-dashboard/og-image.jpg">
+    <meta property="og:url" content="https://omatty123.github.io/korean-film-dashboard/">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Korean History through Film">
+    <meta name="twitter:description" content="Through literature and film, examining the themes, characters, settings, and tropes that drive Korean culture and development in the modern age.">
+    <meta name="twitter:image" content="https://omatty123.github.io/korean-film-dashboard/og-image.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #8b2232;
+            --accent-light: #a83244;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 3rem 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .header-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.76);
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.15s ease;
+        }
+
+        .header-link:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+        }
+
+        header h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-korean {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .header-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+        /* MAIN LAYOUT */
+        .main-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .section-header h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .section-header .subtitle {
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            margin-top: 0.25rem;
+        }
+
+        /* FILM GRID */
+        .film-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .film-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .film-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .film-card .poster {
+            height: 360px;
+            background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+            background-size: cover;
+            background-position: center top;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .film-card .poster .year-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 2px;
+            letter-spacing: 0.05em;
+        }
+
+        .film-card .poster .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.15);
+            position: absolute;
+            bottom: 0.75rem;
+            left: 1rem;
+        }
+
+        .film-card .poster .runtime {
+            position: absolute;
+            bottom: 0.75rem;
+            right: 0.75rem;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .film-card .card-body {
+            padding: 1rem 1.25rem;
+        }
+
+        .film-card .card-body h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .film-card .director {
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            margin-bottom: 0.5rem;
+        }
+
+        .film-card .week-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            background: var(--paper-warm);
+            color: var(--ink-light);
+            border: 1px solid var(--border);
+        }
+
+        .film-card .themes {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .film-card.has-deep-dive .poster {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .film-card.no-deep-dive {
+            opacity: 1;
+        }
+
+        /* WEEK SCHEDULE */
+        .schedule-section {
+            margin-bottom: 3rem;
+        }
+
+        .week-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .week-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .week-row:last-child { border-bottom: none; }
+
+        .week-label {
+            font-family: 'Newsreader', serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .week-label .dates {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            font-weight: 400;
+        }
+
+        .week-content {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+        }
+
+        .week-content .film-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-right: 0.5rem;
+        }
+
+        .week-content .reading-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--paper-warm);
+            color: var(--ink-light);
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            border: 1px solid var(--border);
+            margin-right: 0.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.5);
+            padding: 2rem;
+            font-size: 0.75rem;
+            text-align: left;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+
+        /* STATUS INDICATORS */
+        .status-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-right: 0.3rem;
+        }
+        .status-dot.live { background: #22c55e; }
+        .status-dot.coming { background: var(--gold); }
+        .status-dot.none { background: #ccc; }
+
+        /* FILM ACCESS BANNER */
+        .film-access {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            border: 1px solid rgba(166,124,0,0.3);
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .film-access-text {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .film-access-text strong {
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .film-access-text .note {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.25rem;
+        }
+
+        .film-access-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gold);
+            color: #1a1a2e;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.65rem 1.25rem;
+            border-radius: 4px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .film-access-btn:hover {
+            background: #c99400;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 2rem 1.5rem; }
+            header h1 { font-size: 1.8rem; }
+            .main-wrap { padding: 1.5rem; }
+            .film-grid { grid-template-columns: 1fr; }
+            .week-row { grid-template-columns: 1fr; }
+            .header-top { flex-direction: column; align-items: flex-start; }
+            .header-meta { flex-direction: column; gap: 0.5rem; }
+            .film-access { flex-direction: column; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="header-top">
+            <div class="course-label">HIST 498 / EAST 418 / FILM 419 &mdash; Spring 2026</div>
+            <a href="dashboard.html" class="header-link">Dashboard</a>
+        </div>
+        <h1>Korean History through Literature and Film</h1>
+        <div class="header-korean">한국 역사: 문학과 영화를 통해</div>
+        <div class="header-meta">
+            <span>MWF 9:50-11:10 AM</span>
+            <span>March 30 &ndash; June 5, 2026</span>
+            <span>Lawrence University</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrap">
+
+    <!-- FILM ACCESS BANNER -->
+    <div class="film-access">
+        <div class="film-access-text">
+            <strong>Course Film Library</strong><br>
+            All course films are available for streaming and download. Lawrence login required.
+            <div class="note">OneDrive shared folder. Use your @lawrence.edu credentials.</div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-shrink: 0;">
+            <a href="workbook.html" class="film-access-btn" style="background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2);">
+                Workbook
+            </a>
+            <a href="https://lawrenceu-my.sharepoint.com/:f:/g/personal/wegehaum_lawrence_edu/IgDS8Ypq2bMgRo0ih85FVElEAR9BnVjH4PhlO--xLrYaGAA?e=Q5dMk1" class="film-access-btn" target="_blank">
+                &#9654; Watch Films
+            </a>
+        </div>
+    </div>
+
+    <!-- FILM GUIDES -->
+    <section>
+        <div class="section-header">
+            <h2>Film Guides</h2>
+            <div class="subtitle">Background pages for each film. Click to explore historical context, director profiles, and key themes.</div>
+        </div>
+
+        <div class="film-grid">
+
+            <a href="films/the-throne.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/fxucCjHL566llnZC3TfWTdReHee.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">2015</span>
+                    <span class="korean-title">사도</span>
+                    <span class="runtime">125 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>The Throne</h3>
+                    <div class="director">Lee Joon-ik</div>
+                    <span class="week-tag">Week 1</span>
+                    <div class="themes">Joseon court politics, father-son conflict, royal tragedy</div>
+                </div>
+            </a>
+
+            <a href="films/sopyonje.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/tCejyq7oz1WudC8hJqauHlBCAFN.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">1993</span>
+                    <span class="korean-title">서편제</span>
+                    <span class="runtime">113 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sopyonje</h3>
+                    <div class="director">Im Kwontaek</div>
+                    <span class="week-tag">Week 2</span>
+                    <div class="themes">Pansori tradition, cultural loss, modernization</div>
+                </div>
+            </a>
+
+            <a href="films/taebaek-mountains.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/cSJFHWGhPuG3fuiH5p3oUkyPUUz.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">1994</span>
+                    <span class="korean-title">태백산맥</span>
+                    <span class="runtime">164 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Taebaek Mountains</h3>
+                    <div class="director">Im Kwontaek</div>
+                    <span class="week-tag">Week 3</span>
+                    <div class="themes">Korean War, ideological division, rural South Korea</div>
+                </div>
+            </a>
+
+            <a href="films/aimless-bullet.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/4O53U5HYkdw4HN6mpJmvxqfPi7U.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">1961</span>
+                    <span class="korean-title">오발탄</span>
+                    <span class="runtime">105 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Aimless Bullet</h3>
+                    <div class="director">Yu Hyonmok</div>
+                    <span class="week-tag">Week 4</span>
+                    <div class="themes">Post-war poverty, displacement, Korean realism</div>
+                </div>
+            </a>
+
+            <a href="films/the-flower-girl.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/bbf6SgMgUxixi3zJnKpBChWEqCa.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">1972</span>
+                    <span class="korean-title">꽃파는 처녀</span>
+                    <span class="runtime">125 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>The Flower Girl</h3>
+                    <div class="director">Choe Ik-gyu &amp; Pak Hak</div>
+                    <span class="week-tag">Week 5</span>
+                    <div class="themes">North Korean cinema, revolutionary art, colonial resistance</div>
+                </div>
+            </a>
+
+            <a href="films/a-single-spark.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/53iMgx4wbvSb5hfRD2kevq682zd.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">1995</span>
+                    <span class="korean-title">아름다운 청년 전태일</span>
+                    <span class="runtime">97 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>A Single Spark</h3>
+                    <div class="director">Park Kwang-su</div>
+                    <span class="week-tag">Week 6</span>
+                    <div class="themes">Labor movement, Jeon Tae-il, democratization</div>
+                </div>
+            </a>
+
+            <a href="films/madame-freedom.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/mknsbMQFN78jVNC021fTSuEw1Rj.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">1956</span>
+                    <span class="korean-title">자유부인</span>
+                    <span class="runtime">124 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Madame Freedom</h3>
+                    <div class="director">Han Hyongmo</div>
+                    <span class="week-tag">Week 7</span>
+                    <div class="themes">Gender politics, American modernity, post-war Seoul</div>
+                </div>
+            </a>
+
+            <a href="films/spirits-homecoming.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/yO8Z1Sl1iyhMZq01k7walZvWIBe.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">2016</span>
+                    <span class="korean-title">귀향</span>
+                    <span class="runtime">127 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Spirit's Homecoming</h3>
+                    <div class="director">Cho Jung-rae</div>
+                    <span class="week-tag">Week 8</span>
+                    <div class="themes">"Comfort women," Japanese imperialism, memory and trauma</div>
+                </div>
+            </a>
+
+            <a href="films/loyal-citizens.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/9sQTVDXCzFxWarg0tuEHMb1XDM0.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">2018</span>
+                    <span class="korean-title">평양의 충신</span>
+                    <span class="runtime">38 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Loyal Citizens of Pyongyang</h3>
+                    <div class="director">David Yun</div>
+                    <span class="week-tag">Week 9</span>
+                    <div class="themes">North Korean migrants, displacement, surveillance state</div>
+                </div>
+            </a>
+
+            <a href="films/parasite.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">2019</span>
+                    <span class="korean-title">기생충</span>
+                    <span class="runtime">132 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Parasite</h3>
+                    <div class="director">Bong Joon-ho</div>
+                    <span class="week-tag">Week 9</span>
+                    <div class="themes">Class inequality, late capitalism, housing crisis</div>
+                </div>
+            </a>
+
+            <a href="films/a-dwarf-launches.html" class="film-card no-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w1280/xkUywIcVo88RL5Qt3fTnw37NQf0.jpg'); background-size: cover; background-position: center 30%;">
+                    <span class="year-badge">1981</span>
+                    <span class="korean-title">난쏘공</span>
+                    <span class="runtime">100 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>A Dwarf Launches a Little Ball</h3>
+                    <div class="director">Lee Won-se</div>
+                    <span class="week-tag">Optional</span>
+                    <div class="themes">Industrialization, urban displacement, working class</div>
+                </div>
+            </a>
+
+            <a href="films/peppermint-candy.html" class="film-card has-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w500/jPP0gFDgdXRa1YgP8Cn8arzOHI3.jpg'); background-size: cover; background-position: center 20%;">
+                    <span class="year-badge">1999</span>
+                    <span class="korean-title">박하사탕</span>
+                    <span class="runtime">130 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Peppermint Candy</h3>
+                    <div class="director">Lee Chang-dong</div>
+                    <span class="week-tag">Optional</span>
+                    <div class="themes">Reverse chronology, Gwangju uprising, 1980s-90s Korea</div>
+                </div>
+            </a>
+
+            <a href="films/take-care-of-my-cat.html" class="film-card no-deep-dive">
+                <div class="poster" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://media.themoviedb.org/t/p/w1280/65vwocYaQrSjuaAL3UuNVc0YIoD.jpg'); background-size: cover; background-position: center 30%;">
+                    <span class="year-badge">2001</span>
+                    <span class="korean-title">고양이를 부탁해</span>
+                    <span class="runtime">112 min</span>
+                </div>
+                <div class="card-body">
+                    <h3>Take Care of My Cat</h3>
+                    <div class="director">Jeong Jae-eun</div>
+                    <span class="week-tag">Optional</span>
+                    <div class="themes">Female friendship, economic precarity, post-IMF Korea</div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- WEEKLY OVERVIEW -->
+    <section class="schedule-section">
+        <div class="section-header">
+            <h2>Weekly Overview</h2>
+            <div class="subtitle">10-week term, March 30 &ndash; June 5. Films marked in red, readings in gray.</div>
+        </div>
+
+        <div class="week-grid">
+            <div class="week-row">
+                <div class="week-label">Week 1<br><span class="dates">3/30&ndash;4/3</span></div>
+                <div class="week-content">
+                    Foundation, Frameworks, Joseon Ends.<br>
+                    <span class="film-badge">The Throne</span>
+                    <span class="reading-badge">Cumings Ch. 1</span>
+                    <span class="reading-badge">Lady Hyegyeong's memoirs</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 2<br><span class="dates">4/6&ndash;4/10</span></div>
+                <div class="week-content">
+                    Colonialism Begins.<br>
+                    <span class="film-badge">Sopyonje</span>
+                    <span class="reading-badge">Cumings Ch. 2-3</span>
+                    <span class="reading-badge">Na Hyesok, Kim Tongin, Yi Sang</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 3<br><span class="dates">4/13&ndash;4/17</span></div>
+                <div class="week-content">
+                    Liberation, Occupation, Civil War.<br>
+                    <span class="film-badge">Taebaek Mountains</span>
+                    <span class="reading-badge">Cumings Ch. 4-5</span>
+                    <span class="reading-badge">Chae Mansik, Yi T'aejun</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 4<br><span class="dates">4/20&ndash;4/24</span></div>
+                <div class="week-content">
+                    Civil War (continued), Industrialization.<br>
+                    <span class="film-badge">Aimless Bullet</span>
+                    <span class="reading-badge">Cumings Ch. 5-6</span>
+                    <span class="reading-badge">Hwang Sunwon, Park Wanso, Yi Pom-son</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 5<br><span class="dates">4/27&ndash;5/1</span></div>
+                <div class="week-content">
+                    Division, Dictatorships, Democratization.<br>
+                    <span class="film-badge">The Flower Girl</span>
+                    <span class="reading-badge">Cumings Ch. 6, 8</span>
+                    <span class="reading-badge">Park Wanso, Kim Il-sung</span>
+                    <span class="reading-badge">MIDTERM 5/1</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 6<br><span class="dates">5/4&ndash;5/8</span></div>
+                <div class="week-content">
+                    Democratization (continued). Midterm reading period.<br>
+                    <span class="film-badge">A Single Spark</span>
+                    <span class="reading-badge">Cumings Ch. 7</span>
+                    <span class="reading-badge">Kim Chiha, Cho Se-hui</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 7<br><span class="dates">5/11&ndash;5/15</span></div>
+                <div class="week-content">
+                    Relations with Japan, China, United States.<br>
+                    <span class="film-badge">Madame Freedom</span>
+                    <span class="reading-badge">Schmid Ch. 2</span>
+                    <span class="reading-badge">Kang Kyeong-ae, Yu Miri</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 8<br><span class="dates">5/18&ndash;5/22</span></div>
+                <div class="week-content">
+                    Sex and Gender Politics.<br>
+                    <span class="film-badge">Spirit's Homecoming</span>
+                    <span class="reading-badge">Queer literature anthology</span>
+                    <span class="reading-badge">"Comfort women" scholarship</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 9<br><span class="dates">5/25&ndash;5/29</span></div>
+                <div class="week-content">
+                    Contemporary DPRK Fiction. No class Mon (Memorial Day).<br>
+                    <span class="film-badge">Loyal Citizens of Pyongyang</span>
+                    <span class="film-badge">Parasite</span>
+                    <span class="reading-badge">Han Ung-bin</span>
+                </div>
+            </div>
+            <div class="week-row">
+                <div class="week-label">Week 10<br><span class="dates">6/1&ndash;6/5</span></div>
+                <div class="week-content">
+                    Student Presentations.
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Film &mdash; Spring 2026<br>Lawrence University</div>
+        <div><a href="https://docs.google.com/document/d/1HNEFiCmnfJIas4y0Vachgl8BxG1MKhpq-bi2_3mR604/edit">Full Syllabus</a></div>
+    </div>
+</footer>
+
+</body>
+</html>
