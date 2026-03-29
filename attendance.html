@@ -208,7 +208,7 @@ body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); 
 
   <div class="settings-panel" id="settingsPanel" style="display:none">
     <h3>Google Sheets Sync</h3>
-    <p class="s-desc">Paste the URL of your deployed Apps Script below. The page will load attendance from the sheet on startup and save every change back automatically — works from any browser or device.</p>
+    <p class="s-desc">Paste the URL of your deployed Apps Script below. The page loads attendance from the sheet on startup and saves every change automatically from any browser or device.<br><strong>Deployment must be:</strong> Execute as: Me · Who has access: <strong>Anyone</strong> · URL ends in <code>/exec</code></p>
 
     <div class="s-field">
       <label class="s-label" for="scriptUrlInput">Apps Script Web App URL</label>
@@ -382,7 +382,7 @@ async function sheetLoad() {
   if (!scriptUrl) return;
   setSyncState('saving', 'Loading…');
   try {
-    const res = await fetch(scriptUrl + '?action=load', { cache: 'no-store' });
+    const res = await fetch(scriptUrl + '?action=load', { cache: 'no-store', credentials: 'omit' });
     const data = await res.json();
     if (data && typeof data === 'object' && !data.error) {
       store = data;
@@ -404,7 +404,7 @@ function scheduleSave() {
     if (!scriptUrl) { setSyncState('', 'No sheet'); return; }
     try {
       const url = scriptUrl + '?action=save&data=' + encodeURIComponent(JSON.stringify(store));
-      const res = await fetch(url, { cache: 'no-store' });
+      const res = await fetch(url, { cache: 'no-store', credentials: 'omit' });
       const result = await res.json();
       setSyncState(result.ok ? 'connected' : 'error', result.ok ? 'Saved ✓' : 'Save error');
     } catch(e) {
@@ -550,13 +550,17 @@ document.getElementById('saveUrlBtn').addEventListener('click', async () => {
 document.getElementById('testBtn').addEventListener('click', async () => {
   const val = document.getElementById('scriptUrlInput').value.trim();
   if (!val) { setSettingsStatus('Enter a URL first.', true); return; }
+  if (!val.endsWith('/exec')) {
+    setSettingsStatus('URL must end in /exec — use the live deployment URL, not the /dev test URL.', true);
+    return;
+  }
   setSettingsStatus('Testing…', false);
   try {
-    const res = await fetch(val + '?action=load', { cache: 'no-store' });
+    const res = await fetch(val + '?action=load', { cache: 'no-store', credentials: 'omit' });
     const data = await res.json();
     setSettingsStatus(typeof data === 'object' ? 'Connection OK — script is responding.' : 'Got a response but unexpected format.', false);
   } catch(e) {
-    setSettingsStatus('Could not reach that URL. Check the deployment settings.', true);
+    setSettingsStatus('Blocked. In Apps Script: Deploy → Manage deployments → Edit → set "Who has access" to Anyone (not "Only myself").', true);
   }
 });
 
