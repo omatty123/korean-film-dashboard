@@ -516,6 +516,11 @@ body {
   </section>
 </div>
 
+<iframe name="attendanceSyncFrame" title="Attendance sync transport" hidden></iframe>
+<form id="attendanceSyncForm" method="POST" target="attendanceSyncFrame" hidden>
+  <input type="hidden" name="payload" id="attendanceSyncPayload">
+</form>
+
 <script>
 const STUDENTS = [
   { id: 'jack', name: 'Jack', pronouns: 'He/Him/His', photo: 'images/students/jack.jpg' },
@@ -563,11 +568,24 @@ const STATUS_OPTIONS = [
 const STORAGE_KEY = 'mkilf-attendance-v2';
 const SETTINGS_KEY = 'mkilf-attendance-sheet-settings';
 const APPS_SCRIPT_TEMPLATE = `function doPost(e) {
-  var payload = JSON.parse(e.postData.contents || '{}');
+  var rawPayload = '';
+  if (e && e.parameter && e.parameter.payload) {
+    rawPayload = e.parameter.payload;
+  } else if (e && e.postData && e.postData.contents) {
+    rawPayload = e.postData.contents;
+  }
+
+  var payload = JSON.parse(rawPayload || '{}');
   var sheetName = payload.sheetName || 'Attendance';
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
   var headers = ['course', 'sessionId', 'sessionDate', 'sessionLabel', 'topic', 'studentId', 'studentName', 'status', 'notes', 'syncedAt'];
+
+  if (payload.test) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: true, test: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(headers);
@@ -809,7 +827,7 @@ function buildSyncPayload() {
   };
 }
 
-async function syncToSheet(isTest) {
+function syncToSheet(isTest) {
   const webhookUrl = (syncSettings.webhookUrl || '').trim();
   if (!webhookUrl) {
     setSyncStatus('Add and save a web app URL first.', true);
@@ -821,25 +839,12 @@ async function syncToSheet(isTest) {
     payload.test = true;
   }
 
-  setSyncStatus(isTest ? 'Testing sheet connection…' : 'Syncing attendance…', false);
-
   try {
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    let result = {};
-    try {
-      result = await response.json();
-    } catch (error) {
-      result = {};
-    }
-
-    if (!response.ok || result.ok === false) {
-      throw new Error(result.error || 'Sheet sync failed');
-    }
+    const form = document.getElementById('attendanceSyncForm');
+    const payloadInput = document.getElementById('attendanceSyncPayload');
+    form.action = webhookUrl;
+    payloadInput.value = JSON.stringify(payload);
+    form.submit();
 
     if (!isTest) {
       const record = getSessionRecord(currentSessionId);
@@ -848,9 +853,14 @@ async function syncToSheet(isTest) {
       renderAll();
     }
 
-    setSyncStatus(isTest ? 'Connection worked.' : `Synced ${payload.students.length} students to Google Sheets.`, false);
+    setSyncStatus(
+      isTest
+        ? 'Test submitted. If the deployment is correct, the script accepted the request.'
+        : `Sync submitted for ${payload.students.length} students. Check the sheet in a few seconds.`,
+      false
+    );
   } catch (error) {
-    setSyncStatus(error.message || 'Sync failed.', true);
+    setSyncStatus(error.message || 'Sync submission failed.', true);
   }
 }
 

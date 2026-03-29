@@ -1,9 +1,22 @@
 function doPost(e) {
-  var payload = JSON.parse(e.postData.contents || '{}');
+  var rawPayload = '';
+  if (e && e.parameter && e.parameter.payload) {
+    rawPayload = e.parameter.payload;
+  } else if (e && e.postData && e.postData.contents) {
+    rawPayload = e.postData.contents;
+  }
+
+  var payload = JSON.parse(rawPayload || '{}');
   var sheetName = payload.sheetName || 'Attendance';
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
   var headers = ['course', 'sessionId', 'sessionDate', 'sessionLabel', 'topic', 'studentId', 'studentName', 'status', 'notes', 'syncedAt'];
+
+  if (payload.test) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: true, test: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(headers);
