@@ -78,7 +78,7 @@ body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); 
 .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.06); background: var(--surface); }
 .att-table { border-collapse: collapse; width: 100%; }
 .att-table thead th { background: var(--surface); border-bottom: 2px solid var(--border); font-weight: 600; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
-.att-table thead th.corner { z-index: 20; left: 0; position: sticky; min-width: 90px; text-align: left; padding: 0.8rem 1rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--faint); border-right: 2px solid var(--border); background: var(--surface); }
+.att-table thead th.corner { z-index: 20; left: 0; position: sticky; width: 140px; min-width: 140px; text-align: left; padding: 0.8rem 1rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--faint); border-right: 2px solid var(--border); background: var(--surface); }
 .att-table thead th.date-th { width: 38px; min-width: 38px; padding: 0 4px 6px; vertical-align: bottom; border-right: 1px solid var(--border); text-align: center; }
 .att-table thead th.date-th:last-of-type { border-right: none; }
 .att-table thead th.total-th { width: 60px; min-width: 60px; padding: 0.5rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--faint); text-align: center; border-left: 2px solid var(--border); background: var(--surface); }
@@ -88,28 +88,18 @@ body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); 
 .att-table tbody tr:last-child { border-bottom: none; }
 .att-table tbody tr:nth-child(even) td { background: var(--row-alt); }
 .att-table tbody tr:nth-child(even) td.student-cell { background: var(--row-alt); }
-.att-table td.student-cell { position: sticky; left: 0; z-index: 5; background: var(--surface); border-right: 2px solid var(--border); padding: 0.5rem 0.75rem; min-width: 90px; max-width: 90px; }
-.student-inner { display: flex; align-items: center; gap: 0.6rem; }
-.s-photo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; border: 1.5px solid var(--border); }
-.s-name { font-size: 0.85rem; font-weight: 600; line-height: 1.1; }
-.s-pronouns { font-size: 0.65rem; color: var(--muted); }
+.att-table td.student-cell { position: sticky; left: 0; z-index: 5; background: var(--surface); border-right: 2px solid var(--border); padding: 0.3rem 0.5rem; width: 140px; min-width: 140px; max-width: 140px; overflow: hidden; }
+.student-inner { display: flex; align-items: center; gap: 0.4rem; overflow: hidden; }
+.s-photo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; border: 1px solid var(--border); }
+.s-name { font-size: 0.75rem; font-weight: 600; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.s-pronouns { font-size: 0.58rem; color: var(--muted); white-space: nowrap; }
 .att-table td.att-cell { text-align: center; padding: 0; cursor: pointer; border-right: 1px solid var(--border); height: 48px; width: 38px; transition: background 0.08s; user-select: none; position: relative; }
 .att-table td.att-cell:last-of-type { border-right: none; }
 .att-table td.att-cell:hover { background: #f0ede7 !important; }
 .att-table td.att-cell.absent  { background: #1a1a1a !important; }
 .att-table td.att-cell.absent:hover  { background: #333 !important; }
-.att-table td.att-cell.tardy   { background: #fdf0f0 !important; }
-.att-table td.att-cell.tardy:hover   { background: #fce4e4 !important; }
-.att-table td.att-cell.tardy::after {
-  content: 'T';
-  display: block;
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--red);
-}
+.att-table td.att-cell.tardy   { background: var(--red) !important; }
+.att-table td.att-cell.tardy:hover   { background: #c0392b !important; }
 .att-table td.total-cell { text-align: center; font-size: 0.78rem; font-weight: 700; color: var(--muted); border-left: 2px solid var(--border); padding: 0 0.4rem; white-space: nowrap; }
 .att-table td.total-cell.has-mark { color: var(--red); }
 .att-table tfoot td { border-top: 2px solid var(--border); padding: 0.5rem; font-size: 0.7rem; text-align: center; color: var(--faint); font-weight: 600; background: #faf9f7; }
@@ -122,7 +112,7 @@ body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); 
 .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--muted); }
 .legend-swatch { width: 16px; height: 16px; border-radius: 3px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; }
 .legend-swatch.absent { background: #1a1a1a; border-color: #1a1a1a; }
-.legend-swatch.tardy  { background: #fdf0f0; border-color: #efc7c7; color: var(--red); }
+.legend-swatch.tardy  { background: var(--red); border-color: var(--red); }
 .legend-swatch.present { background: #fff; }
 
 /* SETTINGS PANEL */
@@ -197,7 +187,7 @@ body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); 
     <div>
       <div class="legend">
         <div class="legend-item"><div class="legend-swatch absent"></div> Absent</div>
-        <div class="legend-item"><div class="legend-swatch tardy">T</div> Tardy</div>
+        <div class="legend-item"><div class="legend-swatch tardy"></div> Tardy</div>
         <div class="legend-item"><div class="legend-swatch present"></div> Present</div>
       </div>
     </div>
