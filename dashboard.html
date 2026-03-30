@@ -6,6 +6,8 @@
 <title>Daily Prep — Modern Korean in Literature and Film</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root {
   --bg: #f4f3f0;
@@ -326,6 +328,12 @@ body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); 
 .sb-card-head.gold { background: var(--gold); }
 .sb-card-head.red { background: var(--red); }
 .sb-card-head.teal { background: var(--teal); }
+.sb-card-head.blue { background: var(--blue); }
+#plateMapEl { height: 210px; width: 100%; display: block; }
+#plateMapEl .leaflet-control-attribution { font-size: 9px; }
+.map-legend { display:flex; gap:10px; padding:7px 12px; font-size:0.65rem; color:var(--ink-muted); border-top:1px solid var(--border); flex-wrap:wrap; }
+.map-legend-item { display:flex; align-items:center; gap:4px; }
+.map-legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 .sb-card-body { padding: 12px 14px; }
 .week-desc { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.6; }
 .cumings-ref {
@@ -668,6 +676,129 @@ const PLATES = [
   },
 ];
 
+// ── MAP DATA ──────────────────────────────────────────────────────────────────
+// marker types: city (blue), event (red), culture (teal), dprk (dark)
+const PLATE_MAPS = {
+  1:  { center:[36.5,127.5], zoom:6 },
+  2:  { center:[37.3,127.0], zoom:8, markers:[
+        { lat:37.5796, lng:126.9770, label:'Gyeongbok Palace, Seoul', type:'culture' },
+        { lat:37.2882, lng:127.0136, label:'Hwaseong Fortress (Suwon)', type:'event' }
+      ]},
+  3:  { center:[37.3,127.0], zoom:8, markers:[
+        { lat:37.5796, lng:126.9770, label:'Gyeongbok Palace', type:'culture' },
+        { lat:37.2882, lng:127.0136, label:'Hwaseong Fortress — Prince Sado', type:'event' }
+      ]},
+  4:  { center:[36.0,133.0], zoom:5, markers:[
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' },
+        { lat:35.6762, lng:139.6503, label:'Tokyo (Na Hyesŏk studied here)', type:'city' }
+      ]},
+  5:  { center:[40.0,128.5], zoom:5, markers:[
+        { lat:42.9, lng:129.5, label:'Jiandao/Gando, Manchuria — setting of Potatoes', type:'event' },
+        { lat:37.5665, lng:126.9780, label:'Seoul (Kim Wonju)', type:'city' }
+      ]},
+  6:  { center:[36.2,127.2], zoom:7, markers:[
+        { lat:35.5, lng:126.8, label:'Jeolla Province (Sopyonje)', type:'culture' },
+        { lat:37.5665, lng:126.9780, label:'Seoul (Yi Sang)', type:'city' }
+      ]},
+  7:  { center:[38.0,127.0], zoom:7, markers:[
+        { lat:37.5665, lng:126.9780, label:'Seoul (liberation capital)', type:'city' },
+        { lat:38.3085, lng:127.2,    label:'38th Parallel — division line', type:'event' },
+        { lat:39.0392, lng:125.7625, label:'Pyongyang', type:'dprk' }
+      ]},
+  8:  { center:[38.5,127.0], zoom:7, markers:[
+        { lat:39.0392, lng:125.7625, label:'Pyongyang', type:'dprk' },
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' },
+        { lat:38.3085, lng:127.2,    label:'38th Parallel', type:'event' }
+      ]},
+  9:  { center:[36.0,128.2], zoom:7, markers:[
+        { lat:34.8496, lng:127.3549, label:'Bŏlgyo, Jeollanam-do — film setting', type:'culture' },
+        { lat:37.1731, lng:128.9736, label:'Taebaek Mountains', type:'culture' }
+      ]},
+  10: { center:[38.1,126.8], zoom:8, markers:[
+        { lat:37.9661, lng:126.5618, label:'Kaesŏng', type:'event' },
+        { lat:38.3085, lng:127.2,    label:'38th Parallel', type:'event' }
+      ]},
+  11: { center:[37.8,126.8], zoom:7, markers:[
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' },
+        { lat:37.9661, lng:126.5618, label:'Kaesŏng — Pak Wanso\'s hometown (now DPRK)', type:'dprk' }
+      ]},
+  12: { center:[37.55,126.97], zoom:11, markers:[
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' },
+        { lat:37.5490, lng:126.9092, label:'Mapo Bridge', type:'event' }
+      ]},
+  13: { center:[37.53,127.02], zoom:11, markers:[
+        { lat:37.5172, lng:127.0473, label:'Gangnam (new apartment city)', type:'city' },
+        { lat:37.5638, lng:126.9084, label:'Mapo-gu', type:'city' }
+      ]},
+  14: { center:[39.0,125.7], zoom:9, markers:[
+        { lat:39.0392, lng:125.7625, label:'Pyongyang', type:'dprk' },
+        { lat:39.0102, lng:125.7506, label:'Mansudae Hill', type:'dprk' }
+      ]},
+  16: { center:[36.5,127.2], zoom:7, markers:[
+        { lat:35.1595, lng:126.8526, label:'Gwangju — 1980 uprising', type:'event' },
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' },
+        { lat:37.5692, lng:126.9983, label:'Cheonggye Stream (labor protests)', type:'event' }
+      ]},
+  17: { center:[37.52,127.04], zoom:11, markers:[
+        { lat:37.5692, lng:126.9983, label:'Cheonggye Stream / Peace Market', type:'event' },
+        { lat:37.4449, lng:127.1388, label:'Seongnam (urban resettlement)', type:'event' }
+      ]},
+  19: { center:[41.0,129.0], zoom:5, markers:[
+        { lat:42.8913, lng:129.5089, label:'Yanbian / Jiandao — Korean diaspora', type:'city' },
+        { lat:42.7684, lng:129.4245, label:'Longjing (Yongjeong)', type:'culture' },
+        { lat:37.5665, lng:126.9780, label:'Korean peninsula', type:'city' }
+      ]},
+  20: { center:[34.7,135.5], zoom:8, markers:[
+        { lat:34.6697, lng:135.5329, label:'Osaka / Ikuno-ku (Zainichi community)', type:'city' },
+        { lat:34.6901, lng:135.1955, label:'Kobe', type:'city' }
+      ]},
+  21: { center:[37.56,126.98], zoom:12, markers:[
+        { lat:37.5636, lng:126.9869, label:'Myeongdong', type:'culture' },
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' }
+      ]},
+  22: { center:[37.55,126.92], zoom:11, markers:[
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' },
+        { lat:37.5562, lng:126.9045, label:'Mapo-gu (Gi Hyeong-do)', type:'culture' }
+      ]},
+  23: { center:[34.5,127.5], zoom:5, markers:[
+        { lat:35.0166, lng:126.7107, label:'Naju, Jeollanam-do — film setting', type:'event' },
+        { lat:37.5665, lng:126.9780, label:'Seoul', type:'city' },
+        { lat:35.6762, lng:139.6503, label:'Tokyo (imperial power)', type:'event' }
+      ]},
+  26: { center:[38.5,126.5], zoom:7, markers:[
+        { lat:39.0392, lng:125.7625, label:'Pyongyang', type:'dprk' },
+        { lat:37.5665, lng:126.9780, label:'Seoul (defector destination)', type:'city' }
+      ]},
+  27: { center:[37.53,127.0], zoom:12, markers:[
+        { lat:37.5796, lng:126.9854, label:'Bukchon (wealthy neighborhood)', type:'city' },
+        { lat:37.5326, lng:126.9772, label:'Han River', type:'culture' },
+        { lat:37.4449, lng:126.9714, label:'Semi-basement — Gwanak-gu', type:'event' }
+      ]}
+};
+
+let _plateMap = null;
+
+function initPlateMap(mapData) {
+  if (_plateMap) { _plateMap.remove(); _plateMap = null; }
+  const el = document.getElementById('plateMapEl');
+  if (!el || !mapData) return;
+  _plateMap = L.map(el, { zoomControl: false, scrollWheelZoom: false, dragging: false })
+    .setView(mapData.center, mapData.zoom);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 19
+  }).addTo(_plateMap);
+  const colors = { city:'#2d4f8a', event:'#b83232', culture:'#1a6b5a', dprk:'#333' };
+  (mapData.markers || []).forEach(m => {
+    L.circleMarker([m.lat, m.lng], {
+      radius: 6,
+      fillColor: colors[m.type] || colors.city,
+      color: '#fff', weight: 2,
+      opacity: 1, fillOpacity: 0.9
+    }).bindTooltip(m.label, { permanent: false, direction: 'top', offset: [0, -8] }).addTo(_plateMap);
+  });
+}
+
 // ── RENDERING ─────────────────────────────────────────────────────────────────
 
 let currentId = 1;
@@ -867,6 +998,23 @@ function render() {
     plate.secondary.forEach(item => { secondaryHtml += renderSecCard(item); });
   }
 
+  // Map
+  if (_plateMap) { _plateMap.remove(); _plateMap = null; }
+  const mapData = PLATE_MAPS[plate.id];
+  const mapCard = mapData ? `
+    <div class="sb-card">
+      <div class="sb-card-head blue">Locations</div>
+      <div style="overflow:hidden;border-radius:0 0 6px 6px;">
+        <div id="plateMapEl"></div>
+        <div class="map-legend">
+          <span class="map-legend-item"><span class="map-legend-dot" style="background:#2d4f8a"></span>City</span>
+          <span class="map-legend-item"><span class="map-legend-dot" style="background:#b83232"></span>Event</span>
+          <span class="map-legend-item"><span class="map-legend-dot" style="background:#1a6b5a"></span>Culture</span>
+          <span class="map-legend-item"><span class="map-legend-dot" style="background:#333"></span>DPRK</span>
+        </div>
+      </div>
+    </div>` : '';
+
   // Sidebar
   const cumings = (plate.secondary||[]).find(s => s.type==='cum');
   const upcoming = PLATES.filter(p => p.id > plate.id && !p.noClass).slice(0,2);
@@ -896,6 +1044,7 @@ function render() {
   });
 
   const sidebarHtml = `
+    ${mapCard}
     <div class="sb-card">
       <div class="sb-card-head">This Week</div>
       <div class="sb-card-body">
@@ -926,6 +1075,8 @@ function render() {
   document.getElementById('mainWrap').innerHTML = `
     <div class="main-col">${primaryHtml}${secondaryHtml}</div>
     <div class="sidebar">${sidebarHtml}</div>`;
+
+  initPlateMap(mapData);
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
