@@ -594,6 +594,13 @@ const links = [
   { source: 'yongjo',   target: 'hyojang', type: 'parent_child', label: 'father → first son (d. 1728)' },
   { source: 'hyojang',  target: 'chongjo', type: 'adoption',     label: 'posthumous adoption (1764) — Chŏngjo\'s official lineage, erasing Sado' },
   { source: 'sado',        target: 'pingae',   type: 'concubine',    label: 'great love — killed her in illness (1761)' },
+  // Yŏngjo's daughters — parent links
+  { source: 'yongjo',  target: 'hwapyong', type: 'parent_child', label: 'father → favorite daughter' },
+  { source: 'yongjo',  target: 'hwahyop',  type: 'parent_child', label: 'father → daughter (disfavored)' },
+  { source: 'yongjo',  target: 'hwawan',   type: 'parent_child', label: 'father → favorite surviving daughter' },
+  { source: 'sonhui',  target: 'hwapyong', type: 'parent_child', label: 'mother → daughter' },
+  { source: 'sonhui',  target: 'hwahyop',  type: 'parent_child', label: 'mother → daughter' },
+  // Sibling links to Sado
   { source: 'sado',        target: 'hwapyong', type: 'sibling',      label: 'sister mediated for him with Yŏngjo' },
   { source: 'sado',        target: 'hwahyop',  type: 'sibling',      label: 'mutual affection — both disfavored' },
   { source: 'sado',        target: 'hwawan',   type: 'sibling',      label: 'relied on her; threatened her life' },
@@ -672,9 +679,15 @@ Object.entries(LINK_COLORS).forEach(([type, color]) => {
     .attr('opacity', 0.75);
 });
 
+const KING_SPINE = new Set(['sukjong', 'yongjo', 'chongjo']);
+const SADO_X = W * 0.22;
+
 nodes.forEach(n => {
   n.x = n.px * W;
   n.y = n.py * H;
+  // Pin x: king spine locked to center, Sado locked to the left
+  if (KING_SPINE.has(n.id)) n.fx = W * 0.50;
+  if (n.id === 'sado')      n.fx = SADO_X;
 });
 
 const zoomBehavior = d3.zoom()
@@ -726,7 +739,13 @@ const nodeEl = nodeGroup.selectAll('g')
   .call(d3.drag()
     .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
     .on('drag',  (e, d) => { d.fx = e.x; d.fy = e.y; })
-    .on('end',   (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
+    .on('end',   (e, d) => {
+      if (!e.active) sim.alphaTarget(0);
+      // Restore x pin for king spine and Sado after drag
+      if (KING_SPINE.has(d.id)) { d.fx = W * 0.50; d.fy = null; }
+      else if (d.id === 'sado') { d.fx = SADO_X;   d.fy = null; }
+      else                      { d.fx = null;      d.fy = null; }
+    })
   )
   .on('mouseenter', showTooltip)
   .on('mousemove',  moveTooltip)
