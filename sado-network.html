@@ -420,33 +420,33 @@ const nodes = [
   {
     id: 'sukjong', label: 'Sukjong',
     name: 'King Sukjong', korean: '숙종 (肅宗)',
-    group: 'king', size: 22,
+    group: 'king', size: 26,
     role: 'King of Chosŏn (r. 1674–1720); father of Gyeongjong and Yŏngjo',
     desc: 'Father of both Gyeongjong (by Lady Huibin Jang) and Yŏngjo (by Lady Sukbin Choe). His turbulent court — the Purge of 1689, the execution of Lady Huibin Jang — set the factional conflicts that would haunt Yŏngjo\'s entire reign. The legitimacy questions surrounding Yŏngjo\'s birth and succession trace directly to Sukjong\'s court politics.',
-    px: 0.50, py: 0.08
+    px: 0.50, py: 0.10
   },
   {
     id: 'yongjo', label: 'Yŏngjo',
     name: 'King Yŏngjo', korean: '영조 (英祖)',
-    group: 'king', size: 28,
-    role: 'Reigning King of Chosŏn (r. 1724–1776)',
+    group: 'king', size: 26,
+    role: 'King of Chosŏn (r. 1724–1776)',
     desc: 'The reigning king. Brilliant, morally scrupulous, and filial to his ancestors — yet emotionally rigid with his son Prince Sado. His impossible standards, public humiliations, and gradual withdrawal created the conditions for Sado\'s descent into illness. He ultimately ordered Sado confined in a rice chest (1762), where the Prince died eight days later.',
-    px: 0.50, py: 0.30
+    px: 0.50, py: 0.40
   },
   {
     id: 'sado', label: 'Prince Sado',
     name: 'Prince Sado', korean: '사도세자 (思悼世子)',
-    group: 'prince', size: 30,
-    role: 'Crown Prince & Prince-Regent',
+    group: 'prince', size: 26,
+    role: 'Crown Prince — never reigned; died 1762',
     desc: 'The tragic center of the memoir. Endowed with extraordinary filial piety, intelligence, and generosity — but separated from his parents in infancy and raised by corrupt attendants. Starved of his father\'s love, he descended into severe mental illness: violence, hallucinations, a pathological "clothing phobia." He was confined in a rice chest on Yŏngjo\'s orders and died in 1762.',
-    px: 0.50, py: 0.55
+    px: 0.26, py: 0.58
   },
   {
     id: 'chongjo', label: 'Chŏngjo',
-    name: 'Grand Heir / King Chŏngjo', korean: '세손·정조 (世孫·正祖)',
-    group: 'heir', size: 22,
-    role: 'Grand Heir — Future King Chŏngjo',
-    desc: 'Son of Prince Sado and Lady Hyegyŏng. Born 1752. Lady Hyegyŏng\'s reason for living after Sado\'s death. Formally designated Grand Heir in 1759. Later became King Chŏngjo — one of Chosŏn\'s greatest rulers. The Memoir of 1805 was written for his son, King Sunjo.',
+    name: 'King Chŏngjo', korean: '정조 (正祖)',
+    group: 'king', size: 26,
+    role: 'King of Chosŏn (r. 1776–1800)',
+    desc: 'Son of Prince Sado and Lady Hyegyŏng. Born 1752. Became one of Chosŏn\'s greatest kings. His official lineage was rewritten in 1764 to make him the posthumous adopted son of Crown Prince Hyojang — erasing Sado from the record. The Memoir of 1805 was written for his son, King Sunjo.',
     px: 0.50, py: 0.82
   },
 
@@ -457,7 +457,7 @@ const nodes = [
     group: 'concubine', size: 15,
     role: 'Sukjong\'s concubine; Yŏngjo\'s mother',
     desc: 'Born of humble birth, she rose to become Sukjong\'s favored concubine and mother of Prince Yŏninggun — the future Yŏngjo. Yŏngjo was intensely devoted to her memory throughout his reign. His filial piety toward his low-born mother was a defining feature of his kingship and partly explains his obsession with legitimacy, moral propriety, and the question of who was fit to rule.',
-    px: 0.28, py: 0.08
+    px: 0.26, py: 0.10
   },
   {
     id: 'sonhui', label: 'Lady Sŏnhŭi',
@@ -465,7 +465,7 @@ const nodes = [
     group: 'consort', size: 20,
     role: 'Yŏngjo\'s favored consort; Sado\'s mother',
     desc: 'Prince Sado\'s biological mother and Yŏngjo\'s most favored concubine. Deeply loving but powerless as Sado\'s illness worsened. When his illness endangered the dynasty, she made the agonizing decision to inform Yŏngjo — knowing it meant her son\'s death. She died of grief in 1764, saying "not even grass will grow on my grave."',
-    px: 0.28, py: 0.30
+    px: 0.26, py: 0.40
   },
   {
     id: 'hyegyong', label: 'Lady Hyegyŏng',
@@ -473,7 +473,7 @@ const nodes = [
     group: 'princess_consort', size: 24,
     role: 'Crown Princess Consort — Author & Narrator',
     desc: 'Author of the Memoirs. Married Prince Sado at age nine (1744) and entered the palace. A firsthand witness to court politics, Sado\'s illness, and Yŏngjo\'s character. She wrote this final memoir in 1805 for her grandson King Sunjo, "resisting death and weeping blood" over each page.',
-    px: 0.28, py: 0.55
+    px: 0.14, py: 0.58
   },
 
   // ── ADOPTIVE LINE (far right, bottom) ───────────────────────────
@@ -483,7 +483,7 @@ const nodes = [
     group: 'deceased', size: 14,
     role: 'Yŏngjo\'s first son (d. 1728); Chŏngjo\'s posthumous adoptive father',
     desc: 'Yŏngjo\'s first son, died at age nine in 1728, leaving the dynasty without an heir. Prince Sado\'s birth in 1735 was celebrated as the answer to that void. In 1764 — two years after Sado\'s death — Yŏngjo designated the Grand Heir Chŏngjo as Hyojang\'s posthumous adopted son. The effect: Chŏngjo\'s official lineage now skipped Sado entirely, erasing the stigma of his father\'s execution from the succession record.',
-    px: 0.72, py: 0.90
+    px: 0.76, py: 0.82
   },
 
   // ── RIVALS / HALF-LINE (right column, upper) ────────────────────
@@ -493,15 +493,15 @@ const nodes = [
     group: 'concubine', size: 15,
     role: 'Sukjong\'s concubine; Gyeongjong\'s mother; executed 1701',
     desc: 'The most notorious concubine of the Chosŏn court. Briefly elevated to queen, then demoted back to concubine rank amid vicious factional struggle. Accused of using shamanistic ritual to curse Queen Inwŏn, she was forced to drink poison in 1701. Her son Gyeongjong inherited her factional enemies — the Noron faction that backed Yŏngjo. Her dramatic fall haunted two generations of court politics.',
-    px: 0.78, py: 0.08
+    px: 0.76, py: 0.10
   },
   {
     id: 'gyeongjong', label: 'Gyeongjong',
     name: 'King Gyeongjong', korean: '경종 (景宗)',
-    group: 'king', size: 20,
-    role: 'King of Chosŏn (r. 1720–1724); Yŏngjo\'s older half-brother',
+    group: 'king', size: 26,
+    role: 'King of Chosŏn (r. 1720–1724) — no heir; dead-end branch',
     desc: 'Sukjong\'s eldest son by the ill-fated Lady Huibin Jang. Reigned four years with no male heir and died young. The Soron faction supported his line; the Noron faction backed Yŏngjo as successor. Whispers that Yŏngjo hastened his death trailed Yŏngjo for decades — a wound to royal legitimacy that shaped his obsessive moral severity and, indirectly, his treatment of Prince Sado.',
-    px: 0.78, py: 0.20
+    px: 0.76, py: 0.26
   },
   {
     id: 'hwapyong', label: "Hwap'yŏng",
@@ -509,7 +509,7 @@ const nodes = [
     group: 'princess', size: 18,
     role: 'Yŏngjo\'s favorite daughter; Sado\'s half-sister',
     desc: 'Yŏngjo\'s absolute favorite daughter, born of Lady Sŏnhŭi. She mediated between her father and Prince Sado, interceding on his behalf whenever Yŏngjo found fault. Her death in childbirth (1748) devastated Yŏngjo — he abandoned himself to grief and gradually withdrew from his son at the worst possible moment.',
-    px: 0.78, py: 0.38
+    px: 0.76, py: 0.42
   },
   {
     id: 'hwahyop', label: "Hwahyŏp",
@@ -517,7 +517,7 @@ const nodes = [
     group: 'princess', size: 14,
     role: 'Lady Sŏnhŭi\'s daughter; Sado\'s half-sister',
     desc: 'Born 1733. Like Prince Sado, disfavored by Yŏngjo. The siblings "often commiserated" — both sharing the pain of their father\'s coldness. Her death of measles in 1752 cut off another thread of warmth for the Prince. Married Lord Yŏngsŏng.',
-    px: 0.78, py: 0.52
+    px: 0.76, py: 0.55
   },
   {
     id: 'hwawan', label: 'Hwawan',
@@ -525,7 +525,7 @@ const nodes = [
     group: 'princess', size: 16,
     role: 'Yŏngjo\'s favorite surviving daughter',
     desc: 'Yŏngjo\'s favorite surviving daughter after Hwap\'yŏng\'s death. She had a complex relationship with Prince Sado — she helped him by persuading Yŏngjo to move palaces (1760), giving the Prince temporary relief. But as his illness peaked, he threatened her life and demanded she keep helping him.',
-    px: 0.78, py: 0.65
+    px: 0.76, py: 0.68
   },
   {
     id: 'pingae', label: 'Pingae',
@@ -533,7 +533,7 @@ const nodes = [
     group: 'concubine', size: 18,
     role: "Prince Sado's greatest love",
     desc: "A lady-in-waiting from Queen Dowager Inwŏn's sewing department. Prince Sado's only true love — 'He was mad about her.' Shrewd and demanding, she bore him a son (Prince Ŭnjŏn). In early 1761, in a rage driven by his illness, Sado beat her and she died where he left her. Lady Hyegyŏng quietly arranged her funeral.",
-    px: 0.78, py: 0.78
+    px: 0.14, py: 0.72
   },
 
   // ── ANTAGONISTS (far left) ───────────────────────────────────────
@@ -543,7 +543,7 @@ const nodes = [
     group: 'court', size: 13,
     role: 'Filed accusations against Prince Sado',
     desc: "On May 22, 1762, Na Kyŏngŏn filed a memorial accusing Prince Sado of ten heinous crimes. This triggered the final crisis: Yŏngjo personally interrogated Sado, and the Prince 'had reached an irreversible point.'",
-    px: 0.14, py: 0.28
+    px: 0.04, py: 0.34
   },
   {
     id: 'palatronhan', label: 'Matron Han',
@@ -551,7 +551,7 @@ const nodes = [
     group: 'court', size: 13,
     role: "Corrupt governess; planted martial obsession",
     desc: "The second palace matron at Crown Prince Sado's establishment. She secretly arranged martial games — hiding apprentice ladies-in-waiting behind doors who leapt out with toy weapons. This planted Sado's obsession with military arts. 'The havoc that Han woman wreaked. Ah! The unpredictability of fate.' Dismissed 1741.",
-    px: 0.14, py: 0.44
+    px: 0.04, py: 0.48
   },
   {
     id: 'munsonguk', label: 'Mun Sŏngguk',
@@ -559,7 +559,7 @@ const nodes = [
     group: 'court', size: 14,
     role: 'Palace key-keeper; informer',
     desc: "Lady Mun's brother. Promoted to palace key-keeper by Yŏngjo's favor. A 'cunning and vile creature' who spied on Prince Sado's every move and reported to Yŏngjo. His reports systematically worsened the father-son relationship. 'It was the misfortune of the nation that such a scheming thief achieved power.'",
-    px: 0.14, py: 0.58
+    px: 0.04, py: 0.62
   },
   {
     id: 'kimsangno', label: 'Kim Sangno',
@@ -567,7 +567,7 @@ const nodes = [
     group: 'official', size: 14,
     role: 'Prime Minister; double-dealer',
     desc: "Prime Minister during the regency. A 'devious character' who played both sides — comforting Prince Sado eloquently while signaling disapproval to Yŏngjo. His conduct 'saying one thing to the Prince and another to His Majesty was, to say the least, most unbecoming.'",
-    px: 0.14, py: 0.72
+    px: 0.04, py: 0.76
   },
 ];
 
@@ -697,8 +697,8 @@ const sim = d3.forceSimulation(nodes)
   .force('charge', d3.forceManyBody().strength(-500).distanceMax(400))
   .force('center', d3.forceCenter(W / 2, H / 2).strength(0.04))
   .force('collide', d3.forceCollide().radius(d => d.size + 28).strength(0.85))
-  .force('x', d3.forceX(d => d.px * W).strength(0.18))
-  .force('y', d3.forceY(d => d.py * H).strength(0.18));
+  .force('x', d3.forceX(d => d.px * W).strength(0.30))
+  .force('y', d3.forceY(d => d.py * H).strength(0.30));
 
 const linkGroup = container.append('g').attr('class', 'link-group');
 const linkEl = linkGroup.selectAll('line')
