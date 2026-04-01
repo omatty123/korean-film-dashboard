@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prince Sado — Core Relationships | EAST 418 / FILM 419</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #070810;
+      color: #ddd5c8;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #090a14;
+      border-bottom: 1px solid #1c1c2e;
+      padding: 9px 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .back-link {
+      font-size: 11.5px;
+      color: #5555a0;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+    .back-link:hover { color: #c8922a; }
+
+    header h1 {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 18px;
+      font-weight: normal;
+      color: #c8922a;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .header-sub {
+      font-style: italic;
+      font-size: 13px;
+      color: #6060a0;
+      flex: 1;
+    }
+
+    .header-hint {
+      font-size: 10.5px;
+      color: #383858;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 190px;
+      flex-shrink: 0;
+      background: #07080f;
+      border-right: 1px solid #161624;
+      overflow-y: auto;
+      padding: 13px 11px;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: #1a1a34; border-radius: 2px; }
+
+    .sb-section { margin-bottom: 18px; }
+
+    .sb-title {
+      font-size: 8.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #48489a;
+      margin-bottom: 8px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #14142a;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 5px;
+      font-size: 11px;
+      color: #a09898;
+    }
+
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-line-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 5px;
+      font-size: 10.5px;
+      color: #888080;
+    }
+
+    .line-swatch {
+      width: 22px;
+      height: 2px;
+      flex-shrink: 0;
+    }
+
+    .char-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 10.5px;
+      color: #8a8280;
+      transition: background 0.1s, color 0.1s;
+    }
+    .char-item:hover { background: #10101e; color: #e0d8c8; }
+    .char-item.selected { background: #14122a; color: #c8922a; }
+
+    .char-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* GRAPH */
+    .graph-area {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #graph-svg { width: 100%; height: 100%; }
+
+    /* TOOLTIP */
+    .tooltip {
+      position: absolute;
+      background: rgba(5, 5, 14, 0.97);
+      border: 1px solid #24203a;
+      border-radius: 4px;
+      padding: 7px 11px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.1s;
+      z-index: 50;
+      max-width: 230px;
+    }
+
+    .tt-name {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 13px;
+      color: #c8922a;
+      margin-bottom: 2px;
+    }
+
+    .tt-role {
+      font-size: 11px;
+      font-style: italic;
+      color: #60609a;
+    }
+
+    /* DETAIL PANEL */
+    .detail-panel {
+      width: 265px;
+      flex-shrink: 0;
+      background: #07080f;
+      border-left: 1px solid #161624;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .detail-empty {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-style: italic;
+      font-size: 12.5px;
+      color: #28284a;
+      padding: 20px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .detail-inner {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .detail-header {
+      padding: 14px 13px 11px;
+      background: #090a16;
+      border-bottom: 1px solid #161624;
+      flex-shrink: 0;
+    }
+
+    .d-name {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 15px;
+      color: #c8922a;
+      margin-bottom: 3px;
+    }
+
+    .d-korean {
+      font-size: 11.5px;
+      color: #48488a;
+      margin-bottom: 7px;
+    }
+
+    .d-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 8.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #06060e;
+      font-weight: 700;
+    }
+
+    .detail-body {
+      overflow-y: auto;
+      padding: 13px;
+      flex: 1;
+    }
+    .detail-body::-webkit-scrollbar { width: 4px; }
+    .detail-body::-webkit-scrollbar-thumb { background: #1a1a34; border-radius: 2px; }
+
+    .d-desc {
+      font-size: 12px;
+      color: #a8a098;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .d-conn-title {
+      font-size: 8.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #38385a;
+      margin-bottom: 8px;
+    }
+
+    .conn-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      padding: 4px 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-bottom: 2px;
+      transition: background 0.1s;
+    }
+    .conn-item:hover { background: #10101e; }
+
+    .conn-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .conn-name {
+      font-size: 11.5px;
+      color: #c0b8a8;
+      display: block;
+      font-weight: 500;
+    }
+
+    .conn-rel {
+      font-size: 10px;
+      color: #48486a;
+      font-style: italic;
+    }
+
+    /* D3 */
+    .node { cursor: pointer; }
+    .link { fill: none; }
+    .node.dimmed circle { opacity: 0.07; }
+    .node.dimmed text   { opacity: 0.07; }
+    .link.dimmed        { opacity: 0.04; }
+    .link.highlighted   { stroke-width: 2.5 !important; opacity: 1 !important; }
+    .node.highlighted circle { filter: brightness(1.25) drop-shadow(0 0 6px currentColor); }
+    .node-label { pointer-events: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="memoirs-1805.html" class="back-link">← Full Network</a>
+  <h1>Prince Sado</h1>
+  <span class="header-sub">Core Relationships — Memoir of 1805</span>
+  <span class="header-hint">Drag · Scroll to zoom · Click to explore</span>
+</header>
+
+<div class="main">
+
+  <div class="sidebar">
+    <div class="sb-section">
+      <div class="sb-title">Groups</div>
+      <div id="group-legend"></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-title">Relationships</div>
+      <div id="link-legend"></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-title">Characters</div>
+      <div id="char-list"></div>
+    </div>
+  </div>
+
+  <div class="graph-area">
+    <svg id="graph-svg"></svg>
+    <div class="tooltip" id="tooltip">
+      <div class="tt-name" id="tt-name"></div>
+      <div class="tt-role" id="tt-role"></div>
+    </div>
+  </div>
+
+  <div class="detail-panel">
+    <div class="detail-empty" id="detail-empty">Click any character to view their profile and connections</div>
+    <div class="detail-inner" id="detail-inner">
+      <div class="detail-header">
+        <div class="d-name" id="d-name"></div>
+        <div class="d-korean" id="d-korean"></div>
+        <span class="d-badge" id="d-badge"></span>
+      </div>
+      <div class="detail-body">
+        <p class="d-desc" id="d-desc"></p>
+        <div class="d-conn-title">Connections</div>
+        <div id="d-connections"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const GROUP_COLORS = {
+  king:             '#FFD700',
+  consort:          '#D090D8',
+  prince:           '#E03050',
+  princess_consort: '#CC8840',
+  heir:             '#FF7030',
+  princess:         '#E88060',
+  official:         '#4A80C0',
+  court:            '#6A8090',
+  concubine:        '#9060CC',
+  child:            '#40A880',
+};
+
+const GROUP_LABELS = {
+  king:             'King',
+  consort:          'Royal Consort',
+  prince:           'Crown Prince',
+  princess_consort: 'Princess Consort',
+  heir:             'Grand Heir',
+  princess:         'Princess',
+  official:         'Official',
+  court:            'Court Attendant',
+  concubine:        'Concubine',
+  child:            'Royal Child',
+};
+
+const LINK_COLORS = {
+  parent_child: '#4488ff',
+  marriage:     '#ffd700',
+  sibling:      '#88aaff',
+  concubine:    '#cc66ff',
+  ally:         '#44cc88',
+  antagonist:   '#ff3344',
+  spy:          '#ff8822',
+  court:        '#607080',
+};
+
+const LINK_LABELS = {
+  parent_child: 'Parent → Child',
+  marriage:     'Marriage',
+  sibling:      'Sibling bond',
+  concubine:    'Concubine relationship',
+  ally:         'Ally / Protector',
+  antagonist:   'Antagonist',
+  spy:          'Informer / Spy',
+  court:        'Court relationship',
+};
+
+// Only characters with a direct link to Sado (plus Sado himself)
+const nodes = [
+  {
+    id: 'sado', label: 'Prince Sado',
+    name: 'Prince Sado', korean: '사도세자 (思悼世子)',
+    group: 'prince', size: 30,
+    role: 'Crown Prince & Prince-Regent',
+    desc: 'The tragic center of the memoir. Endowed with extraordinary filial piety, intelligence, and generosity — but separated from his parents in infancy and raised by corrupt attendants. Starved of his father\'s love, he descended into severe mental illness: violence, hallucinations, a pathological "clothing phobia." He was confined in a rice chest on Yŏngjo\'s orders and died in 1762.',
+    px: 0.50, py: 0.50
+  },
+  {
+    id: 'yongjo', label: 'Yŏngjo',
+    name: 'King Yŏngjo', korean: '영조 (英祖)',
+    group: 'king', size: 28,
+    role: 'Reigning King of Chosŏn (r. 1724–1776)',
+    desc: 'The reigning king. Brilliant, morally scrupulous, and filial to his ancestors — yet emotionally rigid with his son Prince Sado. His impossible standards, public humiliations, and gradual withdrawal created the conditions for Sado\'s descent into illness. He ultimately ordered Sado confined in a rice chest (1762), where the Prince died eight days later.',
+    px: 0.50, py: 0.12
+  },
+  {
+    id: 'hyegyong', label: 'Lady Hyegyŏng',
+    name: 'Lady Hyegyŏng', korean: '혜경궁 홍씨 (惠慶宮 洪氏)',
+    group: 'princess_consort', size: 24,
+    role: 'Crown Princess Consort — Author & Narrator',
+    desc: 'Author of the Memoirs. Married Prince Sado at age nine (1744) and entered the palace. A firsthand witness to court politics, Sado\'s illness, and Yŏngjo\'s character. She wrote this final memoir in 1805 for her grandson King Sunjo, "resisting death and weeping blood" over each page.',
+    px: 0.26, py: 0.50
+  },
+  {
+    id: 'chongjo', label: 'Chŏngjo',
+    name: 'Grand Heir / King Chŏngjo', korean: '세손·정조 (世孫·正祖)',
+    group: 'heir', size: 22,
+    role: 'Grand Heir — Future King Chŏngjo',
+    desc: 'Son of Prince Sado and Lady Hyegyŏng. Born 1752. Lady Hyegyŏng\'s reason for living after Sado\'s death. Formally designated Grand Heir in 1759. Later became King Chŏngjo — one of Chosŏn\'s greatest rulers. The Memoir of 1805 was written for his son, King Sunjo.',
+    px: 0.38, py: 0.82
+  },
+  {
+    id: 'sonhui', label: 'Lady Sŏnhŭi',
+    name: 'Lady Sŏnhŭi', korean: '영빈 이씨 (暎嬪 李氏)',
+    group: 'consort', size: 20,
+    role: 'Yŏngjo\'s favored consort; Sado\'s mother',
+    desc: 'Prince Sado\'s biological mother and Yŏngjo\'s most favored concubine. Deeply loving but powerless as Sado\'s illness worsened. When his illness endangered the dynasty, she made the agonizing decision to inform Yŏngjo — knowing it meant her son\'s death. She died of grief in 1764, saying "not even grass will grow on my grave."',
+    px: 0.74, py: 0.12
+  },
+  {
+    id: 'hwapyong', label: "Hwap'yŏng",
+    name: "Princess Hwap'yŏng", korean: '화평옹주 (和平翁主)',
+    group: 'princess', size: 18,
+    role: 'Yŏngjo\'s favorite daughter; Sado\'s half-sister',
+    desc: 'Yŏngjo\'s absolute favorite daughter, born of Lady Sŏnhŭi. She mediated between her father and Prince Sado, interceding on his behalf whenever Yŏngjo found fault. Her death in childbirth (1748) devastated Yŏngjo — he abandoned himself to grief and gradually withdrew from his son at the worst possible moment.',
+    px: 0.82, py: 0.32
+  },
+  {
+    id: 'hwahyop', label: "Hwahyŏp",
+    name: "Princess Hwahyŏp", korean: '화협옹주 (和協翁主)',
+    group: 'princess', size: 14,
+    role: 'Lady Sŏnhŭi\'s daughter; Sado\'s half-sister',
+    desc: 'Born 1733. Like Prince Sado, disfavored by Yŏngjo. The siblings "often commiserated" — both sharing the pain of their father\'s coldness. Her death of measles in 1752 cut off another thread of warmth for the Prince. Married Lord Yŏngsŏng.',
+    px: 0.82, py: 0.66
+  },
+  {
+    id: 'hwawan', label: 'Hwawan',
+    name: 'Princess Hwawan (Madame Chŏng)', korean: '화완옹주·정씨 (和緩翁主)',
+    group: 'princess', size: 16,
+    role: 'Yŏngjo\'s favorite surviving daughter',
+    desc: 'Yŏngjo\'s favorite surviving daughter after Hwap\'yŏng\'s death. She had a complex relationship with Prince Sado — she helped him by persuading Yŏngjo to move palaces (1760), giving the Prince temporary relief. But as his illness peaked, he threatened her life and demanded she keep helping him.',
+    px: 0.68, py: 0.82
+  },
+  {
+    id: 'pingae', label: 'Pingae',
+    name: 'Pingae (Lady Pak / Kyŏngbin)', korean: '경빈 박씨 (慶嬪 朴氏)',
+    group: 'concubine', size: 18,
+    role: "Prince Sado's greatest love",
+    desc: "A lady-in-waiting from Queen Dowager Inwŏn's sewing department. Prince Sado's only true love — 'He was mad about her.' Shrewd and demanding, she bore him a son (Prince Ŭnjŏn). In early 1761, in a rage driven by his illness, Sado beat her and she died where he left her. Lady Hyegyŏng quietly arranged her funeral.",
+    px: 0.50, py: 0.82
+  },
+  {
+    id: 'munsonguk', label: 'Mun Sŏngguk',
+    name: 'Mun Sŏngguk', korean: '문성국 (文成國)',
+    group: 'court', size: 14,
+    role: 'Palace key-keeper; informer',
+    desc: "Lady Mun's brother. Promoted to palace key-keeper by Yŏngjo's favor. A 'cunning and vile creature' who spied on Prince Sado's every move and reported to Yŏngjo. His reports systematically worsened the father-son relationship. 'It was the misfortune of the nation that such a scheming thief achieved power.'",
+    px: 0.82, py: 0.50
+  },
+  {
+    id: 'kimsangno', label: 'Kim Sangno',
+    name: 'Kim Sangno', korean: '김상로 (金尙魯)',
+    group: 'official', size: 14,
+    role: 'Prime Minister; double-dealer',
+    desc: "Prime Minister during the regency. A 'devious character' who played both sides — comforting Prince Sado eloquently while signaling disapproval to Yŏngjo. His conduct 'saying one thing to the Prince and another to His Majesty was, to say the least, most unbecoming.'",
+    px: 0.18, py: 0.82
+  },
+  {
+    id: 'nakyongon', label: "Na Kyŏngŏn",
+    name: 'Na Kyŏngŏn', korean: '나경언 (羅景彦)',
+    group: 'court', size: 13,
+    role: 'Filed accusations against Prince Sado',
+    desc: "On May 22, 1762, Na Kyŏngŏn filed a memorial accusing Prince Sado of ten heinous crimes. This triggered the final crisis: Yŏngjo personally interrogated Sado, and the Prince 'had reached an irreversible point.'",
+    px: 0.18, py: 0.18
+  },
+  {
+    id: 'palatronhan', label: 'Matron Han',
+    name: 'Palace Matron Han', korean: '한 상궁 (韓 尙宮)',
+    group: 'court', size: 13,
+    role: "Corrupt governess; planted martial obsession",
+    desc: "The second palace matron at Crown Prince Sado's establishment. She secretly arranged martial games — hiding apprentice ladies-in-waiting behind doors who leapt out with toy weapons. This planted Sado's obsession with military arts. 'The havoc that Han woman wreaked. Ah! The unpredictability of fate.' Dismissed 1741.",
+    px: 0.18, py: 0.36
+  },
+];
+
+// Only direct Sado links
+const links = [
+  { source: 'yongjo',      target: 'sado',     type: 'parent_child', label: 'father → son (tragic estrangement)' },
+  { source: 'sonhui',      target: 'sado',     type: 'parent_child', label: 'mother → son' },
+  { source: 'sado',        target: 'hyegyong', type: 'marriage',     label: 'husband → wife / narrator' },
+  { source: 'sado',        target: 'chongjo',  type: 'parent_child', label: 'father → Grand Heir' },
+  { source: 'sado',        target: 'pingae',   type: 'concubine',    label: 'great love — killed her in illness (1761)' },
+  { source: 'sado',        target: 'hwapyong', type: 'sibling',      label: 'sister mediated for him with Yŏngjo' },
+  { source: 'sado',        target: 'hwahyop',  type: 'sibling',      label: 'mutual affection — both disfavored' },
+  { source: 'sado',        target: 'hwawan',   type: 'sibling',      label: 'relied on her; threatened her life' },
+  { source: 'munsonguk',   target: 'sado',     type: 'spy',          label: 'spied on Prince; reported to King' },
+  { source: 'kimsangno',   target: 'sado',     type: 'antagonist',   label: 'false ally; secretly undermined him' },
+  { source: 'nakyongon',   target: 'sado',     type: 'antagonist',   label: 'filed 10 accusations — triggered final crisis' },
+  { source: 'palatronhan', target: 'sado',     type: 'court',        label: 'corrupt governess; planted martial obsession' },
+];
+
+// ================================================================
+// BUILD SIDEBAR
+// ================================================================
+
+const groupsInUse = [...new Set(nodes.map(n => n.group))];
+const groupLegendEl = document.getElementById('group-legend');
+groupsInUse.forEach(g => {
+  const el = document.createElement('div');
+  el.className = 'legend-row';
+  el.innerHTML = `<div class="legend-dot" style="background:${GROUP_COLORS[g]}"></div>${GROUP_LABELS[g] || g}`;
+  groupLegendEl.appendChild(el);
+});
+
+const linkTypesInUse = [...new Set(links.map(l => l.type))];
+const linkLegendEl = document.getElementById('link-legend');
+linkTypesInUse.forEach(t => {
+  const el = document.createElement('div');
+  el.className = 'legend-line-row';
+  const isDashed = t === 'sibling';
+  const swatchStyle = isDashed
+    ? `background: repeating-linear-gradient(90deg, ${LINK_COLORS[t]} 0, ${LINK_COLORS[t]} 5px, transparent 5px, transparent 8px); height: 1.5px;`
+    : `background:${LINK_COLORS[t]};`;
+  el.innerHTML = `<div class="line-swatch" style="${swatchStyle}"></div>${LINK_LABELS[t] || t}`;
+  linkLegendEl.appendChild(el);
+});
+
+const charListEl = document.getElementById('char-list');
+[...nodes].sort((a, b) => a.name.localeCompare(b.name)).forEach(n => {
+  const el = document.createElement('div');
+  el.className = 'char-item';
+  el.dataset.id = n.id;
+  el.innerHTML = `<div class="char-dot" style="background:${GROUP_COLORS[n.group]}"></div>${n.label}`;
+  el.addEventListener('click', () => selectNode(n));
+  charListEl.appendChild(el);
+});
+
+// ================================================================
+// D3 VISUALIZATION
+// ================================================================
+
+const svgEl = document.getElementById('graph-svg');
+const svg = d3.select('#graph-svg');
+const W = svgEl.clientWidth || 800;
+const H = svgEl.clientHeight || 600;
+
+const defs = svg.append('defs');
+
+const glowFilter = defs.append('filter').attr('id', 'glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+glowFilter.append('feGaussianBlur').attr('stdDeviation', 5).attr('result', 'coloredBlur');
+const feMerge = glowFilter.append('feMerge');
+feMerge.append('feMergeNode').attr('in', 'coloredBlur');
+feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+Object.entries(LINK_COLORS).forEach(([type, color]) => {
+  defs.append('marker')
+    .attr('id', `arrow-${type}`)
+    .attr('viewBox', '0 -4 8 8')
+    .attr('refX', 8)
+    .attr('refY', 0)
+    .attr('markerWidth', 7)
+    .attr('markerHeight', 7)
+    .attr('orient', 'auto')
+    .attr('markerUnits', 'userSpaceOnUse')
+    .append('path')
+    .attr('d', 'M0,-4L8,0L0,4')
+    .attr('fill', color)
+    .attr('opacity', 0.75);
+});
+
+nodes.forEach(n => {
+  n.x = n.px * W;
+  n.y = n.py * H;
+});
+
+const zoomBehavior = d3.zoom()
+  .scaleExtent([0.2, 3.5])
+  .on('zoom', e => container.attr('transform', e.transform));
+svg.call(zoomBehavior);
+
+const container = svg.append('g');
+
+const sim = d3.forceSimulation(nodes)
+  .force('link', d3.forceLink(links).id(d => d.id)
+    .distance(d => {
+      const dist = {
+        parent_child: 130, marriage: 80, sibling: 140,
+        concubine: 120, ally: 150, antagonist: 160, spy: 170, court: 145,
+      };
+      return dist[d.type] || 130;
+    })
+    .strength(0.45))
+  .force('charge', d3.forceManyBody().strength(-500).distanceMax(400))
+  .force('center', d3.forceCenter(W / 2, H / 2).strength(0.04))
+  .force('collide', d3.forceCollide().radius(d => d.size + 28).strength(0.85))
+  .force('x', d3.forceX(d => d.px * W).strength(0.18))
+  .force('y', d3.forceY(d => d.py * H).strength(0.18));
+
+const linkGroup = container.append('g').attr('class', 'link-group');
+const linkEl = linkGroup.selectAll('line')
+  .data(links)
+  .join('line')
+  .attr('class', 'link')
+  .attr('stroke', d => LINK_COLORS[d.type] || '#888')
+  .attr('stroke-width', d => d.type === 'marriage' ? 2.2 : 1.4)
+  .attr('stroke-opacity', d => {
+    if (d.type === 'marriage') return 0.85;
+    if (d.type === 'parent_child') return 0.65;
+    return 0.50;
+  })
+  .attr('stroke-dasharray', d => d.type === 'sibling' ? '5,3' : null)
+  .attr('marker-end', d => {
+    if (d.type === 'marriage' || d.type === 'sibling') return null;
+    return `url(#arrow-${d.type})`;
+  });
+
+const nodeGroup = container.append('g').attr('class', 'node-group');
+const nodeEl = nodeGroup.selectAll('g')
+  .data(nodes)
+  .join('g')
+  .attr('class', 'node')
+  .call(d3.drag()
+    .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on('drag',  (e, d) => { d.fx = e.x; d.fy = e.y; })
+    .on('end',   (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
+  )
+  .on('mouseenter', showTooltip)
+  .on('mousemove',  moveTooltip)
+  .on('mouseleave', hideTooltip)
+  .on('click', (e, d) => { e.stopPropagation(); selectNode(d); });
+
+nodeEl.append('circle')
+  .attr('r', d => d.size)
+  .attr('fill', d => GROUP_COLORS[d.group] || '#888')
+  .attr('fill-opacity', 0.80)
+  .attr('stroke', d => {
+    const c = d3.color(GROUP_COLORS[d.group]);
+    return c ? c.brighter(0.7).toString() : '#fff';
+  })
+  .attr('stroke-width', d => d.size > 20 ? 2 : 1.5);
+
+nodeEl.append('text')
+  .attr('class', 'node-label')
+  .attr('text-anchor', 'middle')
+  .attr('dy', d => d.size + 12)
+  .attr('font-size', d => d.size > 22 ? 11 : d.size > 15 ? 9.5 : 8.5)
+  .attr('fill', d => GROUP_COLORS[d.group] || '#aaa')
+  .attr('opacity', 0.88)
+  .attr('font-family', "'Cormorant Garamond', serif")
+  .text(d => d.label);
+
+sim.on('tick', () => {
+  linkEl
+    .attr('x1', d => d.source.x)
+    .attr('y1', d => d.source.y)
+    .attr('x2', d => {
+      if (d.type === 'marriage' || d.type === 'sibling') return d.target.x;
+      const dx = d.target.x - d.source.x;
+      const dy = d.target.y - d.source.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 1) return d.target.x;
+      return d.target.x - (dx / dist) * (d.target.size + 7);
+    })
+    .attr('y2', d => {
+      if (d.type === 'marriage' || d.type === 'sibling') return d.target.y;
+      const dx = d.target.x - d.source.x;
+      const dy = d.target.y - d.source.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 1) return d.target.y;
+      return d.target.y - (dy / dist) * (d.target.size + 7);
+    });
+
+  nodeEl.attr('transform', d => `translate(${d.x},${d.y})`);
+});
+
+// ================================================================
+// TOOLTIP
+// ================================================================
+
+const tooltipEl = document.getElementById('tooltip');
+const ttNameEl  = document.getElementById('tt-name');
+const ttRoleEl  = document.getElementById('tt-role');
+
+function showTooltip(e, d) {
+  ttNameEl.textContent = d.name;
+  ttRoleEl.textContent = d.role;
+  tooltipEl.style.opacity = '1';
+  moveTooltip(e);
+}
+
+function moveTooltip(e) {
+  const rect = svgEl.getBoundingClientRect();
+  let x = e.clientX - rect.left + 14;
+  let y = e.clientY - rect.top - 10;
+  if (x + 240 > rect.width) x -= 260;
+  tooltipEl.style.left = x + 'px';
+  tooltipEl.style.top  = y + 'px';
+}
+
+function hideTooltip() {
+  tooltipEl.style.opacity = '0';
+}
+
+// ================================================================
+// DETAIL PANEL + SELECTION
+// ================================================================
+
+const nodeById = Object.fromEntries(nodes.map(n => [n.id, n]));
+let selectedId = null;
+
+function selectNode(d) {
+  if (selectedId === d.id) {
+    clearSelection();
+    return;
+  }
+  selectedId = d.id;
+
+  // Update sidebar
+  document.querySelectorAll('.char-item').forEach(el => {
+    el.classList.toggle('selected', el.dataset.id === d.id);
+  });
+
+  // Highlight
+  const connected = new Set([d.id]);
+  links.forEach(l => {
+    const sid = typeof l.source === 'object' ? l.source.id : l.source;
+    const tid = typeof l.target === 'object' ? l.target.id : l.target;
+    if (sid === d.id) connected.add(tid);
+    if (tid === d.id) connected.add(sid);
+  });
+
+  nodeEl.classed('dimmed', n => !connected.has(n.id))
+        .classed('highlighted', n => n.id === d.id);
+  linkEl.classed('dimmed', l => {
+    const sid = typeof l.source === 'object' ? l.source.id : l.source;
+    const tid = typeof l.target === 'object' ? l.target.id : l.target;
+    return sid !== d.id && tid !== d.id;
+  }).classed('highlighted', l => {
+    const sid = typeof l.source === 'object' ? l.source.id : l.source;
+    const tid = typeof l.target === 'object' ? l.target.id : l.target;
+    return sid === d.id || tid === d.id;
+  });
+
+  // Detail panel
+  document.getElementById('detail-empty').style.display = 'none';
+  const inner = document.getElementById('detail-inner');
+  inner.style.display = 'flex';
+
+  document.getElementById('d-name').textContent  = d.name;
+  document.getElementById('d-korean').textContent = d.korean || '';
+  document.getElementById('d-desc').textContent   = d.desc  || '';
+
+  const badge = document.getElementById('d-badge');
+  badge.textContent = GROUP_LABELS[d.group] || d.group;
+  badge.style.background = GROUP_COLORS[d.group] || '#555';
+
+  // Connections list
+  const connEl = document.getElementById('d-connections');
+  connEl.innerHTML = '';
+  links.forEach(l => {
+    const sid = typeof l.source === 'object' ? l.source.id : l.source;
+    const tid = typeof l.target === 'object' ? l.target.id : l.target;
+    const otherId = sid === d.id ? tid : (tid === d.id ? sid : null);
+    if (!otherId) return;
+    const other = nodeById[otherId];
+    if (!other) return;
+    const item = document.createElement('div');
+    item.className = 'conn-item';
+    item.innerHTML = `
+      <div class="conn-dot" style="background:${GROUP_COLORS[other.group]}"></div>
+      <div>
+        <span class="conn-name">${other.name}</span>
+        <span class="conn-rel">${l.label}</span>
+      </div>`;
+    item.addEventListener('click', () => selectNode(other));
+    connEl.appendChild(item);
+  });
+}
+
+function clearSelection() {
+  selectedId = null;
+  nodeEl.classed('dimmed', false).classed('highlighted', false);
+  linkEl.classed('dimmed', false).classed('highlighted', false);
+  document.querySelectorAll('.char-item').forEach(el => el.classList.remove('selected'));
+  document.getElementById('detail-empty').style.display = 'flex';
+  document.getElementById('detail-inner').style.display = 'none';
+}
+
+svg.on('click', clearSelection);
+</script>
+</body>
+</html>
