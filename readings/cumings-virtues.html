@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Cumings, 'The Virtues' — Companion Page">
+    <meta property="og:description" content="Course companion for Bruce Cumings, chapter 1 'The Virtues,' pp. 19-85.">
+    <meta property="og:url" content="https://omatty123.github.io/Modern-Korea-through-Lit-and-Film/readings/cumings-virtues.html">
+    <title>Cumings, "The Virtues" | Modern Korean in Literature and Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #4a148c;
+            --accent-light: #6a1b9a;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        .breadcrumb {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .hero {
+            background: linear-gradient(rgba(26,10,46,0.82), rgba(74,20,140,0.76));
+            padding: 3.2rem 2rem 2.7rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 2.7rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.12;
+            margin-bottom: 0.35rem;
+        }
+
+        .hero .subhead {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 1.08rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.76);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.72);
+        }
+
+        .hero-meta .tag {
+            background: rgba(255,255,255,0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .main-wrap { grid-template-columns: 1fr; }
+        }
+
+        .main-content h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .main-content h2:first-child { margin-top: 0; }
+
+        .main-content h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1.4rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .main-content ul,
+        .main-content ol {
+            margin: 0.8rem 0 1rem 1.15rem;
+            color: var(--ink-light);
+            font-size: 0.88rem;
+        }
+
+        .main-content li {
+            margin-bottom: 0.45rem;
+            line-height: 1.6;
+        }
+
+        .doc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 3px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .doc-card.gold { border-left-color: var(--gold); }
+        .doc-card.dark { border-left-color: #333; }
+
+        .doc-card h4 {
+            font-family: 'Newsreader', serif;
+            font-size: 0.98rem;
+            font-weight: 600;
+            margin-bottom: 0.55rem;
+            color: var(--ink);
+        }
+
+        .doc-card p,
+        .doc-card li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .doc-card ul {
+            margin-left: 1rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .sidebar-card.gold-border h3 { border-bottom-color: var(--gold); }
+
+        .sidebar-card p,
+        .sidebar-card li {
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            line-height: 1.6;
+        }
+
+        .sidebar-card ul {
+            padding-left: 1.1rem;
+        }
+
+        .fact-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .fact-row:last-child { border-bottom: none; }
+
+        .fact-label {
+            font-weight: 600;
+            color: var(--ink);
+            margin-right: 0.5rem;
+        }
+
+        .fact-value {
+            color: var(--ink-light);
+            text-align: right;
+        }
+
+        .resource-btn {
+            display: inline-block;
+            margin-top: 0.55rem;
+            padding: 0.45rem 1rem;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .resource-btn:hover { background: var(--accent-light); }
+
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to Modern Korean in Literature and Film</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="course-label">Reading Companion</div>
+        <h1>Cumings, “The Virtues”</h1>
+        <div class="subhead">Chapter 1 of <em>Korea’s Place in the Sun</em>, pp. 19-85</div>
+        <div class="hero-meta">
+            <span>Bruce Cumings</span>
+            <span>old Korea before 1860s rupture</span>
+            <span class="tag">Confucianism</span>
+            <span class="tag">mind-heart</span>
+            <span class="tag">early Korea</span>
+        </div>
+    </div>
+</section>
+
+<div class="main-wrap">
+    <article class="main-content">
+        <h2>Why Cumings Starts Here</h2>
+        <p>Cumings opens his book by arguing that “modern” Korea cannot be understood without the older worlds that shaped Korean habits, emotions, politics, and social expectations. His target is a lazy historical view that treats Korea as merely a corridor between China and Japan. Instead, he insists that Korea absorbed outside influences and remade them in distinctly Korean ways.</p>
+
+        <div class="doc-card gold">
+            <h4>Core Claim</h4>
+            <p>Korea is not a passive recipient of civilization. It is a long historical formation with its own moral vocabulary, social structure, regional consciousness, political traditions, and inherited emotional world.</p>
+        </div>
+
+        <h2>Two Big Streams</h2>
+        <h3>1. Confucian Virtue</h3>
+        <p>Cumings treats Confucianism not as a dead doctrine but as an ordering system that shaped family hierarchy, education, self-cultivation, officeholding, and political legitimacy. He does not reduce it to obedience alone. He emphasizes both its conservative side and its capacity to authorize moral criticism, learning, and disciplined public life.</p>
+
+        <h3>2. Native Mind-Heart</h3>
+        <p>Alongside the Confucian stream, Cumings places a deeper and less fully articulated current of Korean belief and feeling: the <em>sim</em>, or mind-heart. This is where intuition, emotion, spirits, song, shamanic practice, bodily knowledge, and visceral attachment live. For him, Korea is not only rule and hierarchy; it is also affect, rhythm, landscape, and embodied feeling.</p>
+
+        <div class="doc-card dark">
+            <h4>What To Watch For</h4>
+            <ul>
+                <li>He repeatedly refuses the idea that Korea was “Sinicized” in any simple or total way.</li>
+                <li>He frames Korean history as a process of Koreanizing foreign influence.</li>
+                <li>He keeps moral order and emotional life in tension rather than choosing one over the other.</li>
+            </ul>
+        </div>
+
+        <h2>Section Map</h2>
+        <p>The chapter moves quickly across a long timeline. The point is not to memorize every dynasty detail, but to see how a moral and political world gets built.</p>
+
+        <div class="doc-card">
+            <h4>Main Arc of the Chapter</h4>
+            <ol>
+                <li><strong>Origins and identity:</strong> Tan’gun, Paektu Mountain, regionalism, and the problem of national beginnings.</li>
+                <li><strong>State formation:</strong> the Three Kingdoms, Silla, and Koryŏ as stages in building Korean political order.</li>
+                <li><strong>Social transformation:</strong> hierarchy, family order, education, mobility, and the ethical centrality of filial piety.</li>
+                <li><strong>Court pathology:</strong> the Yŏngjo-Sado story as an extreme case of Confucian family-state logic.</li>
+                <li><strong>Limits of the old order:</strong> relatively weak commercial development and a late Chosŏn system that could not answer nineteenth-century pressure.</li>
+            </ol>
+        </div>
+
+        <h2>Why This Matters for the Course</h2>
+        <p>This chapter gives the long historical background for the class’s literature side as much as its film side. Cumings is trying to explain how moral order, political culture, kinship, memory, and historical self-understanding were built before the modern rupture of the late nineteenth century.</p>
+
+        <div class="doc-card gold">
+            <h4>Course Bridge</h4>
+            <p>Use this chapter to track recurring questions that come back across the term: how Korean writers and filmmakers inherit older moral vocabularies, how family order becomes political order, and how modern Korea repeatedly argues with the past even when it claims to have escaped it.</p>
+        </div>
+
+        <p>Cumings also makes a more unsettling point: old Korea was not simply stable or harmonious. Its structures could generate strain, exclusion, and political disaster even while presenting themselves as morally complete.</p>
+
+        <h2>Terms to Keep in Mind</h2>
+        <h3><em>Sim</em> (mind-heart)</h3>
+        <p>Not just “mind” in the rational sense. A chest-centered, affective, moral, bodily way of knowing.</p>
+
+        <h3><em>Hyo</em> (filial piety)</h3>
+        <p>The core relation of father and son becomes the model for household, society, and state.</p>
+
+        <h3>Tan’gun</h3>
+        <p>More than a mythic founder. A recurring way Koreans narrate antiquity, legitimacy, and national continuity.</p>
+
+        <h3>Koreanization</h3>
+        <p>Cumings’s preferred direction of explanation: foreign influence enters Korea, but is transformed within Korean history rather than simply copied.</p>
+
+        <h2>Questions for Class</h2>
+        <div class="doc-card">
+            <h4>Discussion Prompts</h4>
+            <ul>
+                <li>What does Cumings gain by pairing Confucian order with the more intuitive and shamanic world of the mind-heart?</li>
+                <li>Why is he so resistant to describing Korea as merely a bridge between China and Japan?</li>
+                <li>How does the Yŏngjo-Sado episode expose the dangers of collapsing family authority and political sovereignty into one structure?</li>
+                <li>Does the chapter describe a vanished moral world, or one whose fragments still organize modern Korean life?</li>
+            </ul>
+        </div>
+    </article>
+
+    <aside class="sidebar">
+        <div class="sidebar-card gold-border">
+            <h3>Quick Facts</h3>
+            <div class="fact-row">
+                <span class="fact-label">Author</span>
+                <span class="fact-value">Bruce Cumings</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Book</span>
+                <span class="fact-value"><em>Korea’s Place in the Sun</em></span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Section</span>
+                <span class="fact-value">“The Virtues”</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Pages</span>
+                <span class="fact-value">19-85</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Use</span>
+                <span class="fact-value">Week 1 background</span>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Read This For</h3>
+            <ul>
+                <li>a long view of Korean historical formation</li>
+                <li>Confucian family-state logic</li>
+                <li>the long premodern background of the course</li>
+                <li>the idea of Koreanizing outside influence</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>How To Use It</h3>
+            <p>Read this page before or after the chapter to keep the major claims straight. It is most useful as a map of the argument and a reminder of the key terms.</p>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Source Note</h3>
+            <p>This companion is based on the assigned course PDF: Bruce Cumings, chapter 1, “The Virtues,” pages 19-85. It is a guide to the argument, not a replacement for the reading.</p>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>Modern Korean in Literature and Film | Reading Companion: Cumings, “The Virtues”</p>
+</footer>
+
+</body>
+</html>
