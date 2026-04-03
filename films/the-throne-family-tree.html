@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Throne Family Tree">
+    <meta property="og:description" content="A visual family tree for the royal household around Crown Prince Sado in The Throne (2015).">
+    <meta property="og:image" content="https://omatty123.github.io/Modern-Korea-through-Lit-and-Film/films/the-throne-og.jpg">
+    <meta property="og:url" content="https://omatty123.github.io/Modern-Korea-through-Lit-and-Film/films/the-throne-family-tree.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Throne Family Tree">
+    <meta name="twitter:image" content="https://omatty123.github.io/Modern-Korea-through-Lit-and-Film/films/the-throne-og.jpg">
+    <title>The Throne Family Tree | Modern Korean in Literature and Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #4a148c;
+            --accent-light: #6a1b9a;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        .breadcrumb {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .hero {
+            background: linear-gradient(rgba(26,10,46,0.7), rgba(74,20,140,0.75)), url('https://media.themoviedb.org/t/p/w1280/j8qDbfN7EwQsOpfEw96R3lbJyE1.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
+        }
+
+        .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .hero-meta .tag {
+            background: rgba(255,255,255,0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2.5rem;
+        }
+
+        .main-content h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .tree-board {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.4rem;
+        }
+
+        .tree-level-label {
+            margin: 1.2rem 0 0.75rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        .tree-level-label:first-child {
+            margin-top: 0;
+        }
+
+        .tree-level {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .tree-level.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .tree-level.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .tree-level.one {
+            grid-template-columns: minmax(0, 420px);
+            justify-content: center;
+        }
+
+        .tree-connector {
+            position: relative;
+            height: 34px;
+            margin: 0.3rem 0;
+        }
+
+        .tree-connector::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+        }
+
+        .character-node {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--accent);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px var(--shadow);
+        }
+
+        .character-node.gold { border-top-color: var(--gold); }
+        .character-node.dark { border-top-color: #333; }
+
+        .character-photos {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 120px;
+            gap: 0.45rem;
+            padding: 0.45rem 0.45rem 0;
+        }
+
+        .character-photo {
+            width: 100%;
+            aspect-ratio: 4 / 4.6;
+            object-fit: cover;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .character-photo.secondary {
+            aspect-ratio: 1 / 1.18;
+            align-self: end;
+        }
+
+        .single-photo-wrap {
+            padding: 0.45rem 0.45rem 0;
+        }
+
+        .node-copy {
+            padding: 0.9rem 1rem 1rem;
+        }
+
+        .node-role {
+            color: var(--accent);
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .character-node.gold .node-role { color: var(--gold); }
+        .character-node.dark .node-role { color: var(--ink-faint); }
+
+        .node-copy h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.18rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+
+        .node-years {
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.03em;
+        }
+
+        .node-link {
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            line-height: 1.5;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .sidebar-card.gold-border h3 { border-bottom-color: var(--gold); }
+
+        .sidebar-card p,
+        .sidebar-card li {
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .sidebar-card ul {
+            padding-left: 1.1rem;
+        }
+
+        .resource-btn {
+            display: inline-block;
+            margin-top: 0.55rem;
+            padding: 0.45rem 1rem;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .resource-btn:hover { background: var(--accent-light); }
+
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 860px) {
+            .main-wrap { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 740px) {
+            .tree-level.two,
+            .tree-level.three,
+            .tree-level.one {
+                grid-template-columns: 1fr;
+            }
+
+            .character-photos {
+                grid-template-columns: 1fr;
+            }
+
+            .character-photo.secondary {
+                aspect-ratio: 4 / 3.6;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+    <a href="the-throne.html">&larr; Back to The Throne</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="course-label">Character Guide</div>
+        <h1>The Throne Family Tree</h1>
+        <div class="korean-title">사도</div>
+        <div class="hero-meta">
+            <span>Joseon royal household</span>
+            <span>visual reference</span>
+            <span class="tag">family tree</span>
+            <span class="tag">paired portraits</span>
+        </div>
+    </div>
+</section>
+
+<div class="main-wrap">
+    <article class="main-content">
+        <h2>House of Sado</h2>
+        <p>Older generation at the top, descendants below. Sado, Hyegyeong, and Jeongjo are shown with paired old and young portraits.</p>
+
+        <div class="tree-board">
+            <div class="tree-level-label">Generation I</div>
+            <div class="tree-level two">
+                <article class="character-node gold">
+                    <div class="single-photo-wrap">
+                        <img class="character-photo" src="../images/films/the-throne-family/sukjong.png" alt="King Sukjong at the royal tomb">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">King</div>
+                        <h3>Sukjong</h3>
+                        <div class="node-years">1661-1720</div>
+                        <div class="node-link">Father's generation above Yeongjo</div>
+                    </div>
+                </article>
+
+                <article class="character-node gold">
+                    <div class="single-photo-wrap">
+                        <img class="character-photo" src="../images/films/the-throne-family/queen-inwon.png" alt="Queen Inwon in palace robes">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">Queen Dowager</div>
+                        <h3>Queen Inwon</h3>
+                        <div class="node-years">1687-1757</div>
+                        <div class="node-link">Same generation as Sukjong</div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="tree-connector"></div>
+
+            <div class="tree-level-label">Generation II</div>
+            <div class="tree-level three">
+                <article class="character-node">
+                    <div class="single-photo-wrap">
+                        <img class="character-photo" src="../images/films/the-throne-family/gyeongjong.png" alt="Gyeongjong shrine tablets">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">King</div>
+                        <h3>Gyeongjong</h3>
+                        <div class="node-years">1688-1724</div>
+                        <div class="node-link">Yeongjo's brother</div>
+                    </div>
+                </article>
+
+                <article class="character-node">
+                    <div class="single-photo-wrap">
+                        <img class="character-photo" src="../images/films/the-throne-family/yeongjo.png" alt="King Yeongjo in red court robes">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">King</div>
+                        <h3>Yeongjo</h3>
+                        <div class="node-years">1694-1776</div>
+                        <div class="node-link">Father of Sado</div>
+                    </div>
+                </article>
+
+                <article class="character-node dark">
+                    <div class="single-photo-wrap">
+                        <img class="character-photo" src="../images/films/the-throne-family/seonhui.png" alt="Seonhui in palace dress">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">Royal Consort</div>
+                        <h3>Seonhui</h3>
+                        <div class="node-years">1696-1764</div>
+                        <div class="node-link">Mother of Sado</div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="tree-connector"></div>
+
+            <div class="tree-level-label">Generation III</div>
+            <div class="tree-level two">
+                <article class="character-node">
+                    <div class="character-photos">
+                        <img class="character-photo" src="../images/films/the-throne-family/sado.png" alt="Crown Prince Sado in dark royal robes">
+                        <img class="character-photo secondary" src="../images/films/the-throne-family/young-sado-final.png" alt="Young Sado">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">Crown Prince</div>
+                        <h3>Sado</h3>
+                        <div class="node-years">1735-1762</div>
+                        <div class="node-link">Son of Yeongjo and Seonhui</div>
+                    </div>
+                </article>
+
+                <article class="character-node gold">
+                    <div class="character-photos">
+                        <img class="character-photo" src="../images/films/the-throne-family/hyegyeong.png" alt="Hyegyeong speaking urgently">
+                        <img class="character-photo secondary" src="../images/films/the-throne-family/young-hyegyeong-final.png" alt="Young Hyegyeong">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">Crown Princess</div>
+                        <h3>Hyegyeong</h3>
+                        <div class="node-years">1735-1816</div>
+                        <div class="node-link">Wife of Sado</div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="tree-connector"></div>
+
+            <div class="tree-level-label">Generation IV</div>
+            <div class="tree-level one">
+                <article class="character-node">
+                    <div class="character-photos">
+                        <img class="character-photo" src="../images/films/the-throne-family/old-jeongjo-correct.png" alt="Jeongjo as king">
+                        <img class="character-photo secondary" src="../images/films/the-throne-family/young-jeongjo.png" alt="Young Jeongjo">
+                    </div>
+                    <div class="node-copy">
+                        <div class="node-role">King</div>
+                        <h3>Jeongjo</h3>
+                        <div class="node-years">1752-1800</div>
+                        <div class="node-link">Son of Sado and Hyegyeong</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </article>
+
+    <aside class="sidebar">
+        <div class="sidebar-card gold-border">
+            <h3>Use This Page</h3>
+            <p>Quick visual guide to the family line around Sado. Use it alongside the film page and the <em>Hanjungnok</em> material.</p>
+            <a class="resource-btn" href="the-throne.html">Return to film page</a>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Sequence</h3>
+            <ul>
+                <li>Sukjong and Queen Inwon</li>
+                <li>Gyeongjong, Yeongjo, Seonhui</li>
+                <li>Sado and Hyegyeong</li>
+                <li>Jeongjo</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Course Link</h3>
+            <p>This page sits under the same <em>The Throne</em> deep-dive section and uses the same visual shell as the other course pages.</p>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>Modern Korean in Literature and Film | Character Guide: The Throne (사도, 2015)</p>
+</footer>
+
+</body>
+</html>

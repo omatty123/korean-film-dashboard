@@ -532,6 +532,20 @@
     }
     .watch-btn:hover { background: #b0060f; }
     .watch-btn::before { content: '\25B6 '; font-size: 0.75rem; }
+
+    .resource-btn {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.45rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .resource-btn:hover { background: var(--accent-light); }
   </style>
 </head>
 <body>
@@ -910,6 +924,12 @@
                 <span class="fact-label">Cinematographer</span>
                 <span class="fact-value">Kim Tae-kyeong</span>
             </div>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Character Guide</h3>
+            <p style="font-size: 0.82rem; color: var(--ink-light);">Visual family tree for Sukjong, Queen Inwon, Gyeongjong, Yeongjo, Seonhui, Sado, Hyegyeong, and Jeongjo.</p>
+            <a href="the-throne-family-tree.html" class="resource-btn">Open family tree</a>
         </div>
 
         <!-- KEY HISTORICAL FIGURES -->
