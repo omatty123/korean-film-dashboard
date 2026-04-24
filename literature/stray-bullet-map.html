@@ -505,7 +505,7 @@
 
             <aside class="notes-shell">
                 <h2 class="section-title">Places and Sources</h2>
-                <p class="section-copy">The map keeps the story's uncertainty legible: named Seoul sites are pinned directly, S Hospital is keyed to Seoul National University Medical School/Hospital, and X Police Station, the office, and the dental clinics remain approximate downtown points.</p>
+                <p class="section-copy">The map keeps the story's uncertainty legible: named Seoul sites are pinned directly, S Hospital is keyed to Seoul National University Medical School/Hospital, the office is placed in the Chungmuro-Euljiro corridor, and X Police Station and the dental clinics remain approximate downtown points.</p>
 
                 <div class="place-grid" id="placeGrid"></div>
 
@@ -557,12 +557,12 @@ const PLACES = [
         group: "inferred",
         final: true,
         step: 1,
-        name: "Accounting Office",
+        name: "Accounting Office / Chungmuro-Euljiro Corridor",
         label: "Unnamed workplace",
-        note: "The story opens at Chŏlho's desk after six. The office is not named, so this marker stands for a central Seoul clerical workplace.",
-        source: "Story opening: Chŏlho, clerk at an accountant's office",
-        lat: 37.5656,
-        lng: 126.9835
+        note: "The story opens at Chŏlho's desk after six but never names the office. A commute clue places him through Euljiro Entrance, and film scholarship identifies the office as Chungmuro, so this marker uses the Chungmuro-Euljiro downtown corridor.",
+        source: "Story opening and Euljiro Entrance commute clue; SNU film article identifies Chungmuro office",
+        lat: 37.5612,
+        lng: 126.9940
     },
     {
         id: "x-police",
@@ -724,7 +724,7 @@ const ROUTES = [
         group: "final",
         label: "Chŏlho's final-day path",
         coords: [
-            [37.5656, 126.9835],
+            [37.5612, 126.9940],
             [37.5639, 126.9978],
             [37.5427, 126.9872],
             [37.5797, 126.9990],
