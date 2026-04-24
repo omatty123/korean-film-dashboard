@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Stray Bullet Map | Korean History through Literature</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="A Stray Bullet Map">
+    <meta property="og:description" content="A location map for Yi Beomseon's Obaltan, with Chŏlho's final-day route through postwar Seoul.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root {
+            --ink: #171512;
+            --ink-soft: #56504a;
+            --ink-faint: #8a837b;
+            --paper: #f3eee5;
+            --surface: #fffdf8;
+            --line: #ded3c1;
+            --shadow: rgba(25, 18, 10, 0.08);
+            --green: #27594f;
+            --green-soft: #deeee8;
+            --red: #9b2f2f;
+            --red-soft: #f7e4e2;
+            --blue: #355685;
+            --blue-soft: #e7edf7;
+            --gold: #9c6f17;
+            --gold-soft: #f4ead2;
+            --charcoal: #24211e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Outfit", -apple-system, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.48)),
+                var(--paper);
+            line-height: 1.6;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .topbar {
+            background: rgba(20, 18, 16, 0.97);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(12px);
+        }
+
+        .topbar-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .course-tag {
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .topnav {
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .topnav a {
+            padding: 0.42rem 0.78rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.78rem;
+        }
+
+        .topnav a:hover,
+        .topnav a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .page {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2.3rem 1.5rem 3rem;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-main,
+        .intro-side,
+        .map-shell,
+        .notes-shell,
+        .route-shell {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 18px 38px var(--shadow);
+        }
+
+        .intro-main { padding: 1.8rem; }
+        .intro-side {
+            padding: 1.3rem 1.35rem;
+            display: grid;
+            gap: 0.9rem;
+            align-content: start;
+        }
+
+        .eyebrow,
+        .mini-label,
+        .place-label,
+        .stop-time,
+        .source-type {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow {
+            color: var(--green);
+            display: inline-block;
+            margin-bottom: 0.9rem;
+        }
+
+        h1, h2, h3 {
+            font-family: "Newsreader", Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+        }
+
+        h1 {
+            font-size: clamp(2.7rem, 6.8vw, 4.6rem);
+            line-height: 0.95;
+            margin-bottom: 0.85rem;
+        }
+
+        .intro-copy {
+            max-width: 62ch;
+            color: var(--ink-soft);
+            font-size: 1rem;
+        }
+
+        .mini-item {
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .mini-item:first-of-type {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .mini-label { color: var(--ink-faint); margin-bottom: 0.2rem; }
+        .mini-copy { color: var(--ink); font-size: 0.94rem; }
+
+        .map-shell {
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-head {
+            padding: 1.25rem 1.35rem 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .map-title { font-size: 1.65rem; margin-bottom: 0.25rem; }
+        .map-subtitle {
+            color: var(--ink-soft);
+            max-width: 78ch;
+            font-size: 0.92rem;
+        }
+
+        .filter-row {
+            padding: 0.95rem 1.35rem 0;
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn,
+        .reset-btn {
+            border: 1px solid var(--line);
+            background: #fffaf1;
+            color: var(--ink-soft);
+            border-radius: 999px;
+            padding: 0.48rem 0.82rem;
+            font: inherit;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .reset-btn:hover {
+            color: var(--ink);
+            border-color: var(--gold);
+        }
+
+        .filter-btn.active {
+            background: var(--charcoal);
+            color: #fff;
+            border-color: var(--charcoal);
+        }
+
+        #map {
+            width: 100%;
+            height: min(72vh, 720px);
+            min-height: 520px;
+            background: #e8e1d5;
+        }
+
+        .legend {
+            display: flex;
+            gap: 0.95rem;
+            flex-wrap: wrap;
+            padding: 0.85rem 1.35rem 1rem;
+            color: var(--ink-soft);
+            font-size: 0.82rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .dot {
+            width: 0.72rem;
+            height: 0.72rem;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 2px #fff;
+        }
+
+        .dot.final { background: var(--red); }
+        .dot.named { background: var(--green); }
+        .dot.inferred { background: var(--gold); }
+        .dot.memory { background: var(--blue); }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .route-shell,
+        .notes-shell {
+            padding: 1.35rem;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title { font-size: 1.45rem; }
+        .section-copy { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 1rem; }
+
+        .route-list {
+            display: grid;
+            gap: 0.72rem;
+        }
+
+        .stop-card,
+        .place-card,
+        .source-card {
+            border: 1px solid var(--line);
+            background: #fffaf2;
+            border-radius: 8px;
+        }
+
+        .stop-card {
+            display: grid;
+            grid-template-columns: 44px minmax(0, 1fr);
+            gap: 0.85rem;
+            padding: 0.85rem;
+            cursor: pointer;
+        }
+
+        .stop-card.active,
+        .place-card.active {
+            border-color: var(--red);
+            box-shadow: 0 0 0 2px rgba(155, 47, 47, 0.12);
+        }
+
+        .stop-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 0.15rem;
+        }
+
+        .stop-title,
+        .place-name {
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+        }
+
+        .stop-time {
+            color: var(--red);
+            margin-bottom: 0.15rem;
+        }
+
+        .stop-copy,
+        .place-copy,
+        .source-note {
+            color: var(--ink-soft);
+            font-size: 0.86rem;
+            margin-top: 0.25rem;
+        }
+
+        .place-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .place-card {
+            padding: 0.85rem;
+            cursor: pointer;
+        }
+
+        .place-label {
+            color: var(--ink-faint);
+            margin-bottom: 0.22rem;
+        }
+
+        .source-card {
+            padding: 0.8rem;
+            margin-top: 0.65rem;
+        }
+
+        .source-card a {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .source-type {
+            color: var(--ink-faint);
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .leaflet-popup-content {
+            font-family: "Outfit", -apple-system, sans-serif;
+            line-height: 1.45;
+        }
+
+        .popup-title { font-weight: 800; color: var(--ink); }
+        .popup-label { color: #70675d; font-size: 0.84rem; margin-top: 0.1rem; }
+        .popup-note { margin-top: 0.55rem; color: #443f39; }
+        .popup-source { margin-top: 0.55rem; color: #8a837b; font-size: 0.78rem; }
+
+        footer {
+            background: var(--ink);
+            color: rgba(255, 255, 255, 0.55);
+            padding: 2rem;
+            font-size: 0.75rem;
+        }
+
+        footer .footer-content {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        footer a { color: var(--gold); }
+
+        @media (max-width: 900px) {
+            .intro,
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .place-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #map {
+                height: 64vh;
+                min-height: 430px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .page { padding: 1.5rem 1rem 2rem; }
+            .intro-main,
+            .intro-side,
+            .route-shell,
+            .notes-shell {
+                padding: 1rem;
+                border-radius: 16px;
+            }
+            h1 { font-size: 2.35rem; }
+            .section-head {
+                display: block;
+            }
+            .reset-btn {
+                margin-top: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <div class="topbar-inner">
+            <a class="course-tag" href="../literature.html">Korean History through Literature</a>
+            <div class="topnav">
+                <a href="../literature.html">Literature</a>
+                <a href="stray-bullet.html">A Stray Bullet</a>
+                <a href="../films/aimless-bullet.html">Film Page</a>
+                <a class="active" href="stray-bullet-map.html">Map</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page">
+        <section class="intro">
+            <div class="intro-main">
+                <span class="eyebrow">Obaltan geography</span>
+                <h1>A Stray Bullet Map</h1>
+                <p class="intro-copy">The story begins with Chŏlho climbing into Haebangchon and ends with him bleeding in a taxi that no longer has a destination. This map separates named places from inferred city points, then traces the final-day route as a collapse from duty into drift.</p>
+            </div>
+            <aside class="intro-side">
+                <div class="mini-item">
+                    <div class="mini-label">Primary setting</div>
+                    <div class="mini-copy">Haebangchon, the refugee shantytown on the slopes of Namsan in postwar Seoul.</div>
+                </div>
+                <div class="mini-item">
+                    <div class="mini-label">Final path</div>
+                    <div class="mini-copy">Office, police station, home, hospital, dental clinics, Namdaemun, Seoul Station, taxi.</div>
+                </div>
+                <div class="mini-item">
+                    <div class="mini-label">Method</div>
+                    <div class="mini-copy">Exact when named, approximate when the story suppresses names as S Hospital and X Police Station.</div>
+                </div>
+            </aside>
+        </section>
+
+        <section class="map-shell">
+            <div class="map-head">
+                <h2 class="map-title">Seoul Route and Memory Horizon</h2>
+                <p class="map-subtitle">Use the filters to isolate the final day, named story geography, inferred urban points, or the northern home that can be remembered but not reached.</p>
+            </div>
+            <div class="filter-row" id="filters"></div>
+            <div id="map" aria-label="Interactive map of A Stray Bullet locations"></div>
+            <div class="legend">
+                <span class="legend-item"><span class="dot final"></span> Final-day route</span>
+                <span class="legend-item"><span class="dot named"></span> Named place</span>
+                <span class="legend-item"><span class="dot inferred"></span> Inferred city point</span>
+                <span class="legend-item"><span class="dot memory"></span> Memory / division horizon</span>
+            </div>
+        </section>
+
+        <section class="content-grid">
+            <div class="route-shell">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">Chŏlho's Final Day</h2>
+                        <p class="section-copy">Click a stop to jump the map. The numbered line is not a precise GPS route; it is the story's implied movement through central Seoul.</p>
+                    </div>
+                    <button class="reset-btn" id="resetView" type="button">Reset view</button>
+                </div>
+                <div class="route-list" id="routeList"></div>
+            </div>
+
+            <aside class="notes-shell">
+                <h2 class="section-title">Places and Sources</h2>
+                <p class="section-copy">The map keeps the story's uncertainty legible: named Seoul sites are pinned directly, while S Hospital, X Police Station, the office, and the dental clinics are placed along the downtown corridor the text describes.</p>
+
+                <div class="place-grid" id="placeGrid"></div>
+
+                <div class="source-card">
+                    <span class="source-type">Story text</span>
+                    <a href="https://wheregongbu.tistory.com/entry/%EC%9D%B4%EB%B2%94%EC%84%A0-%EC%98%A4%EB%B0%9C%ED%83%84-%EC%A0%84%EB%AC%B8-%ED%95%B4%EC%84%A4-%EC%9A%94%EC%95%BD-%EC%A4%84%EA%B1%B0%EB%A6%AC" target="_blank" rel="noopener">Korean full-text teaching page</a>
+                    <div class="source-note">Used to verify the route sequence: S Hospital, X Police Station, Namdaemun, Seoul Station, Haebangchon, and the taxi changes.</div>
+                </div>
+                <div class="source-card">
+                    <span class="source-type">English context</span>
+                    <a href="https://world.kbs.co.kr/service/contents_view.htm?board_seq=353302&id=&lang=e&menu_cate=culture&page=3" target="_blank" rel="noopener">KBS World: "A Stray Bullet"</a>
+                    <div class="source-note">Confirms Haebangchon as the shantytown setting and summarizes the final taxi scene.</div>
+                </div>
+                <div class="source-card">
+                    <span class="source-type">Course context</span>
+                    <a href="../films/aimless-bullet.html">Aimless Bullet film page</a>
+                    <div class="source-note">Used for Haebangchon historical context, while the map itself follows the short story's geography.</div>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>Korean History through Literature &middot; Spring 2026<br>Lawrence University</div>
+            <div><a href="stray-bullet.html">Back to A Stray Bullet</a></div>
+        </div>
+    </footer>
+
+<script>
+const GROUPS = [
+    { id: "all", label: "All" },
+    { id: "final", label: "Final day" },
+    { id: "named", label: "Named places" },
+    { id: "inferred", label: "Inferred" },
+    { id: "memory", label: "Memory horizon" }
+];
+
+const GROUP_META = {
+    final: { color: "#9b2f2f", fill: "#9b2f2f", list: true },
+    named: { color: "#27594f", fill: "#27594f" },
+    inferred: { color: "#9c6f17", fill: "#9c6f17" },
+    memory: { color: "#355685", fill: "#355685" }
+};
+
+const PLACES = [
+    {
+        id: "office",
+        group: "inferred",
+        final: true,
+        step: 1,
+        name: "Accounting Office",
+        label: "Unnamed workplace",
+        note: "The story opens at Chŏlho's desk after six. The office is not named, so this marker stands for a central Seoul clerical workplace.",
+        source: "Story opening: Chŏlho, clerk at an accountant's office",
+        lat: 37.5656,
+        lng: 126.9835
+    },
+    {
+        id: "x-police",
+        group: "inferred",
+        final: true,
+        step: 2,
+        name: "X Police Station",
+        label: "Brother's arrest",
+        note: "The story masks the name as X Police Station. Chŏlho visits after the phone call about Yŏngho's armed robbery.",
+        source: "Story final day: police phone call and later taxi stop",
+        lat: 37.5639,
+        lng: 126.9978
+    },
+    {
+        id: "haebangchon",
+        group: "named",
+        final: true,
+        step: 3,
+        name: "Haebangchon",
+        label: "Family home",
+        note: "The family's home is at the end of a cramped alley in Haebangchon, a refugee shantytown on the Namsan hillside.",
+        source: "Story and KBS World both name Haebangchon",
+        lat: 37.5427,
+        lng: 126.9872
+    },
+    {
+        id: "s-hospital",
+        group: "inferred",
+        final: true,
+        step: 4,
+        name: "S Hospital",
+        label: "Wife's death",
+        note: "The hospital is anonymized as S Hospital. This central-Seoul marker is approximate, used to show its narrative role rather than an exact building.",
+        source: "Story final day: wife is taken to S Hospital",
+        lat: 37.5792,
+        lng: 126.9991
+    },
+    {
+        id: "tram-road",
+        group: "inferred",
+        final: true,
+        step: 5,
+        name: "Streetcar Road",
+        label: "Walking in shock",
+        note: "After leaving the hospital, Chŏlho walks along the tram road, then finds himself near the police station again.",
+        source: "Story: he leaves the hospital and follows the streetcar road",
+        lat: 37.5707,
+        lng: 126.9941
+    },
+    {
+        id: "dental-one",
+        group: "inferred",
+        final: true,
+        step: 6,
+        name: "First Dental Clinic",
+        label: "First extraction",
+        note: "The first second-floor clinic appears while his feet are carrying him toward Namdaemun. He has one molar pulled.",
+        source: "Story final day: dental sign on the Namdaemunward walk",
+        lat: 37.5617,
+        lng: 126.9796
+    },
+    {
+        id: "dental-two",
+        group: "inferred",
+        final: true,
+        step: 7,
+        name: "Second Dental Clinic",
+        label: "Second extraction",
+        note: "A second dentist reluctantly pulls the other molar. From here, Chŏlho bleeds into the public space of the city.",
+        source: "Story final day: second dental sign, also on a second floor",
+        lat: 37.5590,
+        lng: 126.9770
+    },
+    {
+        id: "namdaemun",
+        group: "named",
+        final: true,
+        step: 8,
+        name: "Namdaemun",
+        label: "City gate landmark",
+        note: "The text says he passes with Namdaemun on his right before Seoul Station comes into view.",
+        source: "Story names Namdaemun",
+        lat: 37.55998,
+        lng: 126.9753
+    },
+    {
+        id: "seoul-station",
+        group: "named",
+        final: true,
+        step: 9,
+        name: "Seoul Station",
+        label: "Restaurant corridor",
+        note: "As Seoul Station comes into view, Chŏlho realizes he has eaten neither lunch nor dinner and looks for seolleongtang.",
+        source: "Story names Seoul Station",
+        lat: 37.5547,
+        lng: 126.9707
+    },
+    {
+        id: "restaurant",
+        group: "inferred",
+        final: true,
+        step: 10,
+        name: "Seolleongtang Restaurant",
+        label: "Failed nourishment",
+        note: "He orders seolleongtang like medicine, then leaves to spit blood in the alley beside the restaurant.",
+        source: "Story final day: restaurant near Seoul Station",
+        lat: 37.5558,
+        lng: 126.9721
+    },
+    {
+        id: "taxi-turn",
+        group: "inferred",
+        final: true,
+        step: 11,
+        name: "Taxi Turn",
+        label: "Haebangchon, S Hospital, X Police",
+        note: "He first says Haebangchon, then S Hospital, then X Police Station. The taxi becomes the story's moving symbol of lost direction.",
+        source: "Story final taxi scene",
+        lat: 37.5576,
+        lng: 126.9736
+    },
+    {
+        id: "final-intersection",
+        group: "inferred",
+        final: true,
+        step: 12,
+        name: "Unknown Intersection",
+        label: "No destination",
+        note: "At a red light, the assistant asks where to go. Chŏlho gives no answer, and the car moves with traffic under the green signal.",
+        source: "Story ending",
+        lat: 37.5608,
+        lng: 126.9816
+    },
+    {
+        id: "north-home",
+        group: "memory",
+        name: "Lost Northern Home",
+        label: "Unreachable origin",
+        note: "The mother's 'let's go' points across the division line toward the northern home she cannot recover. The story does not give a precise town.",
+        source: "Story's displaced mother; KBS World notes her North Korean landowner past",
+        lat: 38.62,
+        lng: 125.62
+    },
+    {
+        id: "parallel",
+        group: "memory",
+        name: "Thirty-eighth Parallel",
+        label: "Blocked return",
+        note: "The line makes the mother's desired return impossible. It is a horizon rather than a destination.",
+        source: "Story summary and teaching notes identify the divided peninsula as the condition of her cry",
+        lat: 38.0,
+        lng: 126.8
+    }
+];
+
+const ROUTES = [
+    {
+        id: "final-walk",
+        group: "final",
+        label: "Chŏlho's final-day path",
+        coords: [
+            [37.5656, 126.9835],
+            [37.5639, 126.9978],
+            [37.5427, 126.9872],
+            [37.5792, 126.9991],
+            [37.5707, 126.9941],
+            [37.5639, 126.9978],
+            [37.5617, 126.9796],
+            [37.5590, 126.9770],
+            [37.55998, 126.9753],
+            [37.5547, 126.9707],
+            [37.5558, 126.9721],
+            [37.5576, 126.9736],
+            [37.5427, 126.9872],
+            [37.5792, 126.9991],
+            [37.5639, 126.9978],
+            [37.5608, 126.9816]
+        ]
+    },
+    {
+        id: "lost-return",
+        group: "memory",
+        label: "The mother's impossible return",
+        coords: [
+            [37.5427, 126.9872],
+            [38.0, 126.8],
+            [38.62, 125.62]
+        ]
+    }
+];
+
+let activeGroup = "all";
+let activePlaceId = null;
+const markerLayers = {};
+const routeLayers = {};
+const cardRefs = {};
+const routeRefs = {};
+
+const map = L.map("map", {
+    zoomControl: true,
+    scrollWheelZoom: false
+}).setView([37.56, 126.98], 12);
+
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+    maxZoom: 19,
+    attribution: "&copy; <a href=\"https://carto.com/attributions\">CARTO</a>"
+}).addTo(map);
+
+function placeVisible(place) {
+    if (activeGroup === "all") return true;
+    if (activeGroup === "final") return Boolean(place.final);
+    return place.group === activeGroup;
+}
+
+function routeVisible(route) {
+    if (activeGroup === "all") return true;
+    return route.group === activeGroup;
+}
+
+function markerColor(place) {
+    if (place.final && activeGroup === "final") return GROUP_META.final.fill;
+    return GROUP_META[place.group].fill;
+}
+
+function popupHtml(place) {
+    return `
+        <div class="popup-title">${place.step ? `${place.step}. ` : ""}${place.name}</div>
+        <div class="popup-label">${place.label}</div>
+        <div class="popup-note">${place.note}</div>
+        <div class="popup-source">${place.source}</div>
+    `;
+}
+
+function createNumberIcon(place) {
+    const color = markerColor(place);
+    const content = place.final ? place.step : "";
+    return L.divIcon({
+        className: "",
+        html: `<div style="width:30px;height:30px;border-radius:50%;background:${color};color:#fff;border:2px solid #fff;display:grid;place-items:center;font:700 12px Outfit, sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.22);">${content}</div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 15],
+        popupAnchor: [0, -14]
+    });
+}
+
+ROUTES.forEach((route) => {
+    const meta = GROUP_META[route.group];
+    const line = L.polyline(route.coords, {
+        color: meta.color,
+        weight: route.group === "final" ? 4 : 3,
+        opacity: route.group === "final" ? 0.82 : 0.62,
+        dashArray: route.group === "memory" ? "9, 8" : null
+    }).addTo(map);
+    line.bindTooltip(route.label);
+    routeLayers[route.id] = { line, group: route.group };
+});
+
+const divideLine = L.polyline([[38.0, 124.9], [38.0, 128.7]], {
+    color: GROUP_META.memory.color,
+    weight: 2,
+    opacity: 0.55,
+    dashArray: "10, 8"
+}).addTo(map);
+routeLayers.divideLine = { line: divideLine, group: "memory" };
+
+PLACES.forEach((place) => {
+    const marker = L.marker([place.lat, place.lng], { icon: createNumberIcon(place) })
+        .bindPopup(popupHtml(place))
+        .on("click", () => activatePlace(place.id, true));
+    marker.addTo(map);
+    markerLayers[place.id] = { marker, group: place.group, final: Boolean(place.final) };
+});
+
+function visibleBounds() {
+    const bounds = L.latLngBounds([]);
+    PLACES.forEach((place) => {
+        if (placeVisible(place)) bounds.extend([place.lat, place.lng]);
+    });
+    ROUTES.forEach((route) => {
+        if (routeVisible(route)) route.coords.forEach((coord) => bounds.extend(coord));
+    });
+    if (activeGroup === "memory" || activeGroup === "all") {
+        bounds.extend([38.0, 124.9]);
+        bounds.extend([38.0, 128.7]);
+    }
+    return bounds;
+}
+
+function setGroupVisibility(groupId) {
+    activeGroup = groupId;
+
+    PLACES.forEach((place) => {
+        const { marker } = markerLayers[place.id];
+        if (placeVisible(place)) {
+            marker.setIcon(createNumberIcon(place));
+            marker.addTo(map);
+        } else {
+            map.removeLayer(marker);
+        }
+    });
+
+    ROUTES.forEach((route) => {
+        const { line } = routeLayers[route.id];
+        if (routeVisible(route)) {
+            line.addTo(map);
+        } else {
+            map.removeLayer(line);
+        }
+    });
+
+    if (activeGroup === "memory" || activeGroup === "all") {
+        divideLine.addTo(map);
+    } else {
+        map.removeLayer(divideLine);
+    }
+
+    document.querySelectorAll(".filter-btn").forEach((button) => {
+        button.classList.toggle("active", button.dataset.group === activeGroup);
+    });
+
+    document.querySelectorAll("[data-place-id]").forEach((card) => {
+        const place = PLACES.find((item) => item.id === card.dataset.placeId);
+        card.style.display = placeVisible(place) ? "" : "none";
+    });
+
+    const bounds = visibleBounds();
+    if (bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [38, 38], maxZoom: activeGroup === "final" ? 13 : 8 });
+    }
+}
+
+function activatePlace(placeId, openPopup) {
+    activePlaceId = placeId;
+    Object.values(cardRefs).forEach((card) => card.classList.remove("active"));
+    Object.values(routeRefs).forEach((card) => card.classList.remove("active"));
+
+    const place = PLACES.find((item) => item.id === placeId);
+    const entry = markerLayers[placeId];
+    if (!place || !entry) return;
+
+    if (!map.hasLayer(entry.marker)) {
+        setGroupVisibility(place.final ? "final" : place.group);
+    }
+
+    const routeCard = routeRefs[placeId];
+    const placeCard = cardRefs[placeId];
+    if (routeCard) routeCard.classList.add("active");
+    if (placeCard) placeCard.classList.add("active");
+
+    map.setView([place.lat, place.lng], Math.max(map.getZoom(), place.group === "memory" ? 8 : 14), { animate: true });
+    if (openPopup) entry.marker.openPopup();
+}
+
+function renderFilters() {
+    const host = document.getElementById("filters");
+    host.innerHTML = "";
+    GROUPS.forEach((group) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "filter-btn" + (group.id === activeGroup ? " active" : "");
+        button.dataset.group = group.id;
+        button.textContent = group.label;
+        button.addEventListener("click", () => setGroupVisibility(group.id));
+        host.appendChild(button);
+    });
+}
+
+function renderRouteList() {
+    const host = document.getElementById("routeList");
+    const stops = PLACES.filter((place) => place.final).sort((a, b) => a.step - b.step);
+    stops.forEach((place) => {
+        const card = document.createElement("article");
+        card.className = "stop-card";
+        card.dataset.placeId = place.id;
+        card.innerHTML = `
+            <div class="stop-number">${place.step}</div>
+            <div>
+                <div class="stop-time">${place.label}</div>
+                <div class="stop-title">${place.name}</div>
+                <div class="stop-copy">${place.note}</div>
+            </div>
+        `;
+        card.addEventListener("click", () => activatePlace(place.id, true));
+        host.appendChild(card);
+        routeRefs[place.id] = card;
+    });
+}
+
+function renderPlaceGrid() {
+    const host = document.getElementById("placeGrid");
+    const overview = PLACES.filter((place) => !place.final || place.group === "named" || place.group === "memory");
+    overview.forEach((place) => {
+        const card = document.createElement("article");
+        card.className = "place-card";
+        card.dataset.placeId = place.id;
+        card.innerHTML = `
+            <div class="place-label">${place.group}${place.final ? " / final" : ""}</div>
+            <div class="place-name">${place.name}</div>
+            <div class="place-copy">${place.note}</div>
+        `;
+        card.addEventListener("click", () => activatePlace(place.id, true));
+        host.appendChild(card);
+        cardRefs[place.id] = card;
+    });
+}
+
+document.getElementById("resetView").addEventListener("click", () => {
+    activePlaceId = null;
+    Object.values(cardRefs).forEach((card) => card.classList.remove("active"));
+    Object.values(routeRefs).forEach((card) => card.classList.remove("active"));
+    setGroupVisibility("all");
+});
+
+renderFilters();
+renderRouteList();
+renderPlaceGrid();
+setGroupVisibility("final");
+</script>
+</body>
+</html>
