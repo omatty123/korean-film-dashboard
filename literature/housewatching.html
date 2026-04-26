@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="The Day My Housewatching Ended — Pak Wanso">
-    <meta property="og:description" content="Domestic labor, class, and women's invisible work in 1970s Korea. Korean History through Literature.">
-    <title>The Day My Housewatching Ended | Korean History through Literature</title>
+    <meta property="og:title" content="Thus Ended My Days of Watching Over the House — Pak Wanso">
+    <meta property="og:description" content="Political arrest, domestic liberation, and the bonsai that died. Pak Wanso's 1978 story of Yushin-era Korea read from the inside of the house.">
+    <title>Thus Ended My Days of Watching Over the House | Korean History through Literature</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; }
@@ -17,11 +17,12 @@
         .breadcrumb a { color: var(--gold); text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
         .breadcrumb span { color: rgba(255,255,255,0.4); }
-        .hero { background: linear-gradient(rgba(26,34,38,0.82), rgba(55,71,79,0.82)), url('../images/authors/pak-wanso.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; }
+        .hero { background: linear-gradient(rgba(26,34,38,0.85), rgba(55,71,79,0.88)), url('../images/authors/pak-wanso.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; }
         .hero-content { max-width: 1200px; margin: 0 auto; }
         .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
         .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
-        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.15rem; color: rgba(255,255,255,0.55); margin-bottom: 0.35rem; }
+        .hero-romanized { font-size: 0.82rem; color: rgba(255,255,255,0.35); margin-bottom: 1.2rem; font-style: italic; letter-spacing: 0.03em; }
         .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
         .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
@@ -30,13 +31,17 @@
         .doc-card.gold-border { border-left-color: var(--gold); }
         .doc-card.dark-border { border-left-color: var(--ink); }
         .doc-card.light-border { border-left-color: var(--accent-light); }
+        .doc-card.red-border { border-left-color: #8b2232; }
         .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
         .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
         .doc-card p:last-child { margin-bottom: 0; }
+        .doc-card ul { margin-left: 1.2rem; font-size: 0.86rem; color: var(--ink-light); }
+        .doc-card ul li { margin-bottom: 0.4rem; }
         .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
         .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
         .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
         .sidebar-card.dark-header h3 { border-bottom-color: var(--ink); }
+        .sidebar-card.red-header h3 { border-bottom-color: #8b2232; }
         .author-portrait { width: 100%; border-radius: 2px; margin-bottom: 0.75rem; display: block; }
         .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
         .fact-row:last-child { border-bottom: none; }
@@ -45,6 +50,7 @@
         .concept-item { margin-bottom: 1rem; }
         .concept-item:last-child { margin-bottom: 0; }
         .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+        .concept-term.korean { font-family: 'Noto Serif KR', serif; }
         .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
         .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
         .discussion-q:last-child { border-bottom: none; }
@@ -52,10 +58,30 @@
         .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
         .source-item:last-child { border-bottom: none; }
         .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
+
+        /* Korean language section */
+        .korean-section { background: #1a1a2e; color: #e8e0d4; border-radius: 2px; padding: 1.75rem 2rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+        .korean-section-title { font-family: 'Newsreader', serif; font-size: 1.25rem; font-weight: 500; color: var(--gold); margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(166,124,0,0.4); }
+        .korean-vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .vocab-item { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .vocab-item:nth-child(odd) { padding-right: 1.5rem; border-right: 1px solid rgba(255,255,255,0.08); }
+        .vocab-item:nth-child(even) { padding-left: 1.5rem; }
+        .vocab-term { font-family: 'Noto Serif KR', serif; font-size: 1rem; color: #c8b89a; margin-bottom: 0.2rem; }
+        .vocab-romanized { font-size: 0.7rem; color: rgba(255,255,255,0.35); letter-spacing: 0.05em; font-style: italic; }
+        .vocab-def { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: 0.1rem; }
+        .korean-synopsis { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(166,124,0,0.4); }
+        .korean-synopsis p { font-family: 'Noto Serif KR', serif; font-size: 0.9rem; line-height: 2; color: rgba(255,255,255,0.75); margin-bottom: 0.75rem; }
+        .korean-synopsis p:last-child { margin-bottom: 0; }
+        .korean-pub-note { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 1rem; font-style: italic; }
+
+        /* Alert box for errata note */
+        .correction-note { background: #fff8e1; border: 1px solid #f9a825; border-left: 4px solid #f9a825; border-radius: 2px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; font-size: 0.8rem; color: #5d4037; }
+        .correction-note strong { color: #e65100; }
+
         footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
         footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
         footer a { color: var(--gold); text-decoration: none; }
-        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } .korean-vocab-grid { grid-template-columns: 1fr; } .vocab-item:nth-child(odd) { border-right: none; padding-right: 0; } .vocab-item:nth-child(even) { padding-left: 0; } }
     </style>
 </head>
 <body>
@@ -68,13 +94,14 @@
 <header class="hero">
     <div class="hero-content">
         <div class="hero-label">Deep Dive: Short Story &mdash; Week 5</div>
-        <h1>The Day My Housewatching Ended</h1>
-        <div class="hero-korean">집보기는 그 어렵더니 &nbsp;&middot;&nbsp; Pak Wanso</div>
+        <h1>Thus Ended My Days of Watching Over the House</h1>
+        <div class="hero-korean">집 보기는 그렇게 끝났다</div>
+        <div class="hero-romanized">Jip bogi-neun geureoke kkeutnatda</div>
         <div class="hero-meta">
             <span>Pak Wanso (박완서, 1931&ndash;2011)</span>
-            <span>1978</span>
+            <span>Autumn 1978 &mdash; <em>Sekai no Munhak</em> quarterly</span>
             <span>Short Story</span>
-            <span>South Korea</span>
+            <span>Collection: <em>Paebane ui Yorum</em> (배반의 여름)</span>
         </div>
     </div>
 </header>
@@ -87,29 +114,119 @@
     <h2 class="section-title">About the Author</h2>
 
     <div class="doc-card">
-        <h3>Pak Wanso's Trilogy of Domestic Critique</h3>
-        <p>This story belongs to the same period and project as "Identical Apartments" (1974), also assigned in Week 5. Together, the two stories form part of Pak Wanso's sustained literary examination of what South Korea's rapid development and urbanization did to domestic space and to the women who inhabited it. The third story in this cluster — also in Week 4 — is "A Pasque-Flower on That Bleak Day" (1977), which brings the Korean War's long shadow into the same domestic frame.</p>
-        <p>Reading these three stories together reveals the range of Pak Wanso's project: war memory, urban alienation, and class-stratified domestic labor are not separate subjects but interlocking dimensions of the same social reality she is trying to represent.</p>
-    </div>
-
-    <h2 class="section-title">About the Text</h2>
-
-    <div class="doc-card gold-border">
-        <h3>Housewatching: Invisible Labor Made Visible</h3>
-        <p>"Housewatching" (집보기, jipbogi) is the practice of watching over someone else's house — a domestic labor arrangement in which a woman (usually) stays in a house she does not own, managing it in the owner's absence in exchange for housing or payment. It is a form of domestic service that exists at the intersection of class, gender, and housing precarity: the housewatcher is simultaneously a tenant, a servant, and a kind of domestic worker, but without the legal or social recognition that any of those categories would provide.</p>
-        <p>The story uses this specific, under-recognized form of labor as a window into the broader question of what domestic work is, how it is valued (and systematically undervalued), and what the class relationships between women look like when one woman's domestic stability depends on serving another woman's household. The story's ending — "the day it ended" — signals that this particular arrangement has come to a close. What exactly ends, and what meaning that ending carries, is the story's central question.</p>
+        <h3>A Late Debut, a Precise Eye</h3>
+        <p>Pak Wanso spent her first forty years as a housewife raising five children before she entered literature with her debut novel <em>The Naked Tree</em> (나목, 1970), a Korean War story drawn directly from her experience as a wartime resident of Seoul. She never attended a creative writing program. She had no literary sponsors. She emerged, in her own mid-life, from the domestic world she would then spend decades excavating on the page.</p>
+        <p>The timing matters. By the late 1970s, when she wrote this story, Pak Wanso was approaching fifty. She had lived through the Japanese colonial period, liberation, the Korean War, reconstruction, the April Revolution, military coup, and now the Yushin dictatorship. She wrote from inside the domestic sphere that Korean society had assigned to women like her and she knew exactly what it cost.</p>
     </div>
 
     <div class="doc-card dark-border">
-        <h3>Class Relations Between Women</h3>
-        <p>One of the recurring tensions in feminist analysis is the question of solidarity and its limits: can women across class lines recognize their common interest, or do class relations between women reproduce the same structures of exploitation as class relations between men and women? Pak Wanso approaches this question through narrative rather than argument, showing the specific texture of the relationship between a housewatcher and the woman whose house she watches — the daily negotiations, the asymmetries of power, the moments of apparent solidarity and their failure.</p>
-        <p>The story does not offer a programmatic answer. It observes, with Pak Wanso's characteristic precision, what actually happens in this relationship — and that observation is more useful than any theoretical position, because it makes the reader do the analytical work.</p>
+        <h3>The 1970s Cluster: Domestic Space as Political Terrain</h3>
+        <p>This story belongs to a cluster of Pak Wanso's work from the mid-to-late 1970s that uses interior domestic space to engage, obliquely, with the authoritarian political world outside. The companion texts in the course cluster are "Identical Apartments" (아파트, 1974) and "A Pasque-Flower on That Bleak Day" (그 살벌했던 날의 할미꽃, 1977). Together they form Pak Wanso's sustained examination of what rapid development and political repression did to the people trapped inside Korean households.</p>
+        <p>Where "Identical Apartments" shows middle-class women locked into identical material aspirations, and "A Pasque-Flower" brings the Korean War's long shadow into the domestic present, this story is about what happens when the state reaches directly into the house and removes its patriarch. The three stories read together reveal how Pak Wanso triangulates the same domestic reality from different angles: class anxiety, war memory, and political terror all pass through the same rooms.</p>
+        <p>Feminist scholars who initially dismissed Pak Wanso's "domestic fiction" as limited in scope have since reversed that judgment. From the 1990s onward, critics recognized that her consistent focus on the private sphere was not a retreat from political writing but a different mode of it: the house is the site where authoritarianism is lived, not just administered.</p>
+    </div>
+
+    <h2 class="section-title">What the Story Is</h2>
+
+    <div class="doc-card gold-border">
+        <h3>The Plot: Professor Min, the Bonsai, the Mother-in-Law</h3>
+        <p>The narrator's husband, referred to as Professor Min (민 교수), is a figure of domestic authority: cultured, academic, controlling. The story opens in a world where his authority structures everything in the household. He cultivates a collection of prized bonsai trees (분재) with the careful, paternalistic attention he gives to everything he considers his own.</p>
+        <p>Then a secret agent arrives and arrests him at home. The arrest is presented with the matter-of-fact quality that Pak Wanso characteristically reserves for political violence: it simply happens, the way arrests happened during the Yushin period, to professors and intellectuals and people who said the wrong thing to the wrong person.</p>
+        <p>In his absence, the narrator's domestic life inverts. She stops tending his bonsai. She lets them languish. And she turns a newly unfiltered attention to her mother-in-law (시어머니), a bedridden woman given to compulsive, grotesque eating, who in the husband's absence no longer has the patriarch to soften or authorize her monstrousness. The narrator's contempt for her sharpens. The house, once organized by Professor Min's tastes and requirements, deteriorates.</p>
+        <p>"The days of housewatching ended" not because the narrator moves out or is freed in any simple sense, but because the domestic order the husband imposed has collapsed. She was watching over the house for him. With him gone, there is nothing left to watch over in the way she had been watching.</p>
+    </div>
+
+    <div class="doc-card dark-border">
+        <h3>집보기 (Jipbogi): What "Housewatching" Actually Means Here</h3>
+        <p>The Korean word <strong>집보기</strong> can mean several things: watching over an empty house while its owners are away (a caretaking arrangement), or, more broadly, tending and maintaining a household. The English translation renders it as "watching over the house," which is correct.</p>
+        <p>What the title signals, and what a reader accustomed to the caretaking meaning might miss, is that the narrator's housewatching was not a service arrangement with a stranger. She was watching over her own household, in her own house, for the sake of her husband. The house did not belong to her in any meaningful sense; it was organized by his tastes (the bonsai), governed by his social obligations (the obligations of a professor's household), and maintained by her labor in service of his image.</p>
+        <p>The title is precise and deliberately ironic: "thus ended the days of watching over the house." When the state removes the patriarch, the housewatcher is freed from her watching. The liberation arrives not through the narrator's agency but through an act of authoritarian violence directed at someone else. Pak Wanso refuses to make this a triumphalist story. The liberation is real; its origins are compromised.</p>
     </div>
 
     <div class="doc-card light-border">
-        <h3>Development Korea and Domestic Service</h3>
-        <p>The rapid urbanization of South Korea in the 1960s–70s created a large market for domestic service: rural women migrating to Seoul who worked as live-in housekeepers, cooks, and caretakers (식모, sikmo) for urban middle-class families. This was one of the major forms of female labor in the development period, largely invisible in the official statistics and political discourse of the "economic miracle."</p>
-        <p>Pak Wanso's housewatching story engages this broader context without romanticizing or simplifying it. The specific arrangement she depicts is not quite the same as the sikmo relationship, but it belongs to the same world of informal, unrecognized, class-asymmetric domestic labor that characterized women's economic lives in development-era Korea.</p>
+        <h3>The Bonsai: Cultural Authority Made Material</h3>
+        <p>The bonsai (분재) are one of the story's most carefully chosen symbols. Bonsai cultivation is an art of disciplined miniaturization: living things are shaped, constrained, and maintained in controlled smallness. The practitioner controls the growth of something alive, directing it according to an aesthetic vision the plant itself cannot share. Professor Min's bonsai are a perfect material emblem of his relationship to his household.</p>
+        <p>By the 1970s, bonsai cultivation in South Korea also carried specific class and cultural markers. It was associated with refined, educated masculinity, and carried traces of its Japanese origins — an aesthetic practice that had entered Korean middle-class life through the colonial period and been naturalized into the aspiration landscape of postwar Seoul's educated class. Professor Min's bonsai are not just plants; they are statements of the kind of man he believes himself to be.</p>
+        <p>When the narrator stops tending them, she refuses to maintain his self-image by proxy. She abandons his aesthetic authority. The bonsai dying or wilting in his absence is the story's most pointed image: the things that required her care were always, in the end, for him.</p>
+    </div>
+
+    <div class="doc-card red-border">
+        <h3>The Yushin Context: Arrests That Simply Happen</h3>
+        <p>The story was published in autumn 1978 in the quarterly literary journal <em>Sekai no Munhak</em> (세계의 문학), at the height of the Yushin period (1972&ndash;1979). Under Park Chung-hee's Yushin Constitution, Emergency Measure 9 (1975) made it illegal to criticize the constitution or the government in any form. The KCIA (Korean Central Intelligence Agency) operated with sweeping powers to arrest and detain without a court order.</p>
+        <p>University professors were among the targets. Some were arrested for student activism they were suspected of enabling; others for statements made in lectures or private conversations; others for signing petitions or participating in the democratic opposition. The arrests were not always rational or proportionate. They were designed to produce a climate of fear in which even apolitical academics could not feel safe.</p>
+        <p>Pak Wanso's story captures this climate not through direct critique but through narrative form. Professor Min's arrest is not dramatized or explained. It simply happens. A secret agent appears; Min is taken. The story doesn't ask whether he was guilty, what he believed, or whether the state had grounds. It asks what happens inside the house afterward. This is not evasion of the political. It is a different way of registering the political's force: through the domestic ripple effects that official history ignores.</p>
+    </div>
+
+    <div class="doc-card gold-border">
+        <h3>The Mother-in-Law and the Incompleteness of Liberation</h3>
+        <p>The mother-in-law (시어머니) is one of the story's most uncomfortable figures. She is bedridden, dependent, and gluttonous in a way the narrative renders increasingly grotesque. When Professor Min is present, her monstrousness is somehow contained or normalized by the household's patriarchal order. With him gone, it erupts.</p>
+        <p>This is crucial to the story's meaning. The narrator's liberation from her husband's domestic authority does not dissolve the household's other systems of oppression. The mother-in-law, who has herself been shaped by and embedded within patriarchal family structures, becomes a new locus of the narrator's confinement. She is not an ally; she is another demand. Her gluttony functions, in Korean cultural terms, as a kind of disorder that the daughter-in-law (며느리) is expected to manage as part of her domestic duty.</p>
+        <p>Pak Wanso, who never makes liberation stories easy, refuses to let the husband's arrest equal the narrator's freedom. The house is still full; the obligations are still present; the narrator is still inside. What has changed is the specific contours of her captivity. "Thus ended the days of watching over the house" is not quite "thus began freedom." It is closer to: one kind of watching ended, and the shape of what remains has not yet become clear.</p>
+    </div>
+
+    <div class="doc-card dark-border">
+        <h3>The Ambiguous Liberation: What Pak Wanso Refuses to Decide</h3>
+        <p>The story's title is in the past tense: <em>kkeutnatda</em> (끝났다), "ended," as if narrated after the fact. The word <em>geureoke</em> (그렇게), "like that / just like that," is even more telling. It gives the ending an almost shrugged quality: this is how it ended, no more, no less. Not "it ended beautifully." Not "it ended badly." Just: it ended like that.</p>
+        <p>This is characteristic of Pak Wanso's ethical mode. She does not editorialize. She does not tell the reader how to feel about the narrator's liberation. A woman benefits from her husband's arrest by a political police that terrorizes an entire society. This is complicated. The benefit is real. The mechanism that delivered it is abhorrent. Pak Wanso holds both of these things without resolving them. The reader has to do the moral arithmetic herself.</p>
+        <p>This anti-resolution is one of the story's most sophisticated features. It refuses the satisfying arc of either feminist liberation narrative (the woman breaks free, she wins) or political tragedy narrative (the family is destroyed, they all suffer). Instead, it registers how people actually live inside authoritarian systems: with compromised survival, ambiguous relief, and the ongoing presence of everything that hasn't changed.</p>
+    </div>
+
+    <!-- Korean Language Section -->
+    <div class="korean-section">
+        <div class="korean-section-title">한국어 자료 / Korean Language Materials</div>
+
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-bottom:1.25rem;">Key vocabulary and phrases from the story, with the original Korean context. For students engaging with the Korean text.</p>
+
+        <div class="korean-vocab-grid">
+            <div class="vocab-item">
+                <div class="vocab-term">집 보기 / 집보기</div>
+                <div class="vocab-romanized">jip bogi</div>
+                <div class="vocab-def">Watching over / tending the house. The narrator's domestic role: maintaining the household for her husband's sake. Not a caretaking arrangement for a stranger — her own servitude in her own home.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="vocab-term">분재 (盆栽)</div>
+                <div class="vocab-romanized">bunjae</div>
+                <div class="vocab-def">Bonsai. Professor Min's prized collection of cultivated miniature trees. Symbol of his controlled aesthetic authority over living things — and, by extension, over the household.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="vocab-term">안전요원 / 정보원</div>
+                <div class="vocab-romanized">anjeon yowon / jeongbowon</div>
+                <div class="vocab-def">Security agent / intelligence officer. The "secret policeman" who arrests Professor Min. Under Yushin, the KCIA (중앙정보부) could arrest without a court order.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="vocab-term">시어머니</div>
+                <div class="vocab-romanized">si-eomeoni</div>
+                <div class="vocab-def">Mother-in-law (husband's mother). A key figure of domestic authority over the 며느리 (daughter-in-law / narrator) in Korean family structure. Bedridden but still demanding.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="vocab-term">며느리</div>
+                <div class="vocab-romanized">myeonuri</div>
+                <div class="vocab-def">Daughter-in-law. The narrator's structural position in the household: obligated to husband, obligated to his mother, keeper of the house on behalf of both.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="vocab-term">유신 (維新)</div>
+                <div class="vocab-romanized">Yushin</div>
+                <div class="vocab-def">"Revitalization." Park Chung-hee's 1972 constitution that established near-total dictatorship. Emergency Measure 9 (긴급조치 9호) criminalized all criticism of the government.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="vocab-term">그렇게 끝났다</div>
+                <div class="vocab-romanized">geureoke kkeutnatda</div>
+                <div class="vocab-def">"Ended like that / just like that." The title's key verb phrase. The 그렇게 (like that) has an almost shrugged quality — matter-of-fact, neither triumphant nor tragic. Pak Wanso's signature anti-resolution.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="vocab-term">소시민 (小市民)</div>
+                <div class="vocab-romanized">sosimin</div>
+                <div class="vocab-def">Petty bourgeoisie / lower middle class. A key term in 1970s Korean literary criticism for the social stratum Pak Wanso depicts: educated, aspirational, politically vulnerable, and morally compromised by development-era pressures.</div>
+            </div>
+        </div>
+
+        <div class="korean-synopsis">
+            <p style="font-size:0.72rem; color:rgba(255,255,255,0.35); margin-bottom:0.75rem; font-style:italic;">작품 해설 (Literary commentary, Korean)</p>
+            <p>이 단편소설은 1978년 가을 문예지 『세계의 문학』에 처음 발표되었고, 이후 박완서의 단편 모음집 『배반의 여름』(민음사, 1978)에 수록되었다. 이 작품이 씌어지고 발표된 시기는 유신 체제(1972&ndash;1979)의 절정기로, 중앙정보부(KCIA)의 민간인 체포와 학자 탄압이 일상화되어 있던 때다.</p>
+            <p>이야기의 화자는 민 교수의 아내이자 며느리다. 어느 날 남편이 안전요원에게 연행되면서 그녀의 집안 생활은 일변한다. 그간 남편이 가꾸어온 분재를 돌보지 않게 되고, 침대에 누워 폭식을 일삼는 시어머니에 대한 혐오감이 점점 노골적으로 드러난다. 제목의 "집 보기"는 타인의 집을 지키는 세입자 행위가 아니라, 화자가 남편을 위해 수행해온 가사 노동과 가정 유지 행위 자체를 가리킨다. 남편의 부재로 인해 그 "집보기"가 끝난 것이다.</p>
+            <p>박완서는 이 작품에서 해방 서사의 낙관주의를 의도적으로 거부한다. 화자의 자유는 실재하지만, 그 자유를 가져다준 것은 그녀 자신의 저항이 아니라 권위주의 국가의 폭력이다. 게다가 남편이 사라졌어도 시어머니는 여전히 그 자리에 있다. 억압의 구조가 한 층 벗겨졌을 뿐, 그 밑에 또 다른 층이 남아 있다. "그렇게 끝났다"는 말은 도착이 아니라, 하나의 국면이 끝났다는 담담한 진술에 불과하다.</p>
+        </div>
+        <p class="korean-pub-note">원문: 박완서, 「집 보기는 그렇게 끝났다」, 『세계의 문학』 1978년 가을호 / 『배반의 여름』, 민음사, 1978 / 박완서 단편소설 전집 2권, 문학동네, 2006.</p>
     </div>
 
 </main>
@@ -127,8 +244,20 @@
             <span class="fact-value">1931&ndash;2011</span>
         </div>
         <div class="fact-row">
-            <span class="fact-label">Published</span>
-            <span class="fact-value">1978</span>
+            <span class="fact-label">Korean title</span>
+            <span class="fact-value" style="font-family:'Noto Serif KR',serif; font-size:0.78rem;">집 보기는 그렇게 끝났다</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">First pub.</span>
+            <span class="fact-value"><em>Sekai no Munhak</em>, Autumn 1978</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">Collection</span>
+            <span class="fact-value"><em>Paebane ui Yorum</em> (배반의 여름), Minumsa, 1978</span>
+        </div>
+        <div class="fact-row">
+            <span class="fact-label">English trans.</span>
+            <span class="fact-value">"Thus Ended My Days of Watching Over the House," in <em>My Very Last Possession and Other Stories</em>, M.E. Sharpe, 1999</span>
         </div>
         <div class="fact-row">
             <span class="fact-label">Genre</span>
@@ -136,65 +265,106 @@
         </div>
         <div class="fact-row">
             <span class="fact-label">Week</span>
-            <span class="fact-value">Week 5 — Division, Dictatorships, Democratization</span>
+            <span class="fact-value">Week 5 &mdash; Division, Dictatorships, Democratization</span>
         </div>
     </div>
 
     <div class="sidebar-card gold-header">
         <h3>Key Themes</h3>
         <ul style="margin-left:1.2rem;font-size:0.83rem;color:var(--ink-light);">
-            <li>Domestic labor made visible</li>
-            <li>Women's invisible work and its social non-recognition</li>
-            <li>Class relations between women</li>
-            <li>Korea's economic miracle and its gendered costs</li>
-            <li>Female solidarity and its limits</li>
-            <li>Endings as sites of meaning</li>
+            <li>Domestic servitude as a form of political captivity</li>
+            <li>Political terror entering the private household</li>
+            <li>Liberation without agency: freed by a tyrant's act</li>
+            <li>The bonsai as patriarchal symbol</li>
+            <li>The mother-in-law as a second vector of oppression</li>
+            <li>Pak Wanso's anti-resolution and ethical refusal</li>
+            <li>Yushin Korea from the inside of the house</li>
         </ul>
     </div>
 
     <div class="sidebar-card dark-header">
         <h3>Key Concepts</h3>
         <div class="concept-item">
-            <div class="concept-term">Jipbogi (집보기, housewatching)</div>
-            <div class="concept-def">The practice of residing in and managing another person's home in their absence, in exchange for housing or compensation. An informal domestic labor arrangement common in Korean urban life, existing outside formal employment categories.</div>
+            <div class="concept-term korean">집보기 (jipbogi)</div>
+            <div class="concept-def">In this story: the narrator's own domestic labor of maintaining the household for her husband. Not a service arrangement watching a stranger's house. The "watching" is for him. When the state takes him, the watching ends.</div>
         </div>
         <div class="concept-item">
-            <div class="concept-term">Sikmo (식모, domestic servant)</div>
-            <div class="concept-def">Live-in domestic workers in Korean households — typically young women from rural areas who cooked, cleaned, and cared for children in exchange for room, board, and small wages. A major form of female labor in development-era South Korea, largely absent from official economic accounts.</div>
+            <div class="concept-term">Yushin (유신, 1972&ndash;1979)</div>
+            <div class="concept-def">Park Chung-hee's "October Revitalization" constitutional order, establishing near-total dictatorship. KCIA arrests of intellectuals, academics, and ordinary citizens were routine. Emergency Measure 9 (1975) criminalized all criticism of the government.</div>
         </div>
         <div class="concept-item">
-            <div class="concept-term">Reproductive labor</div>
-            <div class="concept-def">The category of feminist political economy that encompasses domestic work, caregiving, and social reproduction — the labor that maintains and reproduces the workforce, which is structurally necessary to capitalism but largely uncompensated and socially invisible. Pak Wanso's domestic fiction consistently makes this labor visible.</div>
+            <div class="concept-term">Bonsai (분재) as symbol</div>
+            <div class="concept-def">Professor Min's bonsai collection represents controlled cultivation of living things: his aesthetic authority made material. Neglecting them after his arrest is the narrator's first and most eloquent act of refusal.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">며느리 / 시어머니 (daughter-in-law / mother-in-law)</div>
+            <div class="concept-def">The structural dyad governing the narrator's domestic subordination. The mother-in-law is not an ally in the narrator's liberation; she becomes a new locus of demand when the patriarch is removed.</div>
+        </div>
+        <div class="concept-item">
+            <div class="concept-term">Sosiminji-eok (소시민적) fiction</div>
+            <div class="concept-def">Korean critical term for fiction centering the petty bourgeoisie. Pak Wanso's 1970s work is often classified here, but it refuses the type's usual sentimentality: she indicts the class she depicts, including the compromises of her narrators.</div>
         </div>
     </div>
 
     <div class="sidebar-card dark-header">
         <h3>Discussion Questions</h3>
-        <div class="discussion-q"><strong>1.</strong> What work does "housewatching" stand in for in this story? What kinds of labor are made visible and invisible?</div>
-        <div class="discussion-q"><strong>2.</strong> How does the story represent class relations between women?</div>
-        <div class="discussion-q"><strong>3.</strong> Compare this story with "Identical Apartments." How does Pak Wanso use domestic space differently across the two stories?</div>
-        <div class="discussion-q"><strong>4.</strong> The story's title signals an ending — "the day it ended." What ends, and what does that ending mean?</div>
-        <div class="discussion-q"><strong>5.</strong> How does Pak Wanso's focus on domestic life connect to larger questions about Korea's authoritarian development period?</div>
+        <div class="discussion-q"><strong>1.</strong> The narrator benefits from her husband's arrest by a political police she had no part in creating. How does Pak Wanso handle this moral complexity? Does the story offer any resolution?</div>
+        <div class="discussion-q"><strong>2.</strong> What does the bonsai collection represent, and what does its neglect mean? Why is this the narrator's first and most visible act?</div>
+        <div class="discussion-q"><strong>3.</strong> Why does the mother-in-law become more oppressive after the husband is removed, rather than less? What does this reveal about how patriarchal authority operates?</div>
+        <div class="discussion-q"><strong>4.</strong> Compare Pak Wanso's approach to political content here with "Identical Apartments." How does each story make the political visible without making it the explicit subject?</div>
+        <div class="discussion-q"><strong>5.</strong> The title ends with 그렇게 끝났다 — "ended like that." What tone does this give the ending? What is Pak Wanso refusing to do with this phrasing?</div>
+        <div class="discussion-q"><strong>6.</strong> This story was published in 1978, at the height of the Yushin period. What could and could not be said directly in Korean literature at this moment? How does oblique domestic fiction function as a response to censorship?</div>
     </div>
 
     <div class="sidebar-card">
         <h3>Further Reading</h3>
         <div class="source-item">
-            <span class="source-type">Translation</span>
-            Pak Wanso. <em>My Very Last Possession and Other Stories</em>, trans. Kyung-ja Chun et al. M.E. Sharpe, 1999.
+            <span class="source-type">English Translation</span>
+            Pak Wanso. "Thus Ended My Days of Watching Over the House." In <em>My Very Last Possession and Other Stories</em>, trans. Kyung-ja Chun et al. M.E. Sharpe, 1999.
         </div>
         <div class="source-item">
-            <span class="source-type">Scholarly context</span>
-            Seungsook Moon. <em>Militarized Modernity and Gendered Citizenship in South Korea</em>. Duke University Press, 2005.
+            <span class="source-type">Korean Collection</span>
+            박완서. 「집 보기는 그렇게 끝났다」. 『배반의 여름』. 민음사, 1978. [박완서 단편소설 전집 2권, 문학동네, 2006]
         </div>
         <div class="source-item">
-            <span class="source-type">Companion text</span>
-            Pak Wanso. "Identical Apartments" (아파트, 1974) — also Week 5, closely related.
+            <span class="source-type">Political Context</span>
+            Youngju Ryu, ed. <em>Cultures of Yusin: South Korea in the 1970s</em>. University of Michigan Press, 2018.
         </div>
         <div class="source-item">
-            <span class="source-type">Theoretical context</span>
-            Silvia Federici. <em>Caliban and the Witch</em>. Autonomedia, 2004. (On reproductive labor and capitalism)
+            <span class="source-type">Gendered Citizenship</span>
+            Seungsook Moon. <em>Militarized Modernity and Gendered Citizenship in South Korea</em>. Duke University Press, 2005. [On how Yushin-era development assigned women to the domestic sphere as a political act]
         </div>
+        <div class="source-item">
+            <span class="source-type">Literary Context</span>
+            Youngju Ryu. <em>Writers of the Winter Republic: Literature and Resistance in Park Chung Hee's Korea</em>. University of Hawaii Press, 2015.
+        </div>
+        <div class="source-item">
+            <span class="source-type">Companion Text</span>
+            Pak Wanso. "Identical Apartments" (아파트, 1974) &mdash; also Week 5. Reads in dialogue with this story on domestic space and middle-class women's constraint.
+        </div>
+    </div>
+
+    <div class="sidebar-card red-header">
+        <h3>In the Collection: 배반의 여름</h3>
+        <p style="font-size:0.78rem; color:var(--ink-light); margin-bottom:0.75rem;">This story is the fourteenth of sixteen in the 1978 collection, which covers work published September 1975 &ndash; September 1978. The collection as a whole examines middle-class life under the Yushin dictatorship.</p>
+        <ul style="font-size:0.75rem; color:var(--ink-faint); margin-left:1rem;">
+            <li>겨울 나들이 (Winter Outing)</li>
+            <li>저렇게 많이!</li>
+            <li>어떤 야만 (A Certain Barbarity) &larr; also translated</li>
+            <li>포말의 집</li>
+            <li>배반의 여름 (Summer of Betrayal) &larr; title story</li>
+            <li>조그만 체험기</li>
+            <li>흑과부</li>
+            <li>돌아온 땅</li>
+            <li>상</li>
+            <li>꼭두각시의 꿈</li>
+            <li>여인들</li>
+            <li>그 살벌했던 날의 할미꽃 &larr; also in course</li>
+            <li>낙토의 아이들</li>
+            <li style="font-weight:600; color:var(--ink);">집 보기는 그렇게 끝났다 &larr; THIS STORY</li>
+            <li>꿈과 같이</li>
+            <li>공항에서 만난 사람 (Encounter at the Airport)</li>
+        </ul>
     </div>
 
 </aside>
