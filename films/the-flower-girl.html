@@ -227,6 +227,49 @@
 
         .doc-card li { margin-bottom: 0.3rem; }
 
+        /* SCREENSHOT EXPLAINER */
+        .screen-explainer {
+            display: grid;
+            gap: 1.1rem;
+            margin: 1.5rem 0 1.75rem;
+        }
+
+        .shot-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .shot-card.wide {
+            grid-column: 1 / -1;
+        }
+
+        .shot-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #111;
+        }
+
+        .shot-card figcaption {
+            padding: 0.85rem 1rem 1rem;
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            line-height: 1.6;
+        }
+
+        .shot-card figcaption strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        @media (min-width: 700px) {
+            .screen-explainer {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         /* PULL QUOTE */
         .pull-quote {
             border-left: 3px solid var(--gold);
@@ -766,6 +809,49 @@
             </ul>
         </div>
 
+        <h2>Screenshot Explainer</h2>
+
+        <div class="screen-explainer">
+            <figure class="shot-card wide">
+                <img src="../images/films/the-flower-girl/sunhui-temptation.jpg" alt="Sunhui stands below a raised threshold holding flowers.">
+            </figure>
+
+            <figure class="shot-card">
+                <img src="../images/films/the-flower-girl/sunhui-tree-side.jpg" alt="Sunhui stands alone beside a large bare tree at dusk.">
+            </figure>
+
+            <figure class="shot-card">
+                <img src="../images/films/the-flower-girl/awl-landlady-joke.jpg" alt="Men in winter clothing joke about using an awl against the landlady.">
+            </figure>
+
+            <figure class="shot-card">
+                <img src="../images/films/the-flower-girl/laughing-violent-vengeance.jpg" alt="Two men laugh together outside village huts.">
+            </figure>
+
+            <figure class="shot-card">
+                <img src="../images/films/the-flower-girl/crying-brother.jpg" alt="A close-up of Kkotpun's brother crying.">
+            </figure>
+
+            <figure class="shot-card">
+                <img src="../images/films/the-flower-girl/brother-escaped.jpg" alt="A revolutionary explains that Kkotpun's brother escaped from prison.">
+            </figure>
+
+            <figure class="shot-card wide">
+                <img src="../images/films/the-flower-girl/torch-uprising.jpg" alt="Torch-bearing silhouettes gather along a ridge at night.">
+            </figure>
+        </div>
+
+        <div class="doc-card dark">
+            <h4>Sunhui as Pressure Point</h4>
+            <p>
+                Sunhui is not just a device for pathos. Her blindness makes class violence visible
+                as permanent bodily damage, and her vulnerability makes her easy to lure, threaten,
+                or bargain over. When the film tempts Sunhui or places her near danger, it tests
+                whether family affection can survive a social order built to break poor families
+                apart.
+            </p>
+        </div>
+
         <p>
             The opera version of The Flower Girl has been performed over 1,400 times in North Korea
             and in more than 40 countries, including France, Italy, Germany, Algeria, and Japan. As
@@ -892,21 +978,6 @@
                 <li>The film's authorship is attributed to Kim Il-sung in the 1930s. What function does this origin story serve? How do other nations construct similar founding narratives around cultural works?</li>
                 <li>How does The Flower Girl's narrative structure (suffering followed by revolutionary awakening) compare to narrative patterns in South Korean films like A Single Spark or Taebaek Mountains?</li>
             </ol>
-        </div>
-
-        <!-- FURTHER READING -->
-        <div class="sidebar-card">
-            <h3>Further Reading</h3>
-            <ul class="reading-list">
-                <li><a href="https://www.cinemaescapist.com/2015/02/review-the-flower-girl-north-korea-1972/">Review: The Flower Girl (North Korea, 1972)</a>, Cinema Escapist</li>
-                <li><a href="https://www.nknews.org/2022/09/the-flower-girl-how-a-north-korean-propaganda-film-achieved-international-fame/">How a North Korean Propaganda Film Achieved International Fame</a>, NK News</li>
-                <li><a href="https://www.cultureready.org/blog/flower-girl-most-well-known-north-korean-opera-and-film">The Flower Girl: Most Well-Known North Korean Opera and Film</a>, CultureReady</li>
-                <li><a href="https://koryostudio.com/blog/the-flower-girl/">The Flower Girl</a>, Koryo Studio</li>
-                <li><a href="https://koryogroup.com/blog/a-dummy-s-guide-to-the-north-korean-revolutionary-opera">A Guide to the North Korean Revolutionary Opera</a>, Koryo Tours</li>
-                <li><a href="https://en.wikipedia.org/wiki/On_the_Art_of_the_Cinema">On the Art of the Cinema</a>, Wikipedia (Kim Jong-il's 1973 treatise)</li>
-                <li><a href="https://www.easternkicks.com/reviews/the-film-that-time-forgot-kim-jong-ils-the-flower-girl/">The Film That Time Forgot</a>, Eastern Kicks</li>
-                <li><a href="https://muse.jhu.edu/article/805288/summary">The Origins of North Korean Cinema: Art and Propaganda</a>, Project MUSE</li>
-            </ul>
         </div>
 
     </aside>
